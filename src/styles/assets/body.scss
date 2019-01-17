@@ -1,0 +1,40 @@
+/* 设置盒模型 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  background-color: $basic-bac-color;
+  font-family: "Microsoft Yahei", "SimHei", "黑体";
+  font-size: $font-basic-size;
+  color: $basic-imp-color;
+  font-weight: 400;
+  line-height: 1.428;
+  overflow-y: hidden;
+}
+.container {
+  width: 1200px;
+}
+.container-fluid {
+  width: 100%;
+}
+.h1 {
+  font-size: $font-size-16;
+  font-weight: 700;
+}
+.truncate {
+  &.break-all {
+    word-break: break-all;
+  }
+}
+.truncate-expand {
+  cursor: pointer;
+  color: $basic-aid-blue-color;
+  &:hover {
+    text-decoration: underline;
+  }
+}

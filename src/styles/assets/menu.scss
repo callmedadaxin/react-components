@@ -1,0 +1,138 @@
+/**
+ * Left Navagation Menu
+ * @structure Menu
+ * @markup
+ *  <ul class="menu">
+ *   <li class="menu-item">
+ *      <a class="label-name">Menu 1</a>
+ *   </li>
+ *   <li class="menu-item active">
+ *     <a class="label-name">Menu 2</a>
+ *     <ul class="sub-menu">
+ *       <li class="sub-menu-item">
+ *         <a class="label-name">Sub Menu</a>
+ *       </li>
+ *    </ul>
+ *   </li>
+ *   <li class="menu-item">
+ *     <a class="label-name">Menu 3</a>
+ *   </li>
+ *  </ul>
+ */
+$menuBgColor: #3D4A5B;
+$subMenuBgColor: #293448;
+$menuBorderColor: #50647c;
+$textColor: #f3f3ff;
+$subMenuTextColor: #6d8cb3;
+
+.menu {
+  color: $textColor;
+  list-style: none;
+  height: 100%;
+  margin-bottom: -50px;
+  overflow: hidden;
+  background: $menuBgColor;
+  width: 160px;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  .menu-item {
+    background: $menuBgColor;
+    border-bottom: 1px solid $menuBorderColor;
+    padding: 0 20px 0 10px;
+    line-height: 50px;
+    &:hover,
+    &.active {
+      background: $subMenuBgColor;
+    }
+    .label-name {
+      display: block;
+      margin-left: 10px;
+      color: $textColor;
+      text-decoration: none;
+      &:after {
+        content: ' ';
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-top: 2px solid $textColor;
+        border-right: 2px solid $textColor;
+        transform: rotate(45deg);
+        float: right;
+        margin-top: 21px;
+      }
+    }
+    &.active {
+      &::before {
+        display: inline-block;
+        float: right;
+        content: ' ';
+        width: 0;
+        height: 0;
+        margin-top: 24px;
+        margin-right: -24px;
+        border-color: transparent;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid $textColor;
+        transform: rotate(-90deg);
+      }
+      .label-name{
+        &.active {
+          color: $textColor;
+        }
+        &:after {
+          transform: rotate(135deg);
+        }
+      }
+      .sub-menu {
+        display: block;
+      }
+    }
+    .sub-menu {
+      list-style: none;
+      margin: 0 -20px 0 -10px;
+      border-top: 1px solid $menuBorderColor;
+      padding: 0;
+      display: none;
+      .sub-menu-item {
+        line-height: 14px;
+        margin-bottom: 20px;
+        &:first-child {
+          margin-top: 20px;
+        }
+        .label-name {
+          color: $subMenuTextColor;
+          &:hover,&:active {
+            color: $textColor;
+          }
+          &.active {
+            color: $textColor;
+          }
+          &:after {
+            display: none;
+          }
+        }
+        padding: 0 10px;
+        background: $subMenuBgColor;
+      }
+    }
+  }
+  &.with-icon {
+    .menu-item {
+      position: relative;
+
+      .item-icon {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: 15px;
+        left: 10px;
+      }
+      .label-name {
+        margin-left: 30px;
+      }
+    }
+  }
+}
+

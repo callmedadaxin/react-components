@@ -1,0 +1,14 @@
+.base-layout {
+  display: flex;
+  height: calc(100vh - 50px);
+  .menu-column {
+    min-height: 100%;
+    background: $menuBgColor;
+  }
+  .main-content {
+    position: relative;
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 20px;
+  }
+}

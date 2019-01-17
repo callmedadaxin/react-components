@@ -1,0 +1,75 @@
+.clearfix {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+// 文字处理
+.text-left {
+  text-align: left
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-overflow {
+  white-space:nowrap; 
+  text-overflow:ellipsis; 
+  overflow:hidden;
+}
+.text-wrap {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+// 浮动
+.pull-left {
+  float: left !important;
+}
+.pull-right {
+  float: right !important;
+}
+
+// 块
+.left-block {
+  display: flex;
+  justify-content: flex-start;
+}
+.center-block {
+  display: flex;
+  justify-content: center;
+}
+.right-block {
+  display: flex;
+  justify-content: flex-end;
+}
+
+// 显示隐藏
+.show {
+  display: block!important;
+}
+.hidden {
+  display: none!important;
+}
+
+// 旋转
+.rotate-90 {
+  transform: rotate(90deg)
+}
+.rotate-180 {
+  transform: rotate(180deg)
+}
+.rotate-270 {
+  transform: rotate(270deg)
+}
+
+// 状态
+.status-success {
+  color: #1DA76B;
+}
+.status-failed {
+  color: #FC6D0B;
+}

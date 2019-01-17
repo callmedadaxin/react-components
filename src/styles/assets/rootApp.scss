@@ -1,0 +1,14 @@
+html,
+body,
+.root-app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+.root-app > div {
+  height: 100%;
+  overflow-y: auto;
+  &.loading-bar {
+    height: 4px;
+  }
+}

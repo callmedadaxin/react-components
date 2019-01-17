@@ -1,0 +1,78 @@
+/**
+ * @atom Button
+ * @section Button
+ * @modifiers
+ *  .btn-primary  主按钮
+ *  .btn-secondary 次按钮
+ *  .btn-cancel 取消按钮
+ *  .btn-link 按钮链接
+ * @markup
+ *  <button class="btn">button</button>
+ *  <button class="btn btn-primary">button primary</button>
+ *  <button class="btn btn-secondary">button secondary</button>
+ *  <button class="btn btn-cancel">button cancel</button>
+ *  <button class="btn btn-link">button link</button>
+ */
+
+.btn {
+    display: inline-block;
+    padding: 0 10px;
+    font-size: $font-basic-size;
+    font-weight: bold;
+    height: 30px;
+    border-radius: 2px;
+
+    color: #666;
+    background-color: #e4e4e4;
+    border: none;
+
+    &:hover {        
+        // background-color: $basic-aid-gray-color;
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+}    
+
+.btn-primary {
+    background-color: $basic-imp-color;
+    color: #FFF;
+    // &:hover {
+        // background-color: #516379;
+    // }
+}
+
+.btn-secondary {
+    background-color: $basic-aid-blue-color;
+    color: #FFF;
+
+    &:hover {
+        background-color: $basic-aid-color;
+    }
+}
+
+.btn-cancel {
+    background-color: $basic-border-color;
+    color: #999;
+
+    &:hover {
+        background-color: $basic-border-color;
+    }
+}
+
+.btn-link {
+    background-color: transparent;
+    border: none;
+    color: #2e3b4b;
+    font-weight: normal;
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}

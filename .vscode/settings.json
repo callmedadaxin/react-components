@@ -1,0 +1,17 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "files.exclude": {
+    "**/node_modules": true,
+    "dist": true
+  },
+  "vsicons.presets.angular": false,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "editor.snippetSuggestions": "bottom",
+  "editor.minimap.enabled": false,
+  // "workbench.editor.showTabs": false,
+  "explorer.openEditors.visible": 0,
+  "workbench.editor.enablePreview": false,
+  "javascript.validate.enable": false,
+  "git.ignoreLimitWarning": true
+}

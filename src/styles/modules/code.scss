@@ -1,0 +1,69 @@
+.code-wrap {
+  width: 100%;
+}
+.code-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  line-height: 40px;
+  border: none;
+  .key{
+    background-color: #424a4f;
+    padding: 0 20px;
+  }
+  .value{
+    background-color: #394045;
+    padding-left: 20px;
+  }
+}
+.code-thead {
+  color: #fff;
+  height: 40px;
+  line-height: 38px;
+  font-size: 12px;
+  text-align: left;
+  th {
+    border-bottom: 1px solid #fff;
+  }
+}
+.code-tbody {
+  width: 100%;
+  font-size: 12px;
+
+  .code-tr-content {
+    width: 100%;
+    color: #b2c7db;
+    line-height: 24px;
+
+    >td {
+      padding-top: 10px;
+      vertical-align: top;
+    }
+    &:last-child{
+      >td{
+        padding-bottom: 10px;
+      }
+    }
+  }
+}
+
+.json-pretty {
+  border-radius: 0;
+  margin: 0;
+  padding: 20px;
+  background-color: #394045;
+  font-size: 12px;
+  border: none;
+  color: #b2c7db;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.json-boolean, .json-value {
+  color: #3b97ff;
+}
+.json-string {
+  color: #87e88e;
+}
+.json-key {
+  color: #b2c7db;
+}

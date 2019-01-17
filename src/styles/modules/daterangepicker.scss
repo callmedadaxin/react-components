@@ -1,0 +1,13 @@
+.ant-calendar-picker {
+  .ant-calendar-range-picker-input{
+    text-align: left;
+  }
+  .ant-calendar-range-picker-input {
+    max-width: 135px;
+    min-width: 110px;
+
+    &:last-of-type {
+      padding-left: 10px;
+    }
+  }
+}

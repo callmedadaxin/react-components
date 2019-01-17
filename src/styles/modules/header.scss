@@ -1,0 +1,11 @@
+header {
+  background: $primaryDarkColor;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  padding: 0 20px;
+  .oper {
+    text-align: right;
+    flex: 1;
+  }
+}

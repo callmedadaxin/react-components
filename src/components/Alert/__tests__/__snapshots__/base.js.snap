@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Alert render error alert 1`] = `
+<div
+  className="base-alert base-alert-error"
+  data-show="true"
+>
+  <Icon
+    className="base-alert-icon"
+    link="test-file-stub"
+  />
+  <div
+    className="base-alert-content"
+  >
+    <p
+      className="base-alert-message"
+    >
+      测试
+    </p>
+    <p
+      className="base-alert-description"
+    >
+      aaa
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Alert render success alert 1`] = `
+<div
+  className="base-alert base-alert-success"
+  data-show="true"
+>
+  <Icon
+    className="base-alert-icon"
+    link="test-file-stub"
+  />
+  <div
+    className="base-alert-content"
+  >
+    <p
+      className="base-alert-message"
+    >
+      测试
+    </p>
+    <p
+      className="base-alert-description"
+    >
+      aaa
+    </p>
+  </div>
+</div>
+`;

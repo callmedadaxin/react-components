@@ -1,0 +1,704 @@
+/**
+ * @atom Input
+ * @section Form
+ * @modifiers
+ *  .input 单行文本
+ *  .input.error 表单验证错误
+ * @markup
+ *  <input class="input" placeholder="请输入"/>
+ *  <br />
+ *  <br />
+ *  <input class="input error" placeholder="请输入"/>
+ */
+
+/****/
+
+/**
+ * @atom Select
+ * @section Form
+ * @modifiers
+ *  .multi-btn-select 按钮型多选表单
+ *  .multi-btn-select-item 按钮型多选表单项
+ *  .multi-btn-select-item.selected 选中
+ *  .select 一般下拉框
+ *  .select-item 下拉选项
+ * @markup
+ *  <div class="select">
+ *    <span class="select-item">item1</span>
+ *    <span class="select-item">item2</span>
+ *    <span class="select-item">item3</span>
+ *  </div>
+ *  <br />
+ *  <br />
+ *  <div class="multi-btn-select">
+ *    <span class="multi-btn-select-item selected">item1</span>
+ *    <span class="multi-btn-select-item">item2</span>
+ *    <span class="multi-btn-select-item selected">item4<span class="delete-icon">&times;</span></span>
+ *  </div>
+ */
+
+/****/
+
+/**
+ * @atom Dropdown
+ * @section Form
+ * @modifiers
+ *  .drop-down-select 弹出层下拉列表
+ *  .drop-down-select-item 弹出层下拉项
+ *  .drop-down-panel 弹出层容器
+ * @markup
+ *  <div class="drop-down-select" style="vertical-align: middle;">
+ *    <span class="drop-down-select-item">item1</span>
+ *    <span class="drop-down-select-item">item2</span>
+ *    <span class="drop-down-select-item">item3</span>
+ *  </div>
+ *  <div class="drop-down-panel" style="vertical-align: middle; height: 92px;"></div>
+ */
+
+/****/
+
+/**
+ * @atom Related Icon
+ * @section Form
+ * @modifiers
+ *  .delete-icon 一般删除按钮
+ *  .delete-icon-cavity 带圆边框的删除按钮
+ *  .delete-icon-blue 实心圆形删除按钮
+ *  .delete-icon-red  红色一般删除按钮
+ *  .drop-down-icon 下拉按钮，默认朝下
+ *  .drop-down-icon.up 下拉按钮朝上
+ *  .line 分割线
+ * @markup
+ *  <span class="delete-icon-cavity">&times;</span>&nbsp;
+ *  <span class="delete-icon-blue">&times;</span>&nbsp;
+ *  <span class="delete-icon-red">&times;</span>&nbsp;
+ *  <span class="drop-down-icon"></span>&nbsp;
+ *  <span class="drop-down-icon up"></span>&nbsp;
+ *  <span class="line"></span>
+ */
+@mixin focusStyle() {
+  border-color: $basic-aid-blue-color;
+  box-shadow: 0 0 5px $basic-aid-blue-color;
+}
+@mixin errorStyle() {
+  border-color: $basic-aid-red-color;
+  box-shadow: 0 0 5px $basic-aid-red-color;
+}
+@mixin disabledStyle() {
+  color: $font-color-low;
+  cursor: not-allowed;
+}
+
+.form-item-info {
+  height: 30px;
+  line-height: 30px;
+}
+.form-item-group {
+  width: 100%;
+  display: flex;
+
+  .form-item-title-label {
+    line-height: 1;
+    padding-top: 7px;
+    padding-right: 10px;
+    font-weight: bold;
+    flex: 0 0 100px;
+    color: #2f495d;
+    font-size: 14px;
+    text-align: left;
+
+    &.required span {
+      position: relative;
+
+      &::after {
+        content: "*";
+        position: absolute;
+        top: 0;
+        left: -8px;
+      }
+    }
+  }
+}
+.form-item-input {
+  flex: 1;
+  .label-select {
+    margin-top: 5px;
+  }
+}
+.radio {
+  margin-right: 5px;
+  margin-left: 1px;
+}
+.radio-label {
+  &.disabled {
+    @include disabledStyle();
+  }
+}
+.checkbox-label {
+  cursor: pointer;
+  &.disabled {
+    @include disabledStyle();
+  }
+}
+.checkbox {
+  margin-right: 5px;
+  margin-left: 1px;
+  vertical-align: 1px;
+}
+.radio-btn {
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid $basic-border-color;
+  background-color: transparent;
+  cursor: pointer;
+  color: #182026;
+  font-size: 14px;
+  font-weight: normal;
+  &-item {
+    display: inline-block;
+    border-right: 1px solid $basic-border-color;
+    padding: 0 10px;
+    line-height: 30px;
+    height: 30px;
+
+    &:last-child {
+      border-right: none;
+    }
+    &.active {
+      background-color: $subBlueColor;
+      color: #fff;
+    }
+  }
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+.input,.ant-calendar-picker .ant-input {
+  width: 100%;
+  font-size: $font-basic-size;
+  color: $font-color-normal;
+  border: 1px solid $basic-border-color;
+  height: 30px;
+  line-height: 28px;
+  background-color: $basic-aid-gray-color;
+  padding: 0 10px;
+  border-radius: 2px;
+  outline: none;
+  &:hover {
+    border: 1px solid $basic-border-color;
+  }
+  &:focus {
+    @include focusStyle();
+  }
+  &::-webkit-input-placeholder {
+    color: $font-color-low;
+  }
+  &:-ms-input-placeholder {
+    color: $font-color-low;
+  }
+  &::-moz-placeholder {
+    color: $font-color-low;
+    opacity: 1;
+  }
+  &:-moz-placeholder {
+    color: $font-color-low;
+    opacity: 1;
+  }
+
+  &.textarea {
+    padding-top: 10px;
+    min-height: 60px;
+    resize: none;
+    overflow: auto;
+    line-height: 20px;
+
+    &.error {
+      @include errorStyle();
+    }
+  }
+
+  &:disabled {
+    @include disabledStyle();
+  }
+
+  &.textarea-wrap {
+    position: relative;
+    padding-bottom: 25px;
+    padding-right: 0;
+
+    &.focus {
+      @include focusStyle();
+    }
+    &.error {
+      outline: 0;
+      @include errorStyle();
+    }
+    &.is-disabled {
+      @include disabledStyle();
+    }
+
+    .max {
+      font-size: 12px;
+      line-height: 1;
+      i {
+        font-style: normal;
+        color: $basic-aid-color;
+        font-weight: bold;
+      }
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      color: $font-color-base;
+    }
+    .textarea-content {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:empty:before {
+        content: attr(placeholder);
+        white-space: pre-line;
+        color: $font-color-low;
+      }
+      &:not(:empty):before {
+        content: "";
+      }
+    }
+  }
+  &.error {
+    outline: 0;
+    @include errorStyle();
+  }
+}
+
+.select {
+  width: 100%;
+  .Select-control {
+    width: 100%;
+    height: 30px;
+    border-radius: 2px;
+    background-color: $subBgColor;
+    border-color: $borderColor;
+  }
+  .Select-input {
+    height: 30px;
+    line-height: 30px;
+    input {
+      padding: 0;
+    }
+  }
+  .Select-option {
+    background-color: $subBgColor;
+    color: $font-color-normal;
+
+    &.is-focused {
+      background-color: $subBlueColor;
+      color: #fff;
+    }
+  }
+  &.Select--multi .Select-multi-value-wrapper {
+    display: inline-flex;
+    flex-flow: row wrap;
+    align-items: flex-start;
+  }
+  &.Select--single .Select-multi-value-wrapper {
+    overflow: hidden;
+  }
+  &.Select--single .Select-multi-value-wrapper .Select-value {
+    line-height: 30px;
+    color: #2e3b4b;
+  }
+  .Select-placeholder {
+    line-height: 30px;
+    color: $font-color-low;
+  }
+  .multi-select-value {
+    margin-top: 5px;
+  }
+  &.is-open .Select-control {
+    background-color: $subBgColor;
+  }
+  &.no-arrow .Select-arrow-zone {
+    width: 5px;
+  }
+  &.Select--multi .Select-clear-zone {
+    line-height: 0;
+  }
+  &.white {
+    .Select-control {
+      background-color: #fff;
+    }
+    .Select-option {
+      background-color: #fff;
+      color: $font-color-normal;
+    }
+  }
+  .del-icon {
+    width: 14px;
+    height: 14px;
+    fill: #2d84e5;
+    vertical-align: middle;
+  }
+  &:not(.has-value) {
+    .del-icon {
+      display: none;
+    }
+  }
+  &.is-focused {
+    &:not(.is-open) {
+      .Select-control {
+        @include focusStyle();
+      }
+    }
+    &:not(.has-value) {
+      .Select-control {
+        @include focusStyle();
+      }
+    }
+    &.error {
+      .Select-control {
+        @include errorStyle();
+      }
+    }
+  }
+  &.error {
+    .Select-control {
+      @include errorStyle();
+    }
+  }
+  &.is-disabled {
+    .Select-control {
+      @include disabledStyle();
+    }
+    .Select-value-label {
+      color: #999 !important;
+    }
+    .multi-select-value {
+      cursor: not-allowed;
+      color: #999;
+      border-color: #999;
+      svg {
+        fill: #999 !important;
+      }
+    }
+  }
+}
+
+.multi-select-value {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid $basic-aid-blue-color;
+  border-radius: 4px;
+  color: $basic-aid-blue-color;
+  height: 20px;
+  padding: 0 5px;
+  font-size: 12px;
+  margin-left: 10px;
+
+  &:hover {
+    cursor: default;
+  }
+}
+// .Select-multi-value-wrapper {
+//   max-height: 55px;
+//   overflow-y: scroll;
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+//   &::-webkit-scrollbar-thumb {
+//     display: none;
+//   }
+//   .Select-value {
+//     display: inline-flex;
+//     align-items: center;
+//     border: 1px solid #2d84e5;
+//     border-radius: 4px;
+//     color: #2d84e5;
+//     height: 20px;
+//     padding: 0 5px;
+//     font-size: 12px;
+//     margin-left: 10px;
+//     margin-top: 5px;
+//     flex-direction: row-reverse;
+//     background-color: transparent;
+//     .Select-value-icon {
+//       border: none;
+//     }
+//     &:hover {
+//       background-color: transparent;
+//     }
+//   }
+// }
+
+.delete-icon {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  line-height: 11px;
+  font-size: 13px;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.delete-icon-lg {
+  @extend .delete-icon;
+  width: 20px;
+  height: 20px;
+  line-height: 18px;
+  font-size: 18px;
+}
+
+.delete-icon-cavity {
+  @extend .delete-icon;
+  border-radius: 50%;
+  margin-left: 5px;
+  color: $basic-aid-blue-color;
+  border: 1px solid $basic-aid-blue-color;
+  background-color: transparent;
+}
+
+.delete-icon-blue {
+  @extend .delete-icon;
+  border-radius: 50%;
+  color: #fff;
+  border: 1px solid $basic-aid-blue-color;
+  background-color: $basic-aid-blue-color;
+}
+
+.delete-icon-red {
+  @extend .delete-icon;
+  color: $basic-aid-red-color;
+  font-weight: bold;
+}
+
+.multi-btn-select {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  .multi-btn-select-item {
+    display: inline-block;
+    font-size: $font-basic-size;
+    color: #666;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    padding: 0 5px;
+    border-radius: 2px;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: 20px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &.selected {
+      background-color: $basic-aid-blue-color;
+      color: #fff;
+    }
+  }
+}
+
+.drop-down-select {
+  display: inline-block;
+  border: 1px solid $basic-border-color;
+  width: 100px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  .drop-down-select-item {
+    display: inline-block;
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    padding: 0 20px;
+    text-align: left;
+    color: #333;
+    background-color: #fff;
+    border-bottom: 1px solid $basic-border-color;
+
+    &:hover {
+      background-color: $basic-aid-blue-color;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.drop-down-panel {
+  display: inline-block;
+  width: 100px;
+  height: 200px;
+  border: 1px solid $basic-border-color;
+  background-color: #fff;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.drop-down-icon {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 5px solid $basic-imp-color;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 2.5px solid transparent;
+  vertical-align: middle;
+
+  &.up {
+    margin-bottom: 2.5px;
+    border-top: none;
+    border-bottom: 5px solid $basic-imp-color;
+  }
+}
+
+.line {
+  display: inline-block;
+  width: 100%;
+  height: 0;
+  border: none;
+  border-top: 1px solid $basic-border-color;
+}
+
+.active-item {
+  border-radius: 2px;
+  background-color: $basic-aid-color;
+  color: #fff;
+}
+.rc-calendar-picker {
+  padding-top: 30px;
+}
+.rc-calendar-input-wrap {
+  margin-bottom: 40px;
+}
+.rc-calendar-input,
+.rc-time-picker-input {
+  text-align: center !important;
+  outline: none;
+}
+.ant-calendar-range-picker-input {
+  color: #666;
+  text-align: left;
+}
+.ant-calendar-time-picker-btn {
+  cursor: pointer;
+
+  &:hover {
+    &:not(:disabled) {
+      color: #1890ff;
+    }
+  }
+}
+.range-picker-extra-picker-wrap {
+  padding: 8px;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  top: 34px;
+  border-bottom: 1px solid #e9e9e9;
+  display: flex;
+
+  & > div {
+    width: 50%;
+    text-align: center;
+  }
+}
+.range-picker-extra-footer-wrap {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  border-bottom: 1px solid #e9e9e9;
+}
+.range-picker-extra-footer-wrap > a {
+  margin-right: 10px;
+  color: #2d84e5;
+  cursor: pointer;
+  &:last-child {
+    margin-right: 0;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.rc-calendar-footer-btn > a {
+  color: #2d84e5;
+  &:hover {
+    color: #2d84e5;
+    text-decoration: underline;
+  }
+}
+.rc-calendar-range-right .rc-calendar-time-picker-panel {
+  left: 0 !important;
+}
+
+.file-upload {
+  display: flex;
+
+  &-hide {
+    display: none;
+  }
+  &-name {
+    flex: 1;
+    margin-right: 20px;
+  }
+  &-button {
+    flex: 0 0 140px;
+  }
+}
+
+$switch-width: 38px;
+
+.switch {
+  position: relative;
+  padding: 1px;
+  border: 1px solid $basic-border-color;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 12px;
+  background-color: $font-color-low;
+  transition: background-color 0.3s;
+  vertical-align: top;
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  &-item {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: $switch-width;
+    height: 22px;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 22px;
+    color: #fff;
+  }
+  &::after {
+    transition: all 0.3s;
+    content: "";
+    border-radius: 2px;
+    position: absolute;
+    left: 100%;
+    margin-left: -$switch-width;
+    display: inline-block;
+    width: $switch-width - 1px;
+    height: 22px;
+    background-color: #fff;
+    z-index: 1;
+  }
+  &.active {
+    background-color: $basic-aid-blue-color;
+    &::after {
+      left: 0;
+      margin-left: 1px;
+    }
+  }
+}

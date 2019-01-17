@@ -1,0 +1,52 @@
+body {
+  overflow: auto;
+}
+.btn-new {
+  background-color: #432521;
+  color: green;
+}
+.example-btn-submit{
+  width: 80px;
+  margin-top: 20px;
+  margin-left: 100px;
+}
+.example-sex{
+  padding-top: 5px;
+}
+
+.example-icons{
+  width: 20px;
+  height: 20px;
+}
+.icon-wrap {
+  border: 1px solid #ccc;
+  margin: 20px;
+  padding: 10px 0;
+  width: 100px;
+  float: left;
+  text-align: center;
+}
+.icon-name{
+  margin: 0;
+  line-height: 2;
+}
+.clear{
+  clear: both;
+}
+
+.code-tab{
+  background-color: '#e8e8e8';
+  color: '#1b3247';
+  font-size: '14px';
+  border: 'none';
+  width: '90px';
+  text-align: 'center';
+  font-weight: 'normal';
+  height: '30px';
+  line-height: '30px';
+  padding: 0;
+}
+.code-tab-active{
+  background-color: '#394045';
+  color: '#fff';
+}
