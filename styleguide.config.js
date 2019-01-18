@@ -21,10 +21,10 @@ const getCommonSetions = () => {
 };
 const baseComponents = {
   icon: join("Icon/index.js"),
-  // button: join("Button/index.js"),
-  // label: join("Label/index.js"),
-  Loading: join("Loading/index.js")
-  // Modal: join("Modal/Modal.js"),
+  button: join("Button/index.js"),
+  label: join("Label/index.js"),
+  Loading: join("Loading/index.js"),
+  Modal: join("Modal/Modal.js")
   // PageTitle: join("PageTitle/index.js"),
   // switch: join("Switch/index.js")
 };
