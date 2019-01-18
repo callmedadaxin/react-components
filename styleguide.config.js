@@ -20,20 +20,20 @@ const getCommonSetions = () => {
   });
 };
 const baseComponents = {
-  icon: join("Icon/index.js")
+  icon: join("Icon/index.js"),
   // button: join("Button/index.js"),
   // label: join("Label/index.js"),
-  // Loading: join("Loading/index.js"),
+  Loading: join("Loading/index.js")
   // Modal: join("Modal/Modal.js"),
   // PageTitle: join("PageTitle/index.js"),
   // switch: join("Switch/index.js")
 };
 const dataComponents = {
-  alert: join("Alert/index.js")
+  alert: join("Alert/index.js"),
   // truncate: join("Truncate/index.js"),
   // popover: join("Popover/index.js"),
   // slider: join("Slider/index.js"),
-  // box: join("Box/index.js"),
+  box: join("Box/index.js"),
   // table: join("Table/Base.js"),
   // tab: join("Tab/Tab.js"),
   // tabPanel: join("Tab/TabPanel.js"),
@@ -43,7 +43,7 @@ const dataComponents = {
   // dropdownList: join("DropdownList/index.js"),
   // dropdownInput: join("DropdownInput/index.js"),
   // timeline: join("Timeline/index.js"),
-  // noResult: join("NoResult/index.js")
+  noResult: join("NoResult/index.js")
 };
 const formComponents = {
   // input: join("Input/index.js"),
