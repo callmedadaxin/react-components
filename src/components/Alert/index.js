@@ -2,9 +2,9 @@
  * @Author: wangweixin
  * @Date: 2017-11-30 15:11:38
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-01-17 19:57:54
+ * @Last Modified time: 2019-01-18 11:00:00
  */
-import React, { PureComponent } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Icon from "../Icon";
@@ -21,24 +21,22 @@ const typeMap = {
  * 目前用于表单提示后的信息
  * 注： 目前只封装了success, error两种样式，待设计完善
  */
-export default class Alert extends PureComponent {
-  render() {
-    const { message, description, type, className, style } = this.props;
-    const classes = classNames("base-alert", `base-alert-${type}`, className);
-    return (
-      <div data-show="true" className={classes} style={style}>
-        {typeMap[type] ? (
-          <Icon className="base-alert-icon" link={typeMap[type]} />
-        ) : (
-          ""
-        )}
-        <div className="base-alert-content">
-          <p className="base-alert-message">{message}</p>
-          <p className="base-alert-description">{description}</p>
-        </div>
+function Alert(props) {
+  const { message, description, type, className, style } = props;
+  const classes = classNames("base-alert", `base-alert-${type}`, className);
+  return (
+    <div className={classes} style={style}>
+      {typeMap[type] ? (
+        <Icon className="base-alert-icon" link={typeMap[type]} />
+      ) : (
+        ""
+      )}
+      <div className="base-alert-content">
+        <p className="base-alert-message">{message}</p>
+        <p className="base-alert-description">{description}</p>
       </div>
-    );
-  }
+    </div>
+  );
 }
 Alert.defaultProps = {
   type: "success"
@@ -51,3 +49,5 @@ Alert.propTypes = {
   /** 提示类型 */
   type: PropTypes.oneOf(["success", "error"])
 };
+
+export default Alert;
