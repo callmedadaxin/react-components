@@ -3,7 +3,6 @@ import { Modal, Button } from "@";
 
 export default function ModalWrap() {
   const [show, setShow] = useState(false);
-  const [show2, setShow2] = useState(false);
 
   return (
     <div className="row mgb20">

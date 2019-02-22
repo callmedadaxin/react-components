@@ -34,6 +34,7 @@ class App extends Component {
           <Route path="/button" component={getComponent("Button")} />
           <Route path="/label" component={getComponent("Label")} />
           <Route path="/modal" component={getComponent("Modal")} />
+          <Route path="/timepicker" component={getComponent("TimePicker")} />
         </Switch>
       </Suspense>
     );

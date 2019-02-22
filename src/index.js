@@ -8,3 +8,8 @@ export { default as NoResult } from "./components/NoResult";
 export { default as Button } from "./components/Button";
 export { default as Label } from "./components/Label";
 export { default as Modal } from "./components/Modal";
+export {
+  default as TimePicker,
+  DatePicker,
+  DateRange
+} from "./components/TimePicker";
