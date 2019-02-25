@@ -17,6 +17,8 @@ function Home() {
       <Link to="/button">Button</Link>
       <Link to="/label">Label</Link>
       <Link to="/modal">Modal</Link>
+      <Link to="/timepicker">TimePicker</Link>
+      <Link to="/tab">Tab</Link>
     </div>
   );
 }
@@ -35,6 +37,7 @@ class App extends Component {
           <Route path="/label" component={getComponent("Label")} />
           <Route path="/modal" component={getComponent("Modal")} />
           <Route path="/timepicker" component={getComponent("TimePicker")} />
+          <Route path="/tab" component={getComponent("Tab")} />
         </Switch>
       </Suspense>
     );

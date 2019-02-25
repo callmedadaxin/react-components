@@ -26,7 +26,7 @@ function getContent({ show, loading, error, children, emptyDesc }) {
 
 function Title({ title, collapse, toggleRender, open, setOpen }) {
   return (
-    <div className="box-title">
+    <div className="box-title" test-role="time-content">
       {title}
       <Item show={collapse}>
         <div className="box-title-toggle" onClick={() => setOpen(!open)}>

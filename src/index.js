@@ -9,6 +9,9 @@ export { default as Button } from "./components/Button";
 export { default as Label } from "./components/Label";
 export { default as Modal } from "./components/Modal";
 export { default as Switch } from "./components/Switch";
+export { default as Tooltip } from "./components/Tooltip";
+export { default as Popover } from "./components/Popover";
+export { default as Tab } from "./components/Tab";
 export {
   default as TimePicker,
   DatePicker,

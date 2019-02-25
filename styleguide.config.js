@@ -24,14 +24,14 @@ const baseComponents = {
   button: join("Button/index.js"),
   label: join("Label/index.js"),
   Loading: join("Loading/index.js"),
-  Modal: join("Modal/Modal.js")
-  // PageTitle: join("PageTitle/index.js"),
-  // switch: join("Switch/index.js")
+  Modal: join("Modal/Modal.js"),
+  switch: join("Switch/index.js")
 };
 const dataComponents = {
   alert: join("Alert/index.js"),
   // truncate: join("Truncate/index.js"),
-  // popover: join("Popover/index.js"),
+  popover: join("Popover/index.js"),
+  tooltip: join("Tooltip/index.js"),
   // slider: join("Slider/index.js"),
   box: join("Box/index.js"),
   // table: join("Table/Base.js"),
@@ -49,7 +49,8 @@ const formComponents = {
   // input: join("Input/index.js"),
   // multiInput: join("MultiInput/index.js"),
   // select: join("Select/index.js"),
-  // DateRangePicker: join("TimePicker/DateRangePicker.js"),
+  RangePicker: join("TimePicker/RangePicker.js"),
+  DatePicker: join("TimePicker/DatePicker.js")
   // RangeBtn: join("TimePicker/RangeBtn.js"),
   // radio: join("Radio/Radio.js"),
   // radioGroup: join("Radio/RadioGroup.js"),
@@ -95,12 +96,12 @@ module.exports = {
       name: "DataDisplay",
       components: () => componentMap(dataComponents),
       description: "数据展示通用组件"
+    },
+    {
+      name: "FormInput",
+      components: () => componentMap(formComponents),
+      description: "表单通用组件"
     }
-    // {
-    //   name: "FormInput",
-    //   components: () => componentMap(formComponents),
-    //   description: "表单通用组件"
-    // }
   ],
   showUsage: true,
   webpackConfig: configFactory("development")
