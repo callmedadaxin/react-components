@@ -3,6 +3,8 @@
 import DateRange from "./RangePicker";
 import DatePicker from "./DatePicker";
 
+const RangePicker = DateRange;
+
 export default {
   // RangeBtn,
   DateRange,
@@ -11,5 +13,6 @@ export default {
 export {
   // RangeBtn,
   DateRange,
-  DatePicker
+  DatePicker,
+  RangePicker
 };

@@ -24,7 +24,6 @@ export const useControlledInputs = ({
   const handleChange = val => {
     const value = mapValueWhenChange ? mapValuetoValue(val) : val;
     setValue(value);
-    console.log(value);
     onChange(mapValuetoValue(val));
   };
 
