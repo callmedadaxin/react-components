@@ -7,11 +7,11 @@
   border-spacing: 0;
   line-height: 40px;
   border: none;
-  .key{
+  .key {
     background-color: #424a4f;
     padding: 0 20px;
   }
-  .value{
+  .value {
     background-color: #394045;
     padding-left: 20px;
   }
@@ -35,19 +35,19 @@
     color: #b2c7db;
     line-height: 24px;
 
-    >td {
+    > td {
       padding-top: 10px;
       vertical-align: top;
     }
-    &:last-child{
-      >td{
+    &:last-child {
+      > td {
         padding-bottom: 10px;
       }
     }
   }
 }
 
-.json-pretty {
+.__json-pretty__ {
   border-radius: 0;
   margin: 0;
   padding: 20px;
@@ -58,12 +58,13 @@
   white-space: pre-wrap;
   word-wrap: break-word;
 }
-.json-boolean, .json-value {
+.__json-boolean__,
+.__json-value__ {
   color: #3b97ff;
 }
-.json-string {
+.__json-pretty__ {
   color: #87e88e;
 }
-.json-key {
+.__json-pretty__ {
   color: #b2c7db;
 }
