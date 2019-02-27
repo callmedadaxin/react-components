@@ -13,6 +13,7 @@ export { default as Tooltip } from "./components/Tooltip";
 export { default as Popover } from "./components/Popover";
 export { default as Tab } from "./components/Tab";
 export { default as Code } from "./components/Code";
+export { default as Pagination } from "./components/Pagination";
 export {
   default as TimePicker,
   DatePicker,
