@@ -19,6 +19,7 @@ function Home() {
       <Link to="/modal">Modal</Link>
       <Link to="/timepicker">TimePicker</Link>
       <Link to="/tab">Tab</Link>
+      <Link to="/pagination">Pagination</Link>
     </div>
   );
 }
@@ -38,6 +39,7 @@ class App extends Component {
           <Route path="/modal" component={getComponent("Modal")} />
           <Route path="/timepicker" component={getComponent("TimePicker")} />
           <Route path="/tab" component={getComponent("Tab")} />
+          <Route path="/pagination" component={getComponent("Pagination")} />
         </Switch>
       </Suspense>
     );

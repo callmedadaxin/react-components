@@ -1,5 +1,5 @@
 .tip-pagination {
-    margin: 0;
+  margin: 0;
 }
 
 .tip-pagination .rc-pagination-item,
@@ -7,58 +7,67 @@
 .tip-pagination .rc-pagination-next,
 .tip-pagination .rc-pagination-jump-prev,
 .tip-pagination .rc-pagination-jump-next {
-    border-radius: 0px;
-    padding: 0px 12px;
-    background-color: transparent;
-    border: 1px solid #e6e6e6;
-    margin-right: 6px;
-    height: 34px;
-    line-height: 34px;
-    vertical-align: middle;
-    font-size: 14px;
-    outline: none;
+  border-radius: 0px;
+  padding: 0px 12px;
+  background-color: transparent;
+  border: 1px solid #e6e6e6;
+  margin-right: 6px;
+  height: 34px;
+  line-height: 34px;
+  vertical-align: middle;
+  font-size: 14px;
+  outline: none;
 
-    &:hover {
-        border-color: #2d84e5;
-        color: #2D84E5;
-        a {
-            color: #2d84e5;
-        }
-        &::after {
-            color: #2d84e5;
-        }
+  &:hover {
+    border-color: #2d84e5;
+    color: #2d84e5;
+    a {
+      color: #2d84e5;
     }
+    &::after {
+      color: #2d84e5;
+    }
+  }
 }
 .rc-pagination-disabled {
-    border-color: #e6e6e6!important;
-    a {
-        color: #999999!important;
-    }
+  border-color: #e6e6e6 !important;
+  a {
+    color: #999999 !important;
+    cursor: not-allowed;
+  }
 }
 
 .tip-pagination .rc-pagination-item-active {
-    background-color: #2d84e5;
-    border-color: #2d84e5;
-    color: #fff;
+  background-color: #2d84e5;
+  border-color: #2d84e5;
+  color: #fff;
 }
 
 .tip-pagination .rc-pagination-item a {
-    color: #999999;
+  color: #999999;
 }
 
 .tip-pagination .rc-pagination-item-active a {
-    color: #fff!important;
+  color: #fff !important;
 }
 
 .tip-pagination:focus {
-    outline: none;
+  outline: none;
 }
 .tip-pagination .rc-pagination-jump-prev:after,
 .tip-pagination .rc-pagination-jump-next:after {
-    font-size: 14px;
-    margin-top: -1px;
+  font-size: 14px;
+  margin-top: -1px;
+}
+.tip-pagination {
+  .rc-pagination-jump-prev,
+  .rc-pagination-jump-next {
+    padding: 0;
+    width: 34px;
+    text-align: center;
+  }
 }
 
 .tip-pagination .rc-pagination-next {
-    margin-right: 0px;
+  margin-right: 0px;
 }
