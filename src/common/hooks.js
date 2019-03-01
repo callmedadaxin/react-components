@@ -14,17 +14,18 @@ export const useControlledInputs = ({
   onChange,
   mapDefaultToValue,
   mapValuetoValue,
-  mapValueWhenChange = true
+  mapValueWhenChange = true,
+  props
 }) => {
-  const [value, setValue] = useState(mapDefaultToValue(defaultValue));
+  const [value, setValue] = useState(mapDefaultToValue(defaultValue, props));
   useEffect(() => {
-    setValue(mapDefaultToValue(defaultValue));
+    setValue(mapDefaultToValue(defaultValue, props));
   }, [defaultValue]);
 
   const handleChange = val => {
-    const value = mapValueWhenChange ? mapValuetoValue(val) : val;
+    const value = mapValueWhenChange ? mapValuetoValue(val, props) : val;
     setValue(value);
-    onChange(mapValuetoValue(val));
+    onChange(mapValuetoValue(val, props));
   };
 
   return {

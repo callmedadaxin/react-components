@@ -49,6 +49,7 @@
 
 .dropdown-tirgger-item {
   padding: 0 20px;
+  padding-right: 40px;
   background-color: #fff;
   height: 30px;
   line-height: 30px;
@@ -74,9 +75,6 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  border: 1px solid $borderColor;
-  background-color: #fff;
-  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
 }
 .dropdown-list-item {
   position: relative;

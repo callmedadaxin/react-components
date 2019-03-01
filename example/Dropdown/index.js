@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import { Dropdown, Box } from "@";
+import { Dropdown, Box, DropdownList } from "@";
 
 function Controled() {
   const [show, setShow] = useState(false);
@@ -18,6 +18,16 @@ function Controled() {
     </Dropdown>
   );
 }
+const listItems = [
+  {
+    value: 1,
+    label: "1111"
+  },
+  {
+    value: 2,
+    label: "222"
+  }
+];
 
 export default function Wrap() {
   return (
@@ -32,6 +42,9 @@ export default function Wrap() {
         <button>hover</button>
       </Dropdown>
       <Controled />
+      <DropdownList changeValue listItems={listItems} onChange={console.log}>
+        点我选择
+      </DropdownList>
     </div>
   );
 }

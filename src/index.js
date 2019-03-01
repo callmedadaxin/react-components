@@ -16,6 +16,7 @@ export { default as Code } from "./components/Code";
 export { default as Pagination } from "./components/Pagination";
 export { default as Truncate } from "./components/Truncate";
 export { default as Dropdown } from "./components/Dropdown";
+export { default as DropdownList } from "./components/DropdownList";
 export {
   default as TimePicker,
   DatePicker,
