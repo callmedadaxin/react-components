@@ -12,13 +12,13 @@
     "gulp-babel": "^8.0.0",
     "json-format": "^1.0.1",
     "lodash": "^4.17.11",
-    "rc-pagination": "^1.17.8",
     "rc-tooltip": "^3.7.3",
     "react": "^16.8.0-alpha.1",
     "react-app-polyfill": "^0.2.0",
     "react-dom": "^16.8.0-alpha.1",
     "react-json-pretty": "^2.0.0",
     "react-router-dom": "^4.3.1",
+    "react-text-truncate": "^0.14.0",
     "rimraf": "^2.6.3"
   },
   "scripts": {

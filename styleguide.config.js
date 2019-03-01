@@ -29,7 +29,7 @@ const baseComponents = {
 };
 const dataComponents = {
   alert: join("Alert/index.js"),
-  // truncate: join("Truncate/index.js"),
+  truncate: join("Truncate/index.js"),
   popover: join("Popover/index.js"),
   tooltip: join("Tooltip/index.js"),
   // slider: join("Slider/index.js"),
@@ -38,8 +38,8 @@ const dataComponents = {
   tab: join("Tab/Tab.js"),
   tabPanel: join("Tab/TabPanel.js"),
   code: join("Code/index.js"),
-  // Pagination: join("Pagination/index.js"),
-  // dropdown: join("Dropdown/index.js"),
+  Pagination: join("Pagination/index.js"),
+  dropdown: join("Dropdown/index.js"),
   // dropdownList: join("DropdownList/index.js"),
   // dropdownInput: join("DropdownInput/index.js"),
   // timeline: join("Timeline/index.js"),

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import { nfn } from "../../common";
@@ -77,13 +77,58 @@ const isJumpNext = num => {
   return num === "jumpNext";
 };
 
+function Basic(props) {
+  const { itemNum, current, pageSize, style, className, onChange } = props;
+  const hasPrev = current > 1;
+  const hasNext = itemNum === pageSize;
+  const onClick = next => {
+    return () => {
+      if (next < 0 && !hasPrev) {
+        return;
+      }
+      if (next > 0 && !hasNext) {
+        return;
+      }
+      onChange(current + next);
+    };
+  };
+  const cls = cx("rc-pagination", "tip-pagination", className);
+  const prevCls = cx({
+    "rc-pagination-disabled": !hasPrev,
+    "rc-pagination-prev": true
+  });
+  const nextCls = cx({
+    "rc-pagination-disabled": !hasNext,
+    "rc-pagination-next": true
+  });
+  return (
+    <ul className={cls} style={style} unselectable="unselectable">
+      <li onClick={onClick(-1)} title="上一页" className={prevCls}>
+        <a className="rc-pagination-item-link" />
+      </li>
+      <li onClick={onClick(1)} title="下一页" className={nextCls}>
+        <a role="pagination" className="rc-pagination-item-link" />
+      </li>
+    </ul>
+  );
+}
+
 /**
  * 分页组件
  */
 function Pagination(props) {
-  const { current, total, pageSize, onChange, className } = props;
+  const { current, total, pageSize, onChange, className, style } = props;
 
+  if (total < 1) {
+    return <Basic {...props} />;
+  }
   const [page, setPage] = useState(current);
+  useEffect(() => {
+    if (current !== page) {
+      setPage(current);
+    }
+  }, [current]);
+
   const pagesNum = getTotalPage(total, pageSize);
   const pages = getPages(pagesNum, page);
 
@@ -102,12 +147,11 @@ function Pagination(props) {
     if (page > pagesNum) {
       page = pagesNum;
     }
-    console.log(page);
     setPage(page);
     onChange(page);
   };
   return (
-    <ul className={cls}>
+    <ul className={cls} style={style}>
       <li title="上一页" onClick={onPrev(page, onPageChange)} class={prevCls}>
         <a className="rc-pagination-item-link" />
       </li>

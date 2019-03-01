@@ -20,6 +20,8 @@ function Home() {
       <Link to="/timepicker">TimePicker</Link>
       <Link to="/tab">Tab</Link>
       <Link to="/pagination">Pagination</Link>
+      <Link to="/truncate">Truncate</Link>
+      <Link to="/dropdown">Dropdown</Link>
     </div>
   );
 }
@@ -40,6 +42,8 @@ class App extends Component {
           <Route path="/timepicker" component={getComponent("TimePicker")} />
           <Route path="/tab" component={getComponent("Tab")} />
           <Route path="/pagination" component={getComponent("Pagination")} />
+          <Route path="/truncate" component={getComponent("Truncate")} />
+          <Route path="/dropdown" component={getComponent("Dropdown")} />
         </Switch>
       </Suspense>
     );
