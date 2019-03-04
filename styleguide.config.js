@@ -50,11 +50,11 @@ const formComponents = {
   // multiInput: join("MultiInput/index.js"),
   // select: join("Select/index.js"),
   RangePicker: join("TimePicker/RangePicker.js"),
-  DatePicker: join("TimePicker/DatePicker.js")
+  DatePicker: join("TimePicker/DatePicker.js"),
   // RangeBtn: join("TimePicker/RangeBtn.js"),
-  // radio: join("Radio/Radio.js"),
-  // radioGroup: join("Radio/RadioGroup.js"),
-  // radioBtn: join("Radio/RadioButton.js"),
+  radio: join("Radio/Radio.js"),
+  radioGroup: join("Radio/RadioGroup.js"),
+  radioBtn: join("Radio/RadioButton.js")
   // checkbox: join("Checkbox/Checkbox.js"),
   // checkboxGroup: join("Checkbox/CheckboxGroup.js"),
   // checkboxSelect: join("CheckBoxSelect/index.js"),
