@@ -41,7 +41,7 @@ const dataComponents = {
   Pagination: join("Pagination/index.js"),
   dropdown: join("Dropdown/index.js"),
   dropdownList: join("DropdownList/index.js"),
-  // dropdownInput: join("DropdownInput/index.js"),
+  dropdownInput: join("DropdownInput/index.js"),
   // timeline: join("Timeline/index.js"),
   noResult: join("NoResult/index.js")
 };

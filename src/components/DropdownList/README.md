@@ -28,12 +28,12 @@ const listItems = [
 ```js
 const listItems = [
   {
-    label: "修改密码",
-    value: "edit"
+    label: "激活",
+    value: "1"
   },
   {
-    label: "删除",
-    value: "delete"
+    label: "失效",
+    value: "0"
   }
 ];
 <DropdownList
