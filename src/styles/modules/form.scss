@@ -130,11 +130,13 @@
   margin-left: 1px;
 }
 .radio-label {
+  user-select: none;
   &.disabled {
     @include disabledStyle();
   }
 }
 .checkbox-label {
+  user-select: none;
   cursor: pointer;
   &.disabled {
     @include disabledStyle();
@@ -174,7 +176,8 @@
     opacity: 0.7;
   }
 }
-.input,.ant-calendar-picker .ant-input {
+.input,
+.ant-calendar-picker .ant-input {
   width: 100%;
   font-size: $font-basic-size;
   color: $font-color-normal;
