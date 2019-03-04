@@ -152,7 +152,11 @@ function Pagination(props) {
   };
   return (
     <ul className={cls} style={style}>
-      <li title="上一页" onClick={onPrev(page, onPageChange)} class={prevCls}>
+      <li
+        title="上一页"
+        onClick={onPrev(page, onPageChange)}
+        className={prevCls}
+      >
         <a className="rc-pagination-item-link" />
       </li>
       {pages.map(num => {
@@ -163,6 +167,7 @@ function Pagination(props) {
         });
         return (
           <li
+            key={"pagination" + num}
             className={itemCls}
             onClick={() => {
               if (isJumpPrev(num)) {
