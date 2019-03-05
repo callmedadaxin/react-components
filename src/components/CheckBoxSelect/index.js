@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import map from "lodash/map";
+import filter from "lodash/filter";
+import includes from "lodash/includes";
 
 import Checkbox from "../Checkbox";
 import DropDown from "../Dropdown";
 import Icon from "../Icon";
-import closeIcon from "@/images/svg/close.svg";
+import closeIcon from "../DropdownInput/images/close.svg";
 import Button from "../Button";
 import Input from "../Input";
 import Item from "../Item";
 import { useDefault } from "../../common/hooks";
+import { nfn } from "../../common";
 
 const { CheckboxGroup } = Checkbox;
 
@@ -40,23 +44,18 @@ const Overlay = props => {
         defaultValue={defaultValue}
         onChange={onChange}
       >
-        {withSearch && searchTxt.trim() !== ""
-          ? options
-              .filter(item => item.label.includes(searchTxt))
-              .map((item, index) => (
-                <Checkbox
-                  key={`${item.label}-${index}`}
-                  label={item.label}
-                  value={item.value}
-                />
-              ))
-          : options.map((item, index) => (
-              <Checkbox
-                key={`${item.label}-${index}`}
-                label={item.label}
-                value={item.value}
-              />
-            ))}
+        {map(
+          searchTxt === ""
+            ? options
+            : filter(options, item => includes(item.label, searchTxt)),
+          (item, index) => (
+            <Checkbox
+              key={`${item.label}-${index}`}
+              label={item.label}
+              value={item.value}
+            />
+          )
+        )}
       </CheckboxGroup>
       <div className="checkbox-select-button-wrap">
         <Button type="link" className="left" onClick={() => onChange([])}>
@@ -65,7 +64,7 @@ const Overlay = props => {
         <Button type="link" onClick={close}>
           关闭
         </Button>
-        <Button type="secondary" onClick={() => onEnsure(close)}>
+        <Button type="secondary" onClick={onEnsure}>
           确定
         </Button>
       </div>
@@ -94,10 +93,18 @@ export default function CheckboxSelect({
 
   const handleSearch = val => setSearchTxt(val);
 
-  const valueStr = options
-    .filter(item => value.includes(item.value))
+  const handleSelectChange = v => {
+    setValue(v);
+  };
+
+  const handleClose = () => {
+    setVisible(false);
+  };
+
+  const valueStr = filter(options, item => value.includes(item.value))
     .map(item => item.label)
     .join(",");
+
   const classes = classNames(
     "checkbox-select-wrap",
     onDelete ? className + " can-delete" : className
@@ -114,9 +121,10 @@ export default function CheckboxSelect({
             defaultValue={value}
             withSearch={withSearch}
             searchTxt={searchTxt}
-            onSearch={setSearchTxt}
+            onSearch={handleSearch}
             onEnsure={handleEnsure}
-            onChange={setValue}
+            onChange={handleSelectChange}
+            close={handleClose}
           />
         }
         defaultOpen={defaultOpen}
@@ -145,11 +153,12 @@ CheckboxSelect.propTypes = {
   /** 回调事件 */
   onChange: PropTypes.func,
   /** 支持搜索 */
-  withSearch: PropTypes.boolean,
+  withSearch: PropTypes.bool,
   /** 删除回调 */
-  onDelete: PropTypes.oneOfType([null, PropTypes.func])
+  onDelete: PropTypes.func
 };
 CheckboxSelect.defaultProps = {
   withSearch: false,
-  onDelete: null
+  onDelete: null,
+  onChange: nfn
 };

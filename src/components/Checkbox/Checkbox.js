@@ -2,7 +2,7 @@
  * @Author: wangweixin@threatbook.cn
  * @Date: 2017-12-15 11:02:00
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-03-04 17:36:23
+ * @Last Modified time: 2019-03-05 14:36:33
  */
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
@@ -28,8 +28,6 @@ export default function Checkbox({
       setChecked(defaultChecked);
     }
   }, [defaultChecked]);
-  console.log(value, checked, defaultChecked);
-
   // 半开状态
   const [halfOpen, setHalfOpen] = useState(indeterminate);
   useEffect(() => {
@@ -58,9 +56,10 @@ export default function Checkbox({
   const classes = classNames("checkbox-label", className, {
     disabled
   });
+
   return (
     <label
-      unselectable
+      unselectable="false"
       onClick={handleClick}
       key={key}
       className={classes}

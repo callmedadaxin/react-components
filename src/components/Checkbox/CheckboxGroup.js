@@ -2,7 +2,7 @@
  * @Author: wangweixin@threatbook.cn
  * @Date: 2017-12-15 11:02:10
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-03-04 17:41:57
+ * @Last Modified time: 2019-03-05 14:52:47
  */
 import React, { cloneElement } from "react";
 import PropTypes from "prop-types";
@@ -10,8 +10,8 @@ import classNames from "classnames";
 import { nfn } from "../../common";
 import filter from "lodash/filter";
 import map from "lodash/map";
-import remove from "lodash/remove";
 import includes from "lodash/includes";
+import isEqual from "lodash/isEqual";
 import { useControlledInputs } from "../../common/hooks";
 
 /**
@@ -34,11 +34,10 @@ export default function CheckboxGroup({
 
   const onSelectChange = (checked, v) => {
     if (checked) {
-      value.push(v);
-      handleChange([...value]);
+      handleChange([...value, v]);
     } else {
-      remove(value, v);
-      handleChange([...value]);
+      const result = filter(value, item => !isEqual(item, v));
+      handleChange([...result]);
     }
   };
 

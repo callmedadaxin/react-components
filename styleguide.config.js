@@ -57,8 +57,8 @@ const formComponents = {
   radioBtn: join("Radio/RadioButton.js"),
   checkbox: join("Checkbox/Checkbox.js"),
   checkboxGroup: join("Checkbox/CheckboxGroup.js"),
-  checkboxSelect: join("CheckBoxSelect/index.js")
-  // fileUpload: join("FileUpload/index.js"),
+  checkboxSelect: join("CheckBoxSelect/index.js"),
+  fileUpload: join("FileUpload/index.js")
   // labelSelect: join("LabelSelect/index.js"),
   // form: join("Form/Form.js"),
   // formItem: join("Form/FormItem.js")

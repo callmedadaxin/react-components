@@ -34,7 +34,6 @@ function Dropdown(props) {
   });
 
   useEffect(() => {
-    console.log(visible);
     setShow(visible);
   }, [visible]);
 
@@ -49,10 +48,7 @@ function Dropdown(props) {
       style={style}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onClick={e => {
-        e.stopPropagation();
-        e.preventDefault();
-      }}
+      onClick={e => e.stopPropagation()}
     >
       {cloneElement(children, {
         onClick: trigger === "click" ? () => changeVisible(!show) : null

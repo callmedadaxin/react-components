@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from "react";
-import { Dropdown, Box, DropdownList } from "@";
+import { Dropdown, Box, DropdownList, CheckboxSelect, Checkbox } from "@";
 
 function Controled() {
   const [show, setShow] = useState(false);
@@ -45,6 +45,14 @@ export default function Wrap() {
       <DropdownList changeValue listItems={listItems} onChange={console.log}>
         点我选择
       </DropdownList>
+      <CheckboxSelect
+        defaultValue={[2]}
+        withSearch
+        onChange={console.log}
+        title="事件类型"
+        options={listItems}
+        className="mgb20"
+      />
     </div>
   );
 }
