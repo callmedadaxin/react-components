@@ -21,7 +21,8 @@ export { default as DropdownInput } from "./components/DropdownInput";
 export { default as Input } from "./components/Input";
 export { default as Radio } from "./components/Radio";
 export { default as RadioButton } from "./components/Radio/RadioButton";
-export { default as Item } from "./components/Radio/Item";
+export { default as Checkbox } from "./components/Checkbox";
+export { default as Item } from "./components/Item";
 export {
   default as TimePicker,
   DatePicker,

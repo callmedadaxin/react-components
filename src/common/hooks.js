@@ -34,3 +34,18 @@ export const useControlledInputs = ({
     setValue
   };
 };
+
+/**
+ * 当defaultValue改变时，value也改变
+ */
+export const useDefault = defaultValue => {
+  const [value, setValue] = useState(defaultValue);
+
+  useEffect(() => {
+    if (defaultValue !== value) {
+      setValue(defaultValue);
+    }
+  }, [defaultValue]);
+
+  return [value, setValue];
+};

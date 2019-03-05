@@ -34,7 +34,7 @@ export default function DropdownInput(props) {
     defaultOpen,
     onChange,
     title,
-    clearable,
+    onDelete,
     disabled,
     trigger,
     className,
@@ -71,7 +71,7 @@ export default function DropdownInput(props) {
   const classes = classNames(
     "checkbox-select-wrap",
     {
-      "can-delete": clearable
+      "can-delete": onDelete
     },
     className
   );
@@ -99,7 +99,7 @@ export default function DropdownInput(props) {
         <p className="checkbox-select-result-value" title={result}>
           {result}
         </p>
-        {clearable ? (
+        {onDelete ? (
           <Icon className="close-icon" link={closeIcon} onClick={handleClear} />
         ) : (
           ""
@@ -118,8 +118,6 @@ DropdownInput.defaultProps = {
 DropdownInput.propTypes = {
   /** 是否默认打开 */
   defaultOpen: PropTypes.bool,
-  /** 是否带清除按钮 */
-  clearable: PropTypes.bool,
   /** 是否禁用 */
   disabled: PropTypes.bool,
   /** 触发显示的方式 */
@@ -129,5 +127,6 @@ DropdownInput.propTypes = {
   /** 默认值 */
   defaultValue: PropTypes.any,
   /** 更改值时的回调 */
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
+  onDelete: PropTypes.oneOfType([null, PropTypes.func])
 };

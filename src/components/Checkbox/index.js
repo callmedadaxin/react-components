@@ -1,10 +1,8 @@
 import Checkbox from "./Checkbox";
-// import CheckboxGroup from './CheckboxGroup'
+import CheckboxGroup from "./CheckboxGroup";
 
-// Checkbox.CheckboxGroup = CheckboxGroup
+Checkbox.CheckboxGroup = CheckboxGroup;
 
 export default Checkbox;
 
-// export {
-//   CheckboxGroup
-// }
+export { CheckboxGroup };
