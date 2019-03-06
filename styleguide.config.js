@@ -48,7 +48,7 @@ const dataComponents = {
 const formComponents = {
   input: join("Input/index.js"),
   // multiInput: join("MultiInput/index.js"),
-  // select: join("Select/index.js"),
+  select: join("Select/index.js"),
   RangePicker: join("TimePicker/RangePicker.js"),
   DatePicker: join("TimePicker/DatePicker.js"),
   RangeBtn: join("TimePicker/RangeBtn.js"),

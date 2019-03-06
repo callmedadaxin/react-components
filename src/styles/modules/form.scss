@@ -78,7 +78,7 @@
  */
 @mixin focusStyle() {
   border-color: $basic-aid-blue-color;
-  box-shadow: 0 0 5px $basic-aid-blue-color;
+  box-shadow: 0 0 3px $basic-aid-blue-color;
 }
 @mixin errorStyle() {
   border-color: $basic-aid-red-color;
@@ -280,66 +280,59 @@
 }
 
 .select {
+  position: relative;
   width: 100%;
+
   .Select-control {
+    padding-left: 10px;
     width: 100%;
-    height: 30px;
     border-radius: 2px;
     background-color: $subBgColor;
-    border-color: $borderColor;
+    border: 1px solid $borderColor;
+    position: relative;
+    display: flex;
   }
-  .Select-input {
-    height: 30px;
-    line-height: 30px;
-    input {
-      padding: 0;
-    }
-  }
-  .Select-option {
-    background-color: $subBgColor;
-    color: $font-color-normal;
-
-    &.is-focused {
-      background-color: $subBlueColor;
-      color: #fff;
-    }
-  }
-  &.Select--multi .Select-multi-value-wrapper {
-    display: inline-flex;
-    flex-flow: row wrap;
-    align-items: flex-start;
-  }
-  &.Select--single .Select-multi-value-wrapper {
-    overflow: hidden;
-  }
-  &.Select--single .Select-multi-value-wrapper .Select-value {
-    line-height: 30px;
-    color: #2e3b4b;
+  // &.multi.has-value {
+  //   .Select-control {
+  //     padding-left: 0;
+  //   }
+  // }
+  .Select-value-zone {
+    flex: 1;
   }
   .Select-placeholder {
+    position: absolute;
+    top: 0;
+    left: 10px;
     line-height: 30px;
     color: $font-color-low;
   }
-  .multi-select-value {
-    margin-top: 5px;
+  .Select-input {
+    line-height: 28px;
+    input {
+      padding: 0;
+      box-sizing: content-box;
+      width: 5px;
+      background: none transparent;
+      border: 0 none;
+      box-shadow: none;
+      cursor: default;
+      display: inline-block;
+      margin: 0;
+      outline: none;
+      line-height: 17px;
+    }
   }
-  &.is-open .Select-control {
-    background-color: $subBgColor;
-  }
-  &.no-arrow .Select-arrow-zone {
-    width: 5px;
-  }
-  &.Select--multi .Select-clear-zone {
+  .Select-clear-zone {
     line-height: 0;
-  }
-  &.white {
-    .Select-control {
-      background-color: #fff;
-    }
-    .Select-option {
-      background-color: #fff;
-      color: $font-color-normal;
-    }
+    color: #999;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex: 0 0 17px;
+    width: 17px;
   }
   .del-icon {
     width: 14px;
@@ -347,47 +340,79 @@
     fill: #2d84e5;
     vertical-align: middle;
   }
-  &:not(.has-value) {
-    .del-icon {
-      display: none;
+  .Select-arrow-zone {
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    flex: 0 0 25px;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    padding-top: 4px;
+  }
+  .select-option-wrap {
+    width: 100%;
+    position: relative;
+    margin-top: -1px;
+    background-color: $subBgColor;
+    color: $font-color-normal;
+    z-index: 10;
+    border: 1px solid $basic-border-color;
+    border-radius: 2px;
+    max-height: 150px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  .select-option-content {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .select-option-item {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    cursor: pointer;
+
+    &.active {
+      color: $subBlueColor;
+    }
+    &.focus {
+      background-color: $subBlueColor;
+      color: #fff;
     }
   }
-  &.is-focused {
-    &:not(.is-open) {
-      .Select-control {
-        @include focusStyle();
-      }
-    }
-    &:not(.has-value) {
-      .Select-control {
-        @include focusStyle();
-      }
-    }
-    &.error {
-      .Select-control {
-        @include errorStyle();
-      }
-    }
+  .select-single-value {
+    position: absolute;
   }
-  &.error {
+  .select-no-result {
+    color: $font-color-normal;
+    line-height: 30px;
+    padding-left: 10px;
+  }
+
+  &.is-open {
     .Select-control {
-      @include errorStyle();
+      background-color: #fff;
+      @include focusStyle();
+    }
+    .drop-down-icon {
+      transform: rotate(180deg);
+      margin-top: -6px;
     }
   }
-  &.is-disabled {
+
+  &.no-arrow .Select-arrow-zone {
+    width: 5px;
+  }
+
+  &.white {
     .Select-control {
-      @include disabledStyle();
+      background-color: #fff;
     }
-    .Select-value-label {
-      color: #999 !important;
-    }
-    .multi-select-value {
-      cursor: not-allowed;
-      color: #999;
-      border-color: #999;
-      svg {
-        fill: #999 !important;
-      }
+    .Select-option {
+      background-color: #fff;
+      color: $font-color-normal;
     }
   }
 }
@@ -401,7 +426,8 @@
   height: 20px;
   padding: 0 5px;
   font-size: 12px;
-  margin-left: 10px;
+  margin-right: 6px;
+  line-height: 1;
 
   &:hover {
     cursor: default;

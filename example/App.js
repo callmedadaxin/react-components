@@ -22,6 +22,7 @@ function Home() {
       <Link to="/pagination">Pagination</Link>
       <Link to="/truncate">Truncate</Link>
       <Link to="/dropdown">Dropdown</Link>
+      <Link to="/select">Select</Link>
     </div>
   );
 }
@@ -44,6 +45,7 @@ class App extends Component {
           <Route path="/pagination" component={getComponent("Pagination")} />
           <Route path="/truncate" component={getComponent("Truncate")} />
           <Route path="/dropdown" component={getComponent("Dropdown")} />
+          <Route path="/select" component={getComponent("Select")} />
         </Switch>
       </Suspense>
     );
