@@ -16,6 +16,7 @@ const options = [
   },
   {
     label: "333",
+    disabled: true,
     value: 3
   },
   {
@@ -24,7 +25,8 @@ const options = [
   },
   {
     label: "555",
-    value: 5
+    value: 5,
+    disabled: true
   },
   {
     label: "666",
@@ -47,10 +49,46 @@ const options = [
 export default function Wrap() {
   return (
     <div>
-      <Select defaultValue={8} options={options} onChange={console.log} />
+      <Select
+        className="mgb10"
+        defaultValue={8}
+        options={options}
+        onChange={console.log}
+      />
+      <Select
+        className="mgb10"
+        defaultValue={8}
+        disabled
+        options={options}
+        onChange={console.log}
+      />
+      <Select
+        className="mgb10"
+        defaultValue={8}
+        hasError
+        options={options}
+        onChange={console.log}
+      />
       <Select
         defaultValue={[8, 9]}
         multi
+        className="mgb10"
+        options={options}
+        onChange={console.log}
+      />
+      <Select
+        defaultValue={[8, 9]}
+        multi
+        className="mgb10"
+        disabled
+        options={options}
+        onChange={console.log}
+      />
+      <Select
+        defaultValue={[8, 9]}
+        multi
+        className="mgb10"
+        hasError
         options={options}
         onChange={console.log}
       />

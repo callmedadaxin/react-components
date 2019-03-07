@@ -1,16 +1,14 @@
 import React from "react";
+import cx from "classnames";
 import delIconCavity from "./images/del_icon_cavity.svg";
 import Icon from "../Icon";
 
-export default function ValueItem({ value, onRemove }) {
-  const delIconStyle = {
-    width: "14px",
-    height: "14px",
-    marginLeft: "5px",
-    fill: "#2d84e5"
-  };
+export default function ValueItem({ value = {}, onRemove, disabled }) {
+  const classes = cx("multi-select-value", {
+    disabled: disabled || value.disabled
+  });
   return (
-    <div className="multi-select-value">
+    <div className={classes}>
       <span>{value.label || value.value}</span>
       <span
         onClick={e => {
@@ -19,7 +17,7 @@ export default function ValueItem({ value, onRemove }) {
         }}
         style={{ cursor: "pointer" }}
       >
-        <Icon style={delIconStyle} link={delIconCavity} />
+        <Icon className="multi-item-del-icon" link={delIconCavity} />
       </span>
     </div>
   );

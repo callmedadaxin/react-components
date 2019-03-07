@@ -11,6 +11,7 @@ import ValueItem from "./ValueItem";
 import delIcon from "./images/del_icon.svg";
 
 export default function Input({
+  disabled,
   showOption,
   isFocus,
   currentValue,
@@ -40,6 +41,7 @@ export default function Input({
   }, [currentValue]);
 
   const triggerFocus = e => {
+    if (disabled) return;
     e.stopPropagation();
     inputRef.current.focus();
     onFocus();
@@ -94,6 +96,7 @@ export default function Input({
                   onRemove={() => onChange(item, true)}
                   key={`select-multi-item-${item.label}-${item.value}`}
                   value={item}
+                  disabled={disabled}
                 />
               ))}
             </Fragment>

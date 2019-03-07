@@ -1,8 +1,8 @@
 /*
- * @Author: wangweixin@threatbook.cn
+ * @Author: wangweixin
  * @Date: 2018-01-18 17:52:04
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-03-06 19:52:17
+ * @Last Modified time: 2019-03-07 14:52:12
  */
 import React, { useState, useEffect } from "react";
 import classNames from "classnames";
@@ -41,6 +41,7 @@ export default function Select({
   hasError: error,
   theme,
   multi,
+  disabled,
   clearable,
   className,
   ...others
@@ -156,6 +157,9 @@ export default function Select({
    */
   const onPressEnter = () => {
     if (!showOption || focusItem === undefined) return;
+    if (focusItem.disabled) {
+      return;
+    }
     handleSelectChange(focusItem);
     setShow(false);
   };
@@ -176,6 +180,7 @@ export default function Select({
   const classes = classNames("select", className, theme, {
     multi,
     error,
+    disabled,
     "is-open": showOption,
     "has-value": get(value, "length") || get(value, "value") !== undefined
   });
@@ -183,6 +188,7 @@ export default function Select({
   return (
     <div className={classes}>
       <Input
+        disabled={disabled}
         multi={multi}
         clearable={clearable}
         options={options}

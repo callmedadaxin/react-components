@@ -38,6 +38,8 @@ export default function Options({
                 onClick={e => {
                   if (!disabled) {
                     handleItemClick(option);
+                  } else {
+                    e.stopPropagation();
                   }
                 }}
                 onMouseEnter={() => setFocusItem(option)}

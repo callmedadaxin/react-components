@@ -380,6 +380,15 @@
     &.focus {
       background-color: $subBlueColor;
       color: #fff;
+
+      &.disabled {
+        @include disabledStyle();
+        background-color: transparent;
+      }
+    }
+    &.disabled {
+      @include disabledStyle();
+      background-color: #f9f9f9;
     }
   }
   .select-single-value {
@@ -415,6 +424,26 @@
       color: $font-color-normal;
     }
   }
+  &.disabled {
+    opacity: 0.7;
+
+    .Select-input {
+      @include disabledStyle();
+    }
+    .Select-clear-zone {
+      display: none;
+    }
+    .Select-arrow-zone {
+      cursor: default;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+  }
+  &.error {
+    .Select-control {
+      @include errorStyle();
+    }
+  }
 }
 
 .multi-select-value {
@@ -429,10 +458,28 @@
   margin-right: 6px;
   line-height: 1;
 
+  .multi-item-del-icon {
+    width: 14px;
+    height: 14px;
+    margin-left: 5px;
+    fill: #2d84e5;
+  }
+
   &:hover {
     cursor: default;
   }
+
+  &.disabled {
+    border-color: #e3e3e3;
+    color: #999;
+    // @include disabledStyle();
+
+    .multi-item-del-icon {
+      display: none;
+    }
+  }
 }
+
 // .Select-multi-value-wrapper {
 //   max-height: 55px;
 //   overflow-y: scroll;
