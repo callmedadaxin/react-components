@@ -350,9 +350,10 @@
     width: 25px;
     padding-top: 4px;
   }
-  .select-option-wrap {
+  .select-option-wrap,
+  .multi-input-tip {
     width: 100%;
-    position: relative;
+    position: absolute;
     margin-top: -1px;
     background-color: $subBgColor;
     color: $font-color-normal;
@@ -362,6 +363,12 @@
     max-height: 150px;
     overflow-x: hidden;
     overflow-y: scroll;
+  }
+  .multi-input-tip {
+    line-height: 30px;
+    padding-left: 10px;
+    background-color: $subBlueColor;
+    color: #fff;
   }
   .select-option-content {
     list-style: none;
@@ -411,8 +418,15 @@
     }
   }
 
-  &.no-arrow .Select-arrow-zone {
-    width: 5px;
+  &.no-arrow {
+    .Select-arrow-zone {
+      display: none;
+    }
+    .Select-clear-zone {
+      padding-right: 10px;
+      flex: 0 0 27px;
+      width: 27px;
+    }
   }
 
   &.white {
@@ -437,6 +451,9 @@
       cursor: default;
       pointer-events: none;
       opacity: 0.35;
+    }
+    .Select-placeholder {
+      @include disabledStyle();
     }
   }
   &.error {

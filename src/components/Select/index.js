@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2018-01-18 17:52:04
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-03-07 14:52:12
+ * @Last Modified time: 2019-03-07 16:24:15
  */
 import React, { useState, useEffect } from "react";
 import classNames from "classnames";
@@ -44,7 +44,7 @@ export default function Select({
   disabled,
   clearable,
   className,
-  ...others
+  style
 }) {
   const { value, handleChange } = useControlledInputs({
     defaultValue,
@@ -186,7 +186,7 @@ export default function Select({
   });
 
   return (
-    <div className={classes}>
+    <div className={classes} style={style}>
       <Input
         disabled={disabled}
         multi={multi}

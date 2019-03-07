@@ -27,6 +27,7 @@ export { default as FileUpload } from "./components/FileUpload";
 export { default as CheckboxSelect } from "./components/CheckBoxSelect";
 export { default as LabelSelect } from "./components/LabelSelect";
 export { default as Select } from "./components/Select";
+export { default as MultiInput } from "./components/MultiInput";
 export {
   default as TimePicker,
   DatePicker,

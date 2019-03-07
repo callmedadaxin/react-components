@@ -1,5 +1,5 @@
 import React from "react";
-import { Select } from "@";
+import { Select, MultiInput } from "@";
 
 const options = [
   // {
@@ -92,6 +92,24 @@ export default function Wrap() {
         options={options}
         onChange={console.log}
       />
+      {/* <MultiInput className="mgb10" onChange={console.log} /> */}
+      <MultiInput
+        className="mgb10"
+        defaultValue={[1, 2]}
+        onChange={console.log}
+      />
+      {/* <MultiInput
+        className="mgb10"
+        disabled
+        defaultValue={[1, 2]}
+        onChange={console.log}
+      />
+      <MultiInput
+        className="mgb10"
+        hasError
+        defaultValue={[1, 2]}
+        onChange={console.log}
+      /> */}
     </div>
   );
 }
