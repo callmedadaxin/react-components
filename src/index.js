@@ -28,6 +28,8 @@ export { default as CheckboxSelect } from "./components/CheckBoxSelect";
 export { default as LabelSelect } from "./components/LabelSelect";
 export { default as Select } from "./components/Select";
 export { default as MultiInput } from "./components/MultiInput";
+export { default as Form, FormItem, Collector } from "./components/Form";
+export { default as Setter } from "./components/Setter";
 export {
   default as TimePicker,
   DatePicker,

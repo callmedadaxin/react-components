@@ -23,6 +23,9 @@ function Home() {
       <Link to="/truncate">Truncate</Link>
       <Link to="/dropdown">Dropdown</Link>
       <Link to="/select">Select</Link>
+      <Link to="/form">Form</Link>
+      <Link to="/smartForm">SmartForm</Link>
+      <Link to="/formItem">FormItem</Link>
     </div>
   );
 }
@@ -46,6 +49,9 @@ class App extends Component {
           <Route path="/truncate" component={getComponent("Truncate")} />
           <Route path="/dropdown" component={getComponent("Dropdown")} />
           <Route path="/select" component={getComponent("Select")} />
+          <Route path="/formItem" component={getComponent("FormItem")} />
+          <Route path="/form" component={getComponent("Form")} />
+          <Route path="/smartForm" component={getComponent("SmartForm")} />
         </Switch>
       </Suspense>
     );
