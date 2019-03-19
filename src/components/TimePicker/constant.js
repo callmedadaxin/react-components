@@ -54,6 +54,7 @@ export const btnTimeRange = (currentLocale, max7d = false) =>
 export const getStartAndEndTime = rangeType => {
   const curHour = new Date().getHours();
   const cur = moment({ hour: curHour });
+  const start = cur.clone().add(1, "hours");
   const nextHour = cur.clone().add(1, "hours");
   switch (rangeType) {
     case "one_hour":
@@ -63,7 +64,7 @@ export const getStartAndEndTime = rangeType => {
       };
     case "twenty_four_hours":
       return {
-        start: new Date(cur.subtract(1, "days")),
+        start: new Date(start.subtract(1, "days")),
         end: new Date(nextHour)
       };
     case "today":
@@ -78,24 +79,12 @@ export const getStartAndEndTime = rangeType => {
       };
     case "seven_days":
       return {
-        start: new Date(
-          cur
-            .subtract(7, "days")
-            .hour(0)
-            .minute(0)
-            .second(0)
-        ),
+        start: new Date(start.subtract(7, "days")),
         end: new Date(nextHour)
       };
     case "thirty_days":
       return {
-        start: new Date(
-          cur
-            .subtract(30, "days")
-            .hour(0)
-            .minute(0)
-            .second(0)
-        ),
+        start: new Date(start.subtract(30, "days")),
         end: new Date(nextHour)
       };
 

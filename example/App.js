@@ -26,6 +26,7 @@ function Home() {
       <Link to="/form">Form</Link>
       <Link to="/smartForm">SmartForm</Link>
       <Link to="/formItem">FormItem</Link>
+      <Link to="/setter">Setter</Link>
     </div>
   );
 }
@@ -52,6 +53,7 @@ class App extends Component {
           <Route path="/formItem" component={getComponent("FormItem")} />
           <Route path="/form" component={getComponent("Form")} />
           <Route path="/smartForm" component={getComponent("SmartForm")} />
+          <Route path="/setter" component={getComponent("Setter")} />
         </Switch>
       </Suspense>
     );

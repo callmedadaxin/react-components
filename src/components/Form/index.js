@@ -5,7 +5,7 @@ import validators, { Collector } from "./validators";
 
 Form.Item = FormItem;
 Form.validators = validators;
-Form.Collector = FormItem;
+Form.Collector = Collector;
 Form.SmartForm = SmartForm;
 
 export default Form;

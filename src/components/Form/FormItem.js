@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2017-12-15 11:01:33
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-03-11 17:30:10
+ * @Last Modified time: 2019-03-19 15:14:20
  */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
@@ -20,12 +20,13 @@ import isEqual from "lodash/isEqual";
 export default class FormItem extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     if (
-      !isEqual(nextProps.value, prevState.value) &&
+      !isEqual(nextProps.value, prevState.prevValue) &&
       nextProps.value !== undefined
     ) {
       return {
         ...prevState,
-        value: nextProps.value
+        value: nextProps.value,
+        prevValue: nextProps.value
       };
     }
     return null;
@@ -166,5 +167,9 @@ FormItem.propTypes = {
   /** 是否有冒号 */
   hasColon: PropTypes.bool,
   /** 是否以信息形式展示 */
-  showInfo: PropTypes.bool
+  showInfo: PropTypes.bool,
+  /** 验证触发的时机 */
+  trigger: PropTypes.oneOf(["input", "blur"]),
+  /** Collector实例 */
+  collector: PropTypes.any
 };

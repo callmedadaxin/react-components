@@ -140,6 +140,10 @@ const Button = require("../Button").default;
 class FormDatas extends React.Component {
   handleSubmit() {
     const ret = this.form.validateAndSubmit();
+    console.log(ret);
+  }
+  reset() {
+    this.form.reset();
   }
   render() {
     return (
@@ -181,9 +185,14 @@ class FormDatas extends React.Component {
             <MultiInput />
           </FormItem>
         </div>
-        <Button onClick={this.handleSubmit.bind(this)} type="secondary">
-          提交
-        </Button>
+        <div className="row mgb20">
+          <Button className="mgr20" onClick={this.reset.bind(this)}>
+            重置
+          </Button>
+          <Button onClick={this.handleSubmit.bind(this)} type="secondary">
+            提交
+          </Button>
+        </div>
       </Form>
     );
   }

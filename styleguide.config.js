@@ -59,9 +59,11 @@ const formComponents = {
   checkboxGroup: join("Checkbox/CheckboxGroup.js"),
   checkboxSelect: join("CheckBoxSelect/index.js"),
   fileUpload: join("FileUpload/index.js"),
-  labelSelect: join("LabelSelect/index.js")
-  // form: join("Form/Form.js"),
-  // formItem: join("Form/FormItem.js")
+  labelSelect: join("LabelSelect/index.js"),
+  formItem: join("Form/FormItem.js"),
+  form: join("Form/Form.js"),
+  smartForm: join("Form/SmartForm"),
+  setter: join("Setter/index.js")
 };
 module.exports = {
   serverPort: 8080,

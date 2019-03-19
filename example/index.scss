@@ -1,3 +1,8 @@
 #root {
   padding: 20px;
+
+  & > div > a {
+    display: block;
+    margin-bottom: 10px;
+  }
 }
