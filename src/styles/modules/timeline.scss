@@ -40,10 +40,20 @@
         text-align: right;
       }
     }
+    &-end {
+      line-height: 1;
+      position: absolute;
+      left: 41px;
+      top: 0;
+      height: 7px;
+      width: 7px;
+      border-radius: 50%;
+      border: 1px solid #999;
+    }
     &-tail {
       position: absolute;
       left: 44px;
-      top: 16px;
+      top: 0;
       height: 100%;
       border-left: 1px solid #999;
     }
