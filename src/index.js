@@ -30,6 +30,8 @@ export { default as Select } from "./components/Select";
 export { default as MultiInput } from "./components/MultiInput";
 export { default as Form, FormItem, Collector } from "./components/Form";
 export { default as Setter } from "./components/Setter";
+export { default as Table } from "./components/Table";
+export { default as Message } from "./components/Message";
 export {
   default as TimePicker,
   DatePicker,

@@ -13,6 +13,7 @@
     "gulp-babel": "^8.0.0",
     "json-format": "^1.0.1",
     "lodash": "^4.17.11",
+    "rc-animate": "^2.6.0",
     "rc-tooltip": "^3.7.3",
     "react": "16.8.3",
     "react-app-polyfill": "^0.2.0",

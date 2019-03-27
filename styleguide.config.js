@@ -24,6 +24,7 @@ const baseComponents = {
   button: join("Button/index.js"),
   label: join("Label/index.js"),
   Loading: join("Loading/index.js"),
+  Message: join("Message/index.js"),
   Modal: join("Modal/Modal.js"),
   switch: join("Switch/index.js")
 };
@@ -34,7 +35,7 @@ const dataComponents = {
   tooltip: join("Tooltip/index.js"),
   // slider: join("Slider/index.js"),
   box: join("Box/index.js"),
-  // table: join("Table/Base.js"),
+  table: join("Table/index.js"),
   tab: join("Tab/Tab.js"),
   tabPanel: join("Tab/TabPanel.js"),
   code: join("Code/index.js"),
