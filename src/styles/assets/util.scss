@@ -1,13 +1,13 @@
 .clearfix {
   &::after {
-    content: '';
+    content: "";
     display: block;
     clear: both;
   }
 }
 // 文字处理
 .text-left {
-  text-align: left
+  text-align: left;
 }
 .text-center {
   text-align: center;
@@ -16,9 +16,9 @@
   text-align: right;
 }
 .text-overflow {
-  white-space:nowrap; 
-  text-overflow:ellipsis; 
-  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .text-wrap {
   word-break: break-all;
@@ -49,27 +49,40 @@
 
 // 显示隐藏
 .show {
-  display: block!important;
+  display: block !important;
 }
 .hidden {
-  display: none!important;
+  display: none !important;
 }
 
 // 旋转
 .rotate-90 {
-  transform: rotate(90deg)
+  transform: rotate(90deg);
 }
 .rotate-180 {
-  transform: rotate(180deg)
+  transform: rotate(180deg);
 }
 .rotate-270 {
-  transform: rotate(270deg)
+  transform: rotate(270deg);
 }
 
 // 状态
 .status-success {
-  color: #1DA76B;
+  color: #1da76b;
 }
 .status-failed {
-  color: #FC6D0B;
+  color: #fc6d0b;
+}
+
+.icon-arrow {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #2e3b4b;
+  border-right: 2px solid #2e3b4b;
+  transform: rotate(135deg);
+  vertical-align: top;
+  margin-left: 6px;
+  margin-top: 2px;
+  /* margin-top: 21px; */
 }

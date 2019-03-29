@@ -1,0 +1,88 @@
+@import "../../../styles/assets/constant.scss";
+
+/**
+ * @atom Label
+ * @section Label
+ * @modifiers
+ *  error
+ *  warning
+ *  alarm
+ *  info
+ *  dark
+ */
+.label {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  font-size: $font-size-12;
+  font-weight: bold;
+  padding: 0 4px;
+  height: 18px;
+  line-height: 16px;
+  color: #fff;
+  fill: #fff;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  &.closable {
+    &:after {
+      display: inline-block;
+      content: "×";
+      margin-left: 5px;
+      vertical-align: top;
+      margin-top: -1px;
+    }
+  }
+  &.max-width {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.label-cavity {
+  color: $basic-aid-color;
+  fill: $basic-aid-color;
+  border-color: $basic-aid-color;
+  background-color: transparent;
+}
+
+.label-danger {
+  background-color: $basic-aid-red-color;
+}
+
+@mixin labelStyle($color) {
+  background-color: $color;
+
+  .icon {
+    width: 16px;
+    height: 16px;
+    fill: #fff;
+  }
+
+  &.light {
+    background-color: transparent;
+    color: $color;
+    border: 1px solid $color;
+    .icon {
+      fill: $color;
+    }
+  }
+}
+
+.label-warning {
+  @include labelStyle($basic-aid-yel-color);
+}
+.label-info {
+  @include labelStyle($subBlueColor);
+}
+.label-error {
+  @include labelStyle($subRedColor);
+}
+.label-alarm {
+  @include labelStyle($subBrownColor);
+}
+.label-dark {
+  @include labelStyle($menuBgColor);
+}

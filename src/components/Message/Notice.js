@@ -1,4 +1,4 @@
-import React, { useEffect, Component } from "react";
+import React, { Component } from "react";
 import Icon from "../Icon";
 import cx from "classnames";
 

@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2018-01-18 17:52:04
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-03-07 16:31:03
+ * @Last Modified time: 2019-03-29 14:53:35
  */
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
@@ -57,7 +57,7 @@ export default function MultiInput({
   });
 
   const onFocus = () => setFocus(true);
-  console.log(value);
+
   /**
    * fitler改变的回调
    */

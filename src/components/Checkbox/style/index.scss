@@ -1,0 +1,14 @@
+@import "../../Form/style/common.scss";
+
+.checkbox-label {
+  user-select: none;
+  cursor: pointer;
+  &.disabled {
+    @include disabledStyle();
+  }
+}
+.checkbox {
+  margin-right: 5px;
+  margin-left: 1px;
+  vertical-align: 1px;
+}

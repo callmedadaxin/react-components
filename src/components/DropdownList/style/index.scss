@@ -1,0 +1,50 @@
+@import "../../../styles/assets/constant.scss";
+
+.dropdown-list {
+  color: $primaryDarkColor;
+  font-size: 12px;
+  font-weight: normal;
+
+  &.open {
+    .dropdown-tirgger-item {
+      border-bottom: none;
+    }
+  }
+  .dropdown-overlay {
+    width: 100%;
+  }
+  &.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+.dropdown-list-content {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.dropdown-list-item {
+  position: relative;
+  line-height: 30px;
+  height: 30px;
+  padding-left: 20px;
+  border-bottom: 1px solid $borderColor;
+  cursor: pointer;
+  text-align: left;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: $primaryBlueColor;
+    color: #fff;
+  }
+  &.dropdown-list-item-active {
+    color: $basic-aid-blue-color;
+    &:hover {
+      color: #fff;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@import "../../../styles/assets/constant.scss";
+
+.truncate {
+  &.break-all {
+    word-break: break-all;
+  }
+}
+.truncate-expand {
+  cursor: pointer;
+  color: $basic-aid-blue-color;
+  &:hover {
+    text-decoration: underline;
+  }
+}

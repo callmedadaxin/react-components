@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import { nfn } from "../../common";
-import "rc-pagination/assets/index.css";
 import last from "lodash/last";
 import head from "lodash/head";
 import isNumber from "lodash/isNumber";

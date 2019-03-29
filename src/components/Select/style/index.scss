@@ -1,0 +1,225 @@
+@import "../../Form/style/common.scss";
+
+.select {
+  position: relative;
+  width: 100%;
+
+  .Select-control {
+    padding-left: 10px;
+    width: 100%;
+    border-radius: 2px;
+    background-color: $subBgColor;
+    border: 1px solid $borderColor;
+    position: relative;
+    display: flex;
+  }
+  .Select-value-zone {
+    flex: 1;
+  }
+  .Select-placeholder {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    line-height: 30px;
+    color: $font-color-low;
+  }
+  .Select-input {
+    line-height: 28px;
+    input {
+      padding: 0;
+      box-sizing: content-box;
+      width: 5px;
+      background: none transparent;
+      border: 0 none;
+      box-shadow: none;
+      cursor: default;
+      display: inline-block;
+      margin: 0;
+      outline: none;
+      line-height: 17px;
+    }
+  }
+  .Select-clear-zone {
+    line-height: 0;
+    color: #999;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex: 0 0 17px;
+    width: 17px;
+  }
+  .del-icon {
+    width: 14px;
+    height: 14px;
+    fill: #2d84e5;
+    vertical-align: middle;
+  }
+  .Select-arrow-zone {
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    flex: 0 0 25px;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    padding-top: 4px;
+  }
+  .select-option-wrap,
+  .multi-input-tip {
+    width: 100%;
+    position: absolute;
+    margin-top: -1px;
+    background-color: $subBgColor;
+    color: $font-color-normal;
+    z-index: 10;
+    border: 1px solid $basic-border-color;
+    border-radius: 2px;
+    max-height: 150px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  .multi-input-tip {
+    line-height: 30px;
+    padding-left: 10px;
+    background-color: $subBlueColor;
+    color: #fff;
+  }
+  .select-option-content {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .select-option-item {
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    cursor: pointer;
+
+    &.active {
+      color: $subBlueColor;
+    }
+    &.focus {
+      background-color: $subBlueColor;
+      color: #fff;
+
+      &.disabled {
+        @include disabledStyle();
+        background-color: transparent;
+      }
+    }
+    &.disabled {
+      @include disabledStyle();
+      background-color: #f9f9f9;
+    }
+  }
+  .select-single-value {
+    position: absolute;
+  }
+  .select-no-result {
+    color: $font-color-normal;
+    line-height: 30px;
+    padding-left: 10px;
+  }
+
+  &.is-open {
+    .Select-control {
+      background-color: #fff;
+      @include focusStyle();
+    }
+    .drop-down-icon {
+      transform: rotate(180deg);
+      margin-top: -6px;
+    }
+  }
+
+  &.no-arrow {
+    .Select-arrow-zone {
+      display: none;
+    }
+    .Select-clear-zone {
+      padding-right: 10px;
+      flex: 0 0 27px;
+      width: 27px;
+    }
+  }
+
+  &.white {
+    .Select-control {
+      background-color: #fff;
+    }
+    .Select-option {
+      background-color: #fff;
+      color: $font-color-normal;
+    }
+  }
+  &.disabled {
+    opacity: 0.7;
+
+    .Select-input {
+      @include disabledStyle();
+    }
+    .Select-clear-zone {
+      display: none;
+    }
+    .Select-arrow-zone {
+      cursor: default;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+    .Select-placeholder {
+      @include disabledStyle();
+    }
+  }
+  &.error {
+    .Select-control {
+      @include errorStyle();
+    }
+  }
+}
+
+.multi-select-value {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid $basic-aid-blue-color;
+  border-radius: 4px;
+  color: $basic-aid-blue-color;
+  height: 20px;
+  padding: 0 5px;
+  font-size: 12px;
+  margin-right: 6px;
+  line-height: 1;
+
+  .multi-item-del-icon {
+    width: 14px;
+    height: 14px;
+    margin-left: 5px;
+    fill: #2d84e5;
+  }
+
+  &:hover {
+    cursor: default;
+  }
+
+  &.disabled {
+    border-color: #e3e3e3;
+    color: #999;
+
+    .multi-item-del-icon {
+      display: none;
+    }
+  }
+}
+
+.delete-icon {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  line-height: 11px;
+  font-size: 13px;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+  }
+}

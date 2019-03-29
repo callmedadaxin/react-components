@@ -1,0 +1,14 @@
+@import "../../../styles/assets/constant.scss";
+
+@mixin focusStyle() {
+  border-color: $basic-aid-blue-color;
+  box-shadow: 0 0 3px $basic-aid-blue-color;
+}
+@mixin errorStyle() {
+  border-color: $basic-aid-red-color;
+  box-shadow: 0 0 5px $basic-aid-red-color;
+}
+@mixin disabledStyle() {
+  color: $font-color-low;
+  cursor: not-allowed;
+}

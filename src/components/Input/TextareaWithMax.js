@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2018-01-18 17:51:18
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-03-04 16:08:48
+ * @Last Modified time: 2019-03-27 13:56:39
  */
 import React, { useState, useEffect, useRef } from "react";
 import classNames from "classnames";
@@ -29,9 +29,10 @@ export default function Textarea(props) {
     mapValuetoValue: e => e.target.innerText
   });
   const inputEl = useRef(null);
+
   useEffect(() => {
-    inputEl && (inputEl.current.innerText = defaultValue);
-  }, [defaultValue]);
+    inputEl && !focus && (inputEl.current.innerText = defaultValue);
+  }, [defaultValue, focus]);
 
   const classes = classNames("input", "textarea", "textarea-wrap", className, {
     error,

@@ -8,12 +8,12 @@ import includes from "lodash/includes";
 import Checkbox from "../Checkbox";
 import DropDown from "../Dropdown";
 import Icon from "../Icon";
-import closeIcon from "../DropdownInput/images/close.svg";
 import Button from "../Button";
 import Input from "../Input";
 import Item from "../Item";
 import { useDefault } from "../../common/hooks";
 import { nfn } from "../../common";
+import closeIcon from "../DropdownInput/images/close.svg";
 
 const { CheckboxGroup } = Checkbox;
 

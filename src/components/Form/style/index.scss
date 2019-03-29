@@ -1,0 +1,39 @@
+@import "./common.scss";
+
+.form-item-info {
+  height: 30px;
+  line-height: 30px;
+}
+
+.form-item-group {
+  width: 100%;
+  display: flex;
+
+  .form-item-title-label {
+    line-height: 1;
+    padding-top: 7px;
+    padding-right: 10px;
+    font-weight: bold;
+    flex: 0 0 100px;
+    color: #2f495d;
+    font-size: 14px;
+    text-align: left;
+
+    &.required span {
+      position: relative;
+
+      &::after {
+        content: "*";
+        position: absolute;
+        top: 0;
+        left: -8px;
+      }
+    }
+  }
+}
+.form-item-input {
+  flex: 1;
+  .label-select {
+    margin-top: 5px;
+  }
+}

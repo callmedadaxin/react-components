@@ -33,6 +33,7 @@ const dataComponents = {
   truncate: join("Truncate/index.js"),
   popover: join("Popover/index.js"),
   tooltip: join("Tooltip/index.js"),
+  carousel: join("Carousel/index.js"),
   // slider: join("Slider/index.js"),
   box: join("Box/index.js"),
   table: join("Table/index.js"),
@@ -63,7 +64,7 @@ const formComponents = {
   labelSelect: join("LabelSelect/index.js"),
   formItem: join("Form/FormItem.js"),
   form: join("Form/Form.js"),
-  smartForm: join("Form/SmartForm"),
+  smartForm: join("Form/SmartForm.js"),
   setter: join("Setter/index.js")
 };
 module.exports = {

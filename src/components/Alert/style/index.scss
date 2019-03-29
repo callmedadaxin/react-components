@@ -1,0 +1,43 @@
+@import "../../../styles/assets/constant.scss";
+
+.base-alert {
+  display: flex;
+  width: 100%;
+  padding: 14px 20px;
+  line-height: 14px;
+
+  &.base-alert-error {
+    background-color: rgba(238, 70, 48, 0.15);
+
+    .base-alert-icon {
+      fill: #ee4630;
+    }
+  }
+  &.base-alert-success {
+    background-color: rgba(164, 219, 52, 0.2);
+
+    .base-alert-icon {
+      fill: #80d225;
+    }
+  }
+
+  .base-alert-icon {
+    margin-right: 20px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .base-alert-message {
+    margin: 0;
+    margin-bottom: 6px;
+    color: $primaryDarkColor;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .base-alert-description {
+    margin: 0;
+    font-size: 12px;
+    color: $font-color-normal;
+  }
+}

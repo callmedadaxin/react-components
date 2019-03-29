@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import cx from "classnames";
 import map from "lodash/map";
 import isEqual from "lodash/isEqual";

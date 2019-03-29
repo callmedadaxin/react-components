@@ -11,6 +11,8 @@
     "classnames": "^2.2.6",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
+    "gulp-filter": "^5.1.0",
+    "gulp-sass": "^4.0.2",
     "json-format": "^1.0.1",
     "lodash": "^4.17.11",
     "rc-animate": "^2.6.0",
@@ -22,7 +24,8 @@
     "react-json-pretty": "^2.0.0",
     "react-router-dom": "^4.3.1",
     "react-text-truncate": "^0.14.0",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.6.3",
+    "vinyl-paths": "^2.1.0"
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/index.js",

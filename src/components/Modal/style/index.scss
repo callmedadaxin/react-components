@@ -1,0 +1,89 @@
+@import "../../../styles/assets/constant.scss";
+
+/**
+ * @section Modal
+ * @structure Modal
+ * @markup
+ *  <div style="width: 500px;">
+ *    <div class="modal-content">
+ *      <div class="modal-header">弹窗标题</div>
+ *      <div class="modal-body">弹窗内容</div>
+ *      <div class="modal-footer">
+ *        <button class="btn btn-cancel">取消</button>
+ *        <button class="btn btn-primary">确定</button>
+ *      </div>
+ *    </div>
+ *  </div>
+ *  <br />
+ */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(27, 29, 31, 0.5);
+  z-index: 1000;
+  overflow: hidden;
+  outline: 0;
+}
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: 2px;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  .modal-header {
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    background-color: $basic-imp-color;
+    padding: 0 20px;
+    font-size: $font-size-16;
+    font-weight: bold;
+    .closeIcon {
+      cursor: pointer;
+      margin-top: 17px;
+      width: 16px;
+      height: 16px;
+      fill: #fff;
+      float: right;
+    }
+  }
+  .modal-body {
+    flex: 1;
+    overflow-y: scroll;
+    padding: 20px;
+  }
+  .modal-footer {
+    text-align: right;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    .btn {
+      margin-left: 20px;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+    .btn-ensure {
+      background-color: $basic-aid-blue-color;
+      color: #fff;
+    }
+  }
+  .loading-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+}
