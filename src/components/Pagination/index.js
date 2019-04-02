@@ -117,16 +117,16 @@ function Basic(props) {
  */
 function Pagination(props) {
   const { current, total, pageSize, onChange, className, style } = props;
-
-  if (total < 1) {
-    return <Basic {...props} />;
-  }
   const [page, setPage] = useState(current);
   useEffect(() => {
     if (current !== page) {
       setPage(current);
     }
   }, [current]);
+
+  if (total < 1) {
+    return <Basic {...props} />;
+  }
 
   const pagesNum = getTotalPage(total, pageSize);
   const pages = getPages(pagesNum, page);

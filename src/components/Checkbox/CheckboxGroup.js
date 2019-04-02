@@ -2,9 +2,9 @@
  * @Author: wangweixin
  * @Date: 2017-12-15 11:02:10
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-03-05 14:52:47
+ * @Last Modified time: 2019-04-01 16:45:06
  */
-import React, { cloneElement } from "react";
+import React, { cloneElement, useCallback } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { nfn } from "../../common";
@@ -32,14 +32,17 @@ export default function CheckboxGroup({
     mapValuetoValue: v => v
   });
 
-  const onSelectChange = (checked, v) => {
-    if (checked) {
-      handleChange([...value, v]);
-    } else {
-      const result = filter(value, item => !isEqual(item, v));
-      handleChange([...result]);
-    }
-  };
+  const onSelectChange = useCallback(
+    (checked, v) => {
+      if (checked) {
+        handleChange([...value, v]);
+      } else {
+        const result = filter(value, item => !isEqual(item, v));
+        handleChange([...result]);
+      }
+    },
+    [value, handleChange]
+  );
 
   const classes = classNames("checkbox-group", className, {
     disabled

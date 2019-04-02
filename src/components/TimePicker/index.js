@@ -8,7 +8,8 @@ const RangePicker = DateRange;
 export default {
   // RangeBtn,
   DateRange,
-  DatePicker
+  DatePicker,
+  RangePicker
 };
 export {
   // RangeBtn,

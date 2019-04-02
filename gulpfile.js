@@ -22,6 +22,10 @@ gulp.task("cssToLib", () => {
     .pipe(gulp.dest("./es"));
 });
 
+gulp.task("imagesTolib", () => {
+  return gulp.src("./src/**/*.svg").pipe(gulp.dest("./es/"));
+});
+
 gulp.task("cleanCss", () => {
   return gulp.src("./es/styles/assets/*.css").pipe(vinylPaths(clean));
 });
@@ -54,6 +58,7 @@ gulp.task(
     },
     "sassToLib",
     "cssToLib",
+    "imagesTolib",
     "cleanCss"
   )
 );

@@ -17,9 +17,9 @@
     "lodash": "^4.17.11",
     "rc-animate": "^2.6.0",
     "rc-tooltip": "^3.7.3",
-    "react": "16.8.3",
+    "react": "^16.8.6",
     "react-app-polyfill": "^0.2.0",
-    "react-dom": "16.8.3",
+    "react-dom": "16.8.6",
     "react-input-autosize": "^2.2.1",
     "react-json-pretty": "^2.0.0",
     "react-router-dom": "^4.3.1",
@@ -36,7 +36,14 @@
     "compile": "gulp es"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "plugins": [
+      "react-hooks"
+    ],
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
+    }
   },
   "browserslist": [
     ">0.2%",
@@ -112,6 +119,7 @@
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.11.1",
+    "eslint-plugin-react-hooks": "^1.6.0",
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.0",

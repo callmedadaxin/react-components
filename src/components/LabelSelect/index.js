@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import map from "lodash/map";
@@ -8,7 +8,7 @@ import filter from "lodash/filter";
 
 import Label from "../Label";
 import { useControlledInputs } from "../../common/hooks";
-import { Item } from "../..";
+import Item from "../Item";
 
 const mapDefaultToValue = (v, { options, multi }) => {
   return v || (multi ? [] : options[0] ? "" : options[0].value);
@@ -43,10 +43,10 @@ export default function LabelSelect({
 
   const getLabelType = active => (active ? "info" : "");
 
-  const selectAll = () => {
+  const selectAll = useCallback(() => {
     if (!multi || disabled) return;
     handleChange([]);
-  };
+  }, [disabled, handleChange, multi]);
 
   const handleSelectChange = item => {
     if (multi) {

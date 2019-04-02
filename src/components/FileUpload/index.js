@@ -35,7 +35,12 @@ export default function FileUpload({
   const classes = classNames("file-upload", className);
   return (
     <div className={classes} style={style}>
-      <input type="file" onChange={handleChange} className="file-upload-hide" />
+      <input
+        type="file"
+        ref={inputRef}
+        onChange={handleChange}
+        className="file-upload-hide"
+      />
       <Input
         hasError={hasError}
         disabled

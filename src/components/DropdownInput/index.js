@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
@@ -44,29 +44,28 @@ export default function DropdownInput(props) {
   const [value, setValue] = useState(defaultValue);
   const [result, setResult] = useState(defaultValue);
   const [visible, setVisible] = useState(defaultOpen);
+
   useEffect(() => {
     if (value !== defaultValue) {
       setValue(defaultValue);
     }
   }, [defaultValue]);
 
-  const handleValueChange = v => {
-    setValue(v);
-  };
+  const handleValueChange = useCallback(v => setValue(v), []);
 
-  const handleEnsure = () => {
+  const handleEnsure = useCallback(() => {
     onChange(value);
     setResult(value);
     setVisible(false);
-  };
+  }, [onChange, value]);
 
   const handleClear = () => {
     setValue("");
   };
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setVisible(false);
-  };
+  }, []);
 
   const classes = classNames(
     "checkbox-select-wrap",

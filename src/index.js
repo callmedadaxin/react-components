@@ -1,4 +1,4 @@
-import "./styles/index.scss";
+import "./styles/index.js";
 
 export { default as Alert } from "./components/Alert";
 export { default as Box } from "./components/Box";

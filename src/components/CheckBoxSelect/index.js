@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import map from "lodash/map";
@@ -86,20 +86,16 @@ export default function CheckboxSelect({
   const [searchTxt, setSearchTxt] = useState("");
   const [visible, setVisible] = useState(defaultOpen);
 
-  const handleEnsure = () => {
+  const handleEnsure = useCallback(() => {
     onChange(value);
     setVisible(false);
-  };
+  }, [onChange, value]);
 
-  const handleSearch = val => setSearchTxt(val);
+  const handleSearch = useCallback(val => setSearchTxt(val), []);
 
-  const handleSelectChange = v => {
-    setValue(v);
-  };
+  const handleSelectChange = useCallback(v => setValue(v), [setValue]);
 
-  const handleClose = () => {
-    setVisible(false);
-  };
+  const handleClose = useCallback(() => setVisible(false), []);
 
   const valueStr = filter(options, item => value.includes(item.value))
     .map(item => item.label)

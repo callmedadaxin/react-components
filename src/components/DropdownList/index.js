@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import DropDown from "../Dropdown";
 import classNames from "classnames";
@@ -78,10 +78,13 @@ function DropdownList(props) {
     },
     className
   );
-  const handleItemClick = value => {
-    handleChange(value);
-    setVisible(false);
-  };
+  const handleItemClick = useCallback(
+    value => {
+      handleChange(value);
+      setVisible(false);
+    },
+    [handleChange]
+  );
   return (
     <DropDown
       visible={visible}

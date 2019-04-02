@@ -1,43 +1,21 @@
-import React, {
-  Children,
-  cloneElement,
-  useRef,
-  useState,
-  useEffect
-} from "react";
+import React, { Children, cloneElement, useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import debounce from "lodash/debounce";
+// import debounce from "lodash/debounce";
 import { nfn } from "../../common";
 
-const useSize = ref => {
-  const [size, setSize] = useState({});
-
-  useEffect(() => {
-    const getSize = debounce(() => {
-      const current = ref.current;
-      const size =
-        current &&
-        current.getBoundingClientRect &&
-        current.getBoundingClientRect();
-      if (size) {
-        setSize(size);
-      }
-    }, 200);
-
-    window.addEventListener("resize", getSize);
-
-    getSize();
-
-    return () => window.removeEventListener("resize", getSize);
+const useClientRect = () => {
+  const [rect, setRect] = useState({});
+  const ref = useCallback(node => {
+    if (node !== null) {
+      setRect(node.getBoundingClientRect());
+    }
   }, []);
-
-  return [size, setSize];
+  return [rect, ref];
 };
 
 function Carousel({ children, padding, className, onChange, afterChange }) {
-  const ref = useRef();
-  const [size] = useSize(ref);
+  const [rect, ref] = useClientRect();
   const [index, setIndex] = useState(0);
 
   const handleIndexChange = (i, count) => {
@@ -51,7 +29,7 @@ function Carousel({ children, padding, className, onChange, afterChange }) {
     }, 1000);
   };
 
-  const { width } = size;
+  const { width = 0 } = rect;
   const cls = cx("carousel", className);
   const count = Children.count(children);
   const left = (width + padding) * index;
@@ -104,7 +82,7 @@ function Carousel({ children, padding, className, onChange, afterChange }) {
 
 Carousel.propTypes = {
   /** 子内容之间的间距 */
-  padding: PropTypes.num,
+  padding: PropTypes.number,
   /** 切换的回调 */
   onChange: PropTypes.func,
   /** 切换动画结束后的回调 */

@@ -1,4 +1,5 @@
 @import "../../../styles/assets/motion.scss";
+@import "../../../styles/assets/constant.scss";
 
 .notice-group {
   position: absolute;
@@ -18,6 +19,8 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   background-color: #fff;
   border-radius: 2px;
+  color: $font-color-normal;
+  font-size: 12px;
 
   &.success {
     .notice-icon {

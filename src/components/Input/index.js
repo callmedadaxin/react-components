@@ -7,6 +7,12 @@ import { nfn } from "../../common";
 
 export default function Input(props) {
   const { defaultValue, onChange, type, max, ...others } = props;
+  const { value, handleChange } = useControlledInputs({
+    defaultValue,
+    onChange,
+    mapDefaultToValue: v => v,
+    mapValuetoValue: v => v
+  });
 
   if (type === "textarea" && max) {
     return (
@@ -19,13 +25,6 @@ export default function Input(props) {
       />
     );
   }
-
-  const { value, handleChange } = useControlledInputs({
-    defaultValue,
-    onChange,
-    mapDefaultToValue: v => v,
-    mapValuetoValue: v => v
-  });
 
   return (
     <Base type={type} value={value} handleChange={handleChange} {...others} />

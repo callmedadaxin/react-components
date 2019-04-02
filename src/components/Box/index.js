@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useCallback } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import iconArrow from "./images/coor-arrow.svg";
@@ -9,7 +9,8 @@ import NoResult from "../NoResult";
 import Item from "../Item";
 
 import isEmpty from "lodash/isEmpty";
-import { nfn } from "@/common";
+import isBoolean from "lodash/isBoolean";
+import { nfn } from "../../common";
 
 function getContent({ show, loading, error, children, emptyDesc }) {
   if (error) {
@@ -48,34 +49,35 @@ function Title({ title, collapse, toggleRender, open, setOpen }) {
  * 基本的盒子，用于组成页面的各个小容器
  * 可设置标题，自带Loading样式，自身可判断是否有数据而进行展示/隐藏
  */
-function Box(props) {
-  const {
-    title,
-    data,
-    className,
-    border,
-    collapse,
-    defaultOpen,
-    error,
-    isLoading,
-    children,
-    emptyDesc,
-    contentHeight,
-    style,
-    onToggle,
-    toggleRender
-  } = props;
+function Box({
+  title,
+  data,
+  className,
+  border,
+  collapse,
+  defaultOpen,
+  error,
+  isLoading,
+  children,
+  emptyDesc,
+  contentHeight,
+  style,
+  onToggle,
+  toggleRender
+}) {
   const [open, setOpen] = useState(defaultOpen);
   const classes = classNames("box", className, {
     border,
     collapse,
     open
   });
-  const show = isEmpty(data);
-  const onToggleClick = () => {
+  const show = isBoolean(data) ? data : !isEmpty(data);
+
+  const onToggleClick = useCallback(() => {
     setOpen(!open);
     onToggle(!open);
-  };
+  }, [open, onToggle]);
+
   return (
     <div className={classes} style={style}>
       <Item show={title}>
@@ -91,7 +93,7 @@ function Box(props) {
       <div
         className="box-content"
         style={{
-          height: contentHeight ? parseInt(contentHeight, 10) : ""
+          height: contentHeight
         }}
       >
         {getContent({
