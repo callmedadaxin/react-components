@@ -2,11 +2,12 @@
  * @Author: wangweixin
  * @Date: 2017-12-15 11:00:25
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-03-11 17:30:37
+ * @Last Modified time: 2019-04-03 19:43:47
  */
 import React, { Component, Children, cloneElement } from "react";
 import PropTypes from "prop-types";
 import forEach from "lodash/forEach";
+import get from "lodash/get";
 import classNames from "classnames";
 import FormItem from "./FormItem";
 import DataMap from "./formDataMap";
@@ -47,6 +48,11 @@ export default class Form extends Component {
     this.initData();
     this.collector.reset();
   }
+  isFormItem(children) {
+    const name = get(children, "type.name");
+
+    return name === FormItem.displayName;
+  }
   renderChildrens = children => {
     const { data, showInfo } = this.props;
 
@@ -56,8 +62,8 @@ export default class Form extends Component {
       });
     }
     // 遇到FormItem,则绑定id
-    if (children.type && children.type.name === FormItem.name) {
-      const { field } = children.props;
+    if (this.isFormItem(children)) {
+      const { field, onChange } = children.props;
       const fieldData = data[field] || {};
       const dataMap = this.dataMap.get();
 
@@ -68,7 +74,10 @@ export default class Form extends Component {
         defaultValue: fieldData.value,
         value: dataMap[field],
         validators: fieldData.validators || [],
-        onChange: val => this.dataMap.set(field, val)
+        onChange: val => {
+          this.dataMap.set(field, val);
+          onChange && onChange(val, field);
+        }
       });
     }
 

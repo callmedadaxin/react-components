@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2017-12-15 11:01:33
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-03-19 15:14:20
+ * @Last Modified time: 2019-04-02 17:17:16
  */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
@@ -96,8 +96,8 @@ export default class FormItem extends Component {
     this.setState({
       value
     });
-
-    onChange(value);
+    console.log(onChange);
+    onChange && onChange(value);
   };
   renderChildren() {
     const { children, showInfo } = this.props;

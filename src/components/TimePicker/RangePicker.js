@@ -48,6 +48,7 @@ function RangePicker(props) {
   return (
     <LocaleProvider locale={zhCN}>
       <BaseRangePicker
+        allowClear={false}
         ranges={ranges}
         showTime={{
           format: "HH:mm"

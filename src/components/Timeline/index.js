@@ -3,6 +3,10 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import Item from "./Item";
 
+Timeline.Item = Item;
+
+export { Item };
+
 export default function Timeline({
   children,
   hasDesc,
@@ -36,4 +40,3 @@ Timeline.propTypes = {
 Timeline.defaultProps = {
   hasDesc: false
 };
-Timeline.Item = Item;

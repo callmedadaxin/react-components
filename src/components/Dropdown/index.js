@@ -51,7 +51,13 @@ function Dropdown(props) {
       onClick={e => e.stopPropagation()}
     >
       {cloneElement(children, {
-        onClick: trigger === "click" ? () => changeVisible(!show) : null
+        onClick:
+          trigger === "click"
+            ? e => {
+                e.stopPropagation();
+                changeVisible(!show);
+              }
+            : null
       })}
       <div className="dropdown-overlay">{overlay}</div>
     </div>

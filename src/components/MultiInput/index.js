@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2018-01-18 17:52:04
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-03-29 14:53:35
+ * @Last Modified time: 2019-04-03 16:29:18
  */
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
@@ -95,6 +95,7 @@ export default function MultiInput({
    */
   const onPressEnter = () => {
     if (includes(value, filterItem)) return;
+    if (filterItem === "" || filterItem === undefined) return;
     handleSelectChange(filterItem);
     setShowTip(false);
   };

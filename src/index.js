@@ -1,5 +1,3 @@
-import "./styles/index.js";
-
 export { default as Alert } from "./components/Alert";
 export { default as Box } from "./components/Box";
 export { default as Icon } from "./components/Icon";
@@ -24,7 +22,7 @@ export { default as RadioButton } from "./components/Radio/RadioButton";
 export { default as Checkbox } from "./components/Checkbox";
 export { default as Item } from "./components/Item";
 export { default as FileUpload } from "./components/FileUpload";
-export { default as CheckboxSelect } from "./components/CheckBoxSelect";
+export { default as CheckboxSelect } from "./components/CheckboxSelect";
 export { default as LabelSelect } from "./components/LabelSelect";
 export { default as Select } from "./components/Select";
 export { default as MultiInput } from "./components/MultiInput";
@@ -32,9 +30,8 @@ export { default as Form, FormItem, Collector } from "./components/Form";
 export { default as Setter } from "./components/Setter";
 export { default as Table } from "./components/Table";
 export { default as Message } from "./components/Message";
+export { default as Timeline } from "./components/Timeline";
 export { default as Carousel } from "./components/Carousel";
-export {
-  default as TimePicker,
-  DatePicker,
-  DateRange
-} from "./components/TimePicker";
+export { default as TimePicker } from "./components/TimePicker";
+
+require("./styles/index");

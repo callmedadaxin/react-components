@@ -93,6 +93,8 @@
     padding: 0;
   }
   .select-option-item {
+    display: flex;
+    align-items: center;
     height: 30px;
     line-height: 30px;
     padding-left: 10px;
@@ -122,6 +124,10 @@
     color: $font-color-normal;
     line-height: 30px;
     padding-left: 10px;
+  }
+  .drop-down-icon {
+    border-top-color: #2e3b4b;
+    // border-top-color: #2e3b4b;
   }
 
   &.is-open {
@@ -187,15 +193,16 @@
   border-radius: 4px;
   color: $basic-aid-blue-color;
   height: 20px;
-  padding: 0 5px;
+  padding: 2px 5px;
   font-size: 12px;
   margin-right: 6px;
-  line-height: 1;
+  line-height: 16px;
 
   .multi-item-del-icon {
     width: 14px;
     height: 14px;
     margin-left: 5px;
+    margin-top: 1px;
     fill: #2d84e5;
   }
 

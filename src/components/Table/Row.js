@@ -34,7 +34,7 @@ export function Column({
       style={{
         height: lineHeight,
         textAlign: align || "center",
-        maxWidth: limit ? width : ""
+        maxWidth: width
       }}
     >
       {content}

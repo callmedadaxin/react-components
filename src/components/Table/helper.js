@@ -187,18 +187,33 @@ export const withExpandRow = Children => ({
 export const withClick = Children => ({
   clickable,
   handleRowClick,
+  data,
   ...others
 }) => {
-  if (!clickable) return <Children {...others} />;
+  if (!clickable) return <Children data={data} {...others} />;
 
   const [activeIndex, setActive] = useState(0);
 
-  const onClick = useCallback((rowData, index) => {
-    setActive(index);
-    handleRowClick(rowData);
-  }, []);
+  useEffect(() => {
+    handleRowClick(data[0], 0);
+  }, [data, handleRowClick]);
 
-  return <Children {...others} activeIndex={activeIndex} onClick={onClick} />;
+  const onClick = useCallback(
+    (rowData, index) => {
+      setActive(index);
+      handleRowClick(rowData);
+    },
+    [handleRowClick]
+  );
+
+  return (
+    <Children
+      data={data}
+      {...others}
+      activeIndex={activeIndex}
+      onClick={onClick}
+    />
+  );
 };
 
 /**

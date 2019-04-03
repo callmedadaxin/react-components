@@ -52,44 +52,43 @@
   font-weight: bold;
   color: #999;
   fill: #999;
+}
+.tab-header-item {
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-bottom: 2px solid transparent;
 
-  .tab-header-item {
-    cursor: pointer;
-    padding: 10px 20px;
-    font-size: 14px;
-    border-bottom: 2px solid transparent;
+  &.mgr30 {
+    margin-right: 30px;
+  }
 
-    &.mgr30 {
-      margin-right: 30px;
-    }
+  &:last-child {
+    margin-right: 0;
+  }
 
-    &:last-child {
-      margin-right: 0;
-    }
+  &:hover {
+    color: $basic-imp-color;
+    fill: $basic-imp-color;
+  }
 
+  &.active {
+    color: $basic-imp-color;
+    fill: $basic-imp-color;
+    border-bottom: 2px solid $basic-imp-color;
+  }
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
     &:hover {
-      color: $basic-imp-color;
-      fill: $basic-imp-color;
-    }
-
-    &.active {
-      color: $basic-imp-color;
-      fill: $basic-imp-color;
-      border-bottom: 2px solid $basic-imp-color;
-    }
-    &.disabled {
-      cursor: not-allowed;
-      opacity: 0.6;
-      &:hover {
-        color: #999;
-        fill: #999;
-      }
+      color: #999;
+      fill: #999;
     }
   }
 }
 
 .tab-card {
-  .tab-header-item {
+  & > .tab-header > .tab-header-item {
     background-color: #f7f7f7;
     color: #666;
     font-size: 14px;

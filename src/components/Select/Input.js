@@ -65,6 +65,8 @@ export default function Input({
   };
 
   const handleKeyDown = e => {
+    e.stopPropagation();
+
     if (e.keyCode === 13) {
       return onPressEnter && onPressEnter();
     }
@@ -80,7 +82,7 @@ export default function Input({
   return (
     <div className="Select-control">
       <div className="Select-value-zone">
-        <Item show={!hasValue}>
+        <Item show={!hasValue} onClick={triggerFocus}>
           <div className="Select-placeholder">Select...</div>
         </Item>
         <div className="Select-input" onClick={triggerFocus}>
@@ -117,7 +119,7 @@ export default function Input({
         </span>
       </Item>
       <span className="Select-arrow-zone">
-        <span className="drop-down-icon " />
+        <span className="bottomTriangle drop-down-icon " />
       </span>
     </div>
   );

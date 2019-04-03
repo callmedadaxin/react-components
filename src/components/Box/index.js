@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useCallback } from "react";
+import React, { Fragment, useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import iconArrow from "./images/coor-arrow.svg";
@@ -66,6 +66,12 @@ function Box({
   toggleRender
 }) {
   const [open, setOpen] = useState(defaultOpen);
+  useEffect(() => {
+    if (defaultOpen !== open) {
+      setOpen(defaultOpen);
+    }
+  }, [defaultOpen]);
+
   const classes = classNames("box", className, {
     border,
     collapse,
@@ -109,7 +115,7 @@ function Box({
 }
 Box.defaultProps = {
   isLoading: false,
-  defaultOpen: false,
+  defaultOpen: true,
   onToggle: nfn
 };
 Box.propTypes = {

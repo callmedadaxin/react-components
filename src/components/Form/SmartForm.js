@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2017-12-15 11:00:25
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-03-14 11:36:29
+ * @Last Modified time: 2019-04-03 19:44:39
  */
 import React, { Component, cloneElement } from "react";
 import PropTypes from "prop-types";
@@ -62,7 +62,7 @@ export default class SmartForm extends Component {
   renderItem = children => {
     const { data, showInfo } = this.props;
     const { dataMap } = this.state;
-    const { field } = children.props;
+    const { field, onChange } = children.props;
     const fieldData = data[field] || {};
 
     return cloneElement(children, {
@@ -73,16 +73,15 @@ export default class SmartForm extends Component {
       defaultValue: fieldData.value,
       value: dataMap[field],
       validators: fieldData.validators || [],
-      onChange: debounce(
-        val =>
-          this.setState({
-            dataMap: {
-              ...dataMap,
-              [field]: val
-            }
-          }),
-        300
-      )
+      onChange: debounce(val => {
+        this.setState({
+          dataMap: {
+            ...dataMap,
+            [field]: val
+          }
+        });
+        onChange && onChange(val);
+      }, 300)
     });
   };
   render() {

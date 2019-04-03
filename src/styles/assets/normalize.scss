@@ -452,3 +452,14 @@ template {
 [hidden] {
   display: none;
 }
+
+p {
+  margin-bottom: 0;
+}
+
+ul,
+ol,
+dl {
+  list-style: none;
+  margin-bottom: 0;
+}

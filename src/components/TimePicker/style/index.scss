@@ -1,0 +1,117 @@
+@import "../../Form/style/common.scss";
+
+.ant-calendar-picker .ant-input {
+  width: 100%;
+  font-size: $font-basic-size;
+  color: $font-color-normal;
+  border: 1px solid $basic-border-color;
+  height: 30px;
+  line-height: 28px;
+  background-color: $basic-aid-gray-color;
+  padding: 0 10px;
+  border-radius: 2px;
+  outline: none;
+  &:hover {
+    border: 1px solid $basic-border-color;
+  }
+  &:focus {
+    @include focusStyle();
+  }
+  &::-webkit-input-placeholder {
+    color: $font-color-low;
+  }
+  &:-ms-input-placeholder {
+    color: $font-color-low;
+  }
+  &::-moz-placeholder {
+    color: $font-color-low;
+    opacity: 1;
+  }
+  &:-moz-placeholder {
+    color: $font-color-low;
+    opacity: 1;
+  }
+
+  &.textarea {
+    padding-top: 10px;
+    min-height: 60px;
+    resize: none;
+    overflow: auto;
+    line-height: 20px;
+
+    &.error {
+      @include errorStyle();
+    }
+  }
+
+  &:disabled {
+    @include disabledStyle();
+  }
+
+  &.textarea-wrap {
+    position: relative;
+    padding-bottom: 25px;
+    padding-right: 0;
+
+    &.focus {
+      @include focusStyle();
+    }
+    &.error {
+      outline: 0;
+      @include errorStyle();
+    }
+    &.is-disabled {
+      @include disabledStyle();
+    }
+
+    .max {
+      font-size: 12px;
+      line-height: 1;
+      i {
+        font-style: normal;
+        color: $basic-aid-color;
+        font-weight: bold;
+      }
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      color: $font-color-base;
+    }
+    .textarea-content {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:empty:before {
+        content: attr(placeholder);
+        white-space: pre-line;
+        color: $font-color-low;
+      }
+      &:not(:empty):before {
+        content: "";
+      }
+    }
+  }
+  &.error {
+    outline: 0;
+    @include errorStyle();
+  }
+}
+
+.ant-calendar-picker {
+  .ant-calendar-range-picker-input {
+    text-align: left;
+  }
+  .ant-calendar-range-picker-input {
+    max-width: 135px;
+    min-width: 110px;
+
+    &:last-of-type {
+      padding-left: 10px;
+    }
+  }
+}
