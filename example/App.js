@@ -29,6 +29,7 @@ function Home() {
       <Link to="/setter">Setter</Link>
       <Link to="/table">Table</Link>
       <Link to="/message">Message</Link>
+      <Link to="/arealinkage">AreaLinkage</Link>
     </div>
   );
 }
@@ -58,6 +59,7 @@ class App extends Component {
           <Route path="/setter" component={getComponent("Setter")} />
           <Route path="/table" component={getComponent("Table")} />
           <Route path="/message" component={getComponent("Message")} />
+          <Route path="/arealinkage" component={getComponent("AreaLinkage")} />
         </Switch>
       </Suspense>
     );

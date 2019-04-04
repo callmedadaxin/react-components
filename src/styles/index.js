@@ -32,3 +32,4 @@ require("../components/Timeline/style");
 require("../components/Tooltip/style");
 require("../components/Truncate/style");
 require("../components/TimePicker/style");
+require("../components/AreaLinkage/style");

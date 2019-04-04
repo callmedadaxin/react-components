@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2017-12-15 11:00:25
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-04-03 19:43:47
+ * @Last Modified time: 2019-04-04 19:34:57
  */
 import React, { Component, Children, cloneElement } from "react";
 import PropTypes from "prop-types";
@@ -63,7 +63,7 @@ export default class Form extends Component {
     }
     // 遇到FormItem,则绑定id
     if (this.isFormItem(children)) {
-      const { field, onChange } = children.props;
+      const { field, onChange, value } = children.props;
       const fieldData = data[field] || {};
       const dataMap = this.dataMap.get();
 
@@ -72,7 +72,7 @@ export default class Form extends Component {
         showInfo,
         collector: this.collector,
         defaultValue: fieldData.value,
-        value: dataMap[field],
+        value: value || dataMap[field],
         validators: fieldData.validators || [],
         onChange: val => {
           this.dataMap.set(field, val);

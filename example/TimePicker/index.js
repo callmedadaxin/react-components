@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { DatePicker, DateRange, Button } from "@";
+import { TimePicker, Button } from "@";
+
+const { DatePicker, RangePicker } = TimePicker;
 
 export default function Wrap() {
   const [value, setValue] = useState(+new Date("2017-03-03"));
@@ -9,7 +11,7 @@ export default function Wrap() {
     <div>
       <DatePicker defaultValue={value} onChange={console.log} />
       <Button onClick={() => setValue(+new Date())}>reset</Button>
-      <DateRange defaultValue={range} onChange={console.log} />
+      <RangePicker defaultValue={range} onChange={console.log} />
       <Button onClick={() => setRange("thirty_days")}>reset</Button>
     </div>
   );

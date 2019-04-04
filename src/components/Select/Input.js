@@ -21,6 +21,7 @@ export default function Input({
   onChange,
   onInputChange,
   multi,
+  placeholder = "Select...",
   clearable,
   options,
   onPressEnter,
@@ -83,7 +84,7 @@ export default function Input({
     <div className="Select-control">
       <div className="Select-value-zone">
         <Item show={!hasValue} onClick={triggerFocus}>
-          <div className="Select-placeholder">Select...</div>
+          <div className="Select-placeholder">{placeholder}</div>
         </Item>
         <div className="Select-input" onClick={triggerFocus}>
           <Item show={!multi && !input}>

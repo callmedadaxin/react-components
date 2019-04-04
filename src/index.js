@@ -33,5 +33,6 @@ export { default as Message } from "./components/Message";
 export { default as Timeline } from "./components/Timeline";
 export { default as Carousel } from "./components/Carousel";
 export { default as TimePicker } from "./components/TimePicker";
+export { default as AreaLinkage } from "./components/AreaLinkage";
 
 require("./styles/index");

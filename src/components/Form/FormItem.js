@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2017-12-15 11:01:33
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-04-02 17:17:16
+ * @Last Modified time: 2019-04-04 19:36:54
  */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
@@ -96,11 +96,10 @@ export default class FormItem extends Component {
     this.setState({
       value
     });
-    console.log(onChange);
     onChange && onChange(value);
   };
   renderChildren() {
-    const { children, showInfo } = this.props;
+    const { children, showInfo, placeholder } = this.props;
     const { hasError, value } = this.state;
 
     if (showInfo) {
@@ -110,7 +109,8 @@ export default class FormItem extends Component {
       ? React.cloneElement(children, {
           onChange: this.handleInput,
           defaultValue: value,
-          hasError
+          hasError,
+          placeholder
         })
       : "";
   }

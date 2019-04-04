@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2018-01-18 17:52:04
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-03-07 16:24:15
+ * @Last Modified time: 2019-04-04 14:35:50
  */
 import React, { useState, useEffect } from "react";
 import classNames from "classnames";
@@ -41,6 +41,7 @@ export default function Select({
   hasError: error,
   theme,
   multi,
+  placeholder,
   disabled,
   clearable,
   className,
@@ -200,6 +201,7 @@ export default function Select({
         showOption={showOption}
         onPressEnter={onPressEnter}
         onPressBack={onPressBack}
+        placeholder={placeholder}
         isFocus={isFocus}
       />
       <Options
