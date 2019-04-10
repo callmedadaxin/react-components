@@ -24,7 +24,8 @@ import { nfn } from "../../common";
 export const withScrollHeight = Children => props => {
   const { scrollHeight, columns, flatColumns, body, ...others } = props;
 
-  if (!scrollHeight) return <Children columns={columns} {...others} />;
+  if (!scrollHeight)
+    return <Children columns={columns} flatColumns={flatColumns} {...others} />;
 
   const cls = cx({
     "table-body-wrap": body
@@ -38,7 +39,7 @@ export const withScrollHeight = Children => props => {
     >
       <table>
         <ColGroup columns={flatColumns || columns} />
-        <Children columns={flatColumns || columns} {...others} />
+        <Children columns={columns} flatColumns={flatColumns} {...others} />
       </table>
     </div>
   );

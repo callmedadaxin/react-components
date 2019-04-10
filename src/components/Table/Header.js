@@ -3,6 +3,7 @@ import map from "lodash/map";
 import get from "lodash/get";
 
 import Item from "../Item";
+import { Resizable } from "react-resizable";
 import { withScrollHeight } from "./helper";
 
 function SortIcon({ column, handleSortChange, sortKey, sortFlag }) {
@@ -24,7 +25,7 @@ function SortIcon({ column, handleSortChange, sortKey, sortFlag }) {
   );
 }
 
-function Header({ columns, ...others }) {
+function Header({ columns, setColumns, handleResize, ...others }) {
   // 是否包含二级标题
   const columnHasChild = column => get(column, "children.length");
 
@@ -33,26 +34,32 @@ function Header({ columns, ...others }) {
     (total, cur) => total.concat(cur.children || []),
     []
   );
-
   const hasChild = children.length;
 
   return (
     <thead className="table-head">
       <tr>
         {map(columns, (column, index) => {
-          const { title, sortable } = column;
+          const { title, sortable, width } = column;
           return (
-            <th
-              rowSpan={columnHasChild(column) ? 1 : 2}
-              colSpan={columnHasChild(column) || 1}
-              key={`table-header-${index}`}
-              className="table-head-item"
+            <Resizable
+              width={width}
+              onResize={(e, { size }) =>
+                handleResize(index, size, columns, setColumns)
+              }
             >
-              {title}
-              <Item show={sortable}>
-                <SortIcon column={column} {...others} />
-              </Item>
-            </th>
+              <th
+                rowSpan={columnHasChild(column) ? 1 : 2}
+                colSpan={columnHasChild(column) || 1}
+                key={`table-header-${index}`}
+                className="table-head-item"
+              >
+                {title}
+                <Item show={sortable}>
+                  <SortIcon column={column} {...others} />
+                </Item>
+              </th>
+            </Resizable>
           );
         })}
       </tr>

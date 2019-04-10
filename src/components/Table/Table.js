@@ -1,13 +1,39 @@
-import React, { useMemo } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 import compose from "lodash/fp/compose";
+import debounce from "lodash/debounce";
 
 import ColGroup from "./ColGroup";
 import Header from "./Header";
 import Body from "./Body";
 import { withLimit, withExpand, withClick, withSelect } from "./helper";
 import Item from "../Item";
+
+const handleResize = debounce((columnIndex, size, columns, setColumns) => {
+  const nextColumns = [...columns];
+
+  // 当前列
+  const curColumn = columns[columnIndex];
+  // 下一列
+  const nextColumn = columns[columnIndex + 1];
+
+  if (!curColumn || !nextColumn) return;
+
+  // 改变的宽度
+  const changed = curColumn.width - size.width;
+
+  nextColumns[columnIndex] = {
+    ...curColumn,
+    width: size.width
+  };
+  nextColumns[columnIndex + 1] = {
+    ...nextColumn,
+    width: nextColumn.width + changed
+  };
+
+  setColumns(nextColumns);
+}, 300);
 
 function TableWrap({ scrollHeight, children, columns, className }) {
   return scrollHeight ? (
@@ -41,8 +67,10 @@ function Table({
   handleExpandChange,
   activeIndex,
   onClick,
-  selected
+  selected,
+  resizeable
 }) {
+  const [innerColumns, setColumns] = useState(columns);
   const cls = cx("table", className, {
     border,
     hover,
@@ -58,7 +86,9 @@ function Table({
     );
   };
 
-  const flatColumns = useMemo(() => formatColumns(columns), [columns]);
+  const flatColumns = useMemo(() => formatColumns(innerColumns), [
+    innerColumns
+  ]);
 
   const bodyProps = {
     columns: flatColumns,
@@ -79,12 +109,15 @@ function Table({
     <TableWrap className={cls} scrollHeight={scrollHeight} columns={columns}>
       <Item show={showHeader}>
         <Header
+          resizeable={resizeable}
           scrollHeight={scrollHeight}
-          columns={columns}
+          columns={innerColumns}
           flatColumns={flatColumns}
           sortFlag={sortFlag}
           sortKey={sortKey}
           handleSortChange={handleSortChange}
+          handleResize={handleResize}
+          setColumns={setColumns}
         />
       </Item>
       <Body body {...bodyProps} />
@@ -151,7 +184,9 @@ Table.propTypes = {
   /** 当前排序的key */
   sortKey: PropTypes.string,
   /** 当前排序的顺序 */
-  sortFlag: PropTypes.oneOf(["asc", "desc"])
+  sortFlag: PropTypes.oneOf(["asc", "desc"]),
+  /** 是否可改变宽度 */
+  resizeable: PropTypes.bool
 };
 
 export default compose(

@@ -11,6 +11,15 @@ td {
   background-color: #f8f8fa;
   font-size: 12px;
 
+  .react-resizable-handle {
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    bottom: 0;
+    right: -5px;
+    cursor: col-resize;
+  }
+
   &.border {
     border: 1px solid $basic-border-color;
 
@@ -29,6 +38,7 @@ td {
       border-top: 1px solid $basic-border-color;
     }
     th {
+      position: relative;
       border-right: 1px solid $basic-border-color;
       &:last-child {
         border-right: none;

@@ -156,26 +156,13 @@ const columns = [
     }
   },
   {
-    key: "",
+    key: "ip",
     title: "2",
-    children: [
-      {
-        key: "ip",
-        title: "2",
-        width: 180,
-        sortable: true,
-        render(item) {
-          return <span className="color-error">{item}</span>;
-        }
-      },
-      {
-        key: "times",
-        title: "3",
-        width: 80,
-        sortable: true,
-        limit: true
-      }
-    ]
+    width: 180,
+    sortable: true,
+    render(item) {
+      return <span className="color-error">{item}</span>;
+    }
   },
   {
     title: "操作",
