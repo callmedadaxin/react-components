@@ -32,7 +32,7 @@ const mapValuetoValue = value => ({
  * @see https://ant.design/components/date-picker-cn/
  */
 function RangePicker(props) {
-  const { defaultValue, style, onChange, placeholder, ...others } = props;
+  const { defaultValue, style, onChange, onOk, placeholder, ...others } = props;
   const { value, handleChange } = useControlledInputs({
     defaultValue,
     onChange,
@@ -41,8 +41,10 @@ function RangePicker(props) {
     mapValueWhenChange: false
   });
   const handleOk = value => {
+    const v = mapValuetoValue(value);
     setTimeout(() => {
-      onChange(mapValuetoValue(value));
+      onChange(v);
+      onOk(v);
     }, 0);
   };
   return (

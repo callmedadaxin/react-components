@@ -10,6 +10,7 @@ import Item from "../Item";
 
 import isEmpty from "lodash/isEmpty";
 import isBoolean from "lodash/isBoolean";
+import isObject from "lodash/isObject";
 import { nfn } from "../../common";
 
 function getContent({ show, loading, error, children, emptyDesc }) {
@@ -77,7 +78,18 @@ function Box({
     collapse,
     open
   });
-  const show = isBoolean(data) ? data : !isEmpty(data);
+
+  const isBoxShow = data => {
+    // 正在加载时，展示Box
+    if (Array.isArray(data)) {
+      return data.length;
+    } else if (isObject(data)) {
+      return !isEmpty(data);
+    } else {
+      return data && data !== 0;
+    }
+  };
+  const show = isBoxShow(data);
 
   const onToggleClick = useCallback(() => {
     setOpen(!open);
