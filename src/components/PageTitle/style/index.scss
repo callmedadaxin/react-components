@@ -1,0 +1,25 @@
+@import "../../../styles/assets/constant.scss";
+
+@mixin page-before {
+  display: inline-block;
+  width: 4px;
+  content: "";
+  height: 20px;
+  background-color: #2d84e5;
+  // position: absolute;
+  top: 4px;
+}
+.page-max-title {
+  font-size: $font-size-16;
+  font-weight: 700;
+  color: $primaryDarkColor;
+  &:before {
+    @include page-before;
+    display: none;
+  }
+}
+.page-min-title {
+  font-size: $font-basic-size;
+  font-weight: 700;
+  color: $primaryDarkColor;
+}

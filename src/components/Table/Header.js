@@ -3,7 +3,7 @@ import map from "lodash/map";
 import get from "lodash/get";
 
 import Item from "../Item";
-import { Resizable } from "react-resizable";
+// import { Resizable } from "react-resizable";
 import { withScrollHeight } from "./helper";
 
 function SortIcon({ column, handleSortChange, sortKey, sortFlag }) {
@@ -42,24 +42,24 @@ function Header({ columns, setColumns, handleResize, ...others }) {
         {map(columns, (column, index) => {
           const { title, sortable, width } = column;
           return (
-            <Resizable
-              width={width}
-              onResize={(e, { size }) =>
-                handleResize(index, size, columns, setColumns)
-              }
+            // <Resizable
+            //   width={width}
+            //   onResize={(e, { size }) =>
+            //     handleResize(index, size, columns, setColumns)
+            //   }
+            // >
+            <th
+              rowSpan={columnHasChild(column) ? 1 : 2}
+              colSpan={columnHasChild(column) || 1}
+              key={`table-header-${index}`}
+              className="table-head-item"
             >
-              <th
-                rowSpan={columnHasChild(column) ? 1 : 2}
-                colSpan={columnHasChild(column) || 1}
-                key={`table-header-${index}`}
-                className="table-head-item"
-              >
-                {title}
-                <Item show={sortable}>
-                  <SortIcon column={column} {...others} />
-                </Item>
-              </th>
-            </Resizable>
+              {title}
+              <Item show={sortable}>
+                <SortIcon column={column} {...others} />
+              </Item>
+            </th>
+            // </Resizable>
           );
         })}
       </tr>

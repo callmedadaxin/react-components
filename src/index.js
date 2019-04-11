@@ -34,5 +34,6 @@ export { default as Timeline } from "./components/Timeline";
 export { default as Carousel } from "./components/Carousel";
 export { default as TimePicker } from "./components/TimePicker";
 export { default as AreaLinkage } from "./components/AreaLinkage";
+export { default as PageTitle } from "./components/PageTitle";
 
 require("./styles/index");

@@ -1,6 +1,7 @@
 const gulp = require("gulp");
 const babel = require("gulp-babel");
 const sass = require("gulp-sass");
+const inline = require("gulp-inline");
 const clean = require("del");
 const vinylPaths = require("vinyl-paths");
 

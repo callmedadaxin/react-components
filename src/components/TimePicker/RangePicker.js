@@ -40,7 +40,7 @@ function RangePicker(props) {
     mapValuetoValue,
     mapValueWhenChange: false
   });
-  const handleOk = () => {
+  const handleOk = value => {
     setTimeout(() => {
       onChange(mapValuetoValue(value));
     }, 0);
