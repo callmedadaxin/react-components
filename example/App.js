@@ -30,6 +30,7 @@ function Home() {
       <Link to="/table">Table</Link>
       <Link to="/message">Message</Link>
       <Link to="/arealinkage">AreaLinkage</Link>
+      <Link to="/timeline">Timeline</Link>
     </div>
   );
 }
@@ -60,6 +61,7 @@ class App extends Component {
           <Route path="/table" component={getComponent("Table")} />
           <Route path="/message" component={getComponent("Message")} />
           <Route path="/arealinkage" component={getComponent("AreaLinkage")} />
+          <Route path="/timeline" component={getComponent("Timeline")} />
         </Switch>
       </Suspense>
     );
