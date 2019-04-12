@@ -70,7 +70,7 @@ const formComponents = {
 module.exports = {
   serverPort: 8080,
   require: [
-    resolve("./src/styles/index.scss"),
+    resolve("./src/styles/index.js"),
     resolve("./doc-contents/index.css")
   ],
   sections: [

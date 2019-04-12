@@ -19,7 +19,7 @@
 
 提供 es 模块，借助 babel-plugin-import 实现按需加载功能：
 
-```js
+```html
 // 书写方式
 import { Button } from "anzi-ui";
 // 会自动转化成=>
@@ -34,7 +34,7 @@ import { Button } from "anzi-ui";
 1. npm i --save-dev babel-plugin-import
 2. 添加 babel-plugin:
 
-```js
+```html
 [
   "import",
   {
@@ -64,7 +64,7 @@ import { Button } from "anzi-ui";
 
 同时，建议升级 react-hot-loader 到 4.6+
 
-```js
+```html
 resolve: {
   alias: {
     // 全都指向到本地的node_modules的react
@@ -78,7 +78,7 @@ resolve: {
 
 为了支持按需加载，相同类型组件被整合到同一目录下
 
-```js
+```html
 import { DateRangePicker, DatePicker, POSITION, TRIGGER } from "react-tdp-ui";
 
 // 转化成
@@ -98,7 +98,7 @@ const { RangePicker, DatePicker, RangeBtn } = TimePicker;
 
 多层级数据表单，可以使用 Setter 配合 FormItem 使用
 
-```js
+```html
 <Form>
   <FormItem
     field="name"
@@ -120,7 +120,7 @@ const { RangePicker, DatePicker, RangeBtn } = TimePicker;
 
 =>
 
-```js
+```html
 <SmartForm>
   {(data, renderItem, setItem) => (
     <Fragment>
