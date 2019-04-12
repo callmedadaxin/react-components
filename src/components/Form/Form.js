@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2017-12-15 11:00:25
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-04-12 10:21:31
+ * @Last Modified time: 2019-04-12 10:46:37
  */
 import React, { Component, Children, cloneElement } from "react";
 import PropTypes from "prop-types";
@@ -49,7 +49,7 @@ export default class Form extends Component {
     this.collector.reset();
   }
   isFormItem(children) {
-    const name = get(children, "type.name");
+    const name = get(children, "type.displayName");
 
     return name === FormItem.displayName;
   }
