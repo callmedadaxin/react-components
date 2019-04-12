@@ -43,8 +43,8 @@ function RangePicker(props) {
   const handleOk = value => {
     const v = mapValuetoValue(value);
     setTimeout(() => {
-      onChange(v);
-      onOk(v);
+      onChange && onChange(v);
+      onOk && onOk(v);
     }, 0);
   };
   return (
@@ -71,6 +71,7 @@ function RangePicker(props) {
 
 RangePicker.defaultProps = {
   onChange: nfn,
+  onOk: nfn,
   style: {}
 };
 RangePicker.propTypes = {
