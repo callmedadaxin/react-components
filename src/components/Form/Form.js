@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2017-12-15 11:00:25
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-04-12 10:46:37
+ * @Last Modified time: 2019-04-12 10:53:21
  */
 import React, { Component, Children, cloneElement } from "react";
 import PropTypes from "prop-types";
@@ -55,7 +55,6 @@ export default class Form extends Component {
   }
   renderChildrens = children => {
     const { data, showInfo } = this.props;
-    console.log(children);
 
     if (Array.isArray(children)) {
       return Children.map(children, child => {
