@@ -17,7 +17,9 @@ export const useControlledInputs = ({
   mapValueWhenChange = true,
   props
 }) => {
-  const [value, setValue] = useState(mapDefaultToValue(defaultValue, props));
+  const [value, setValue] = useState(() =>
+    mapDefaultToValue(defaultValue, props)
+  );
   useEffect(() => {
     setValue(mapDefaultToValue(defaultValue, props));
   }, [defaultValue]);

@@ -31,6 +31,7 @@ function Home() {
       <Link to="/message">Message</Link>
       <Link to="/arealinkage">AreaLinkage</Link>
       <Link to="/timeline">Timeline</Link>
+      <Link to="/transfer">Transfer</Link>
     </div>
   );
 }
@@ -62,6 +63,7 @@ class App extends Component {
           <Route path="/message" component={getComponent("Message")} />
           <Route path="/arealinkage" component={getComponent("AreaLinkage")} />
           <Route path="/timeline" component={getComponent("Timeline")} />
+          <Route path="/transfer" component={getComponent("Transfer")} />
         </Switch>
       </Suspense>
     );

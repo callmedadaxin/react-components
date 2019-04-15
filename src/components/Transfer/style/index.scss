@@ -1,0 +1,14 @@
+@import "../../../styles/assets/constant.scss";
+
+.transfer {
+  width: 100%;
+  display: flex;
+}
+
+.transfer-list-wrap {
+  flex: 1;
+  border: 1px solid $basic-border-color;
+}
+.transfer-controll-center {
+  flex: 0 0 100px;
+}

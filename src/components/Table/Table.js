@@ -12,7 +12,6 @@ import Item from "../Item";
 
 const handleResize = debounce((columnIndex, size, columns, setColumns) => {
   const nextColumns = [...columns];
-
   // 当前列
   const curColumn = columns[columnIndex];
   // 下一列
@@ -106,7 +105,12 @@ function Table({
   };
 
   return (
-    <TableWrap className={cls} scrollHeight={scrollHeight} columns={columns}>
+    <TableWrap
+      className={cls}
+      scrollHeight={scrollHeight}
+      columns={innerColumns}
+      flatColumns={flatColumns}
+    >
       <Item show={showHeader}>
         <Header
           resizeable={resizeable}

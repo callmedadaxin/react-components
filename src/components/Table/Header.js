@@ -3,7 +3,7 @@ import map from "lodash/map";
 import get from "lodash/get";
 
 import Item from "../Item";
-// import { Resizable } from "react-resizable";
+import { Resizable } from "react-resizable";
 import { withScrollHeight } from "./helper";
 
 function SortIcon({ column, handleSortChange, sortKey, sortFlag }) {
@@ -25,7 +25,7 @@ function SortIcon({ column, handleSortChange, sortKey, sortFlag }) {
   );
 }
 
-function Header({ columns, setColumns, handleResize, ...others }) {
+function Header({ columns, setColumns, resizeable, handleResize, ...others }) {
   // 是否包含二级标题
   const columnHasChild = column => get(column, "children.length");
 
@@ -41,13 +41,8 @@ function Header({ columns, setColumns, handleResize, ...others }) {
       <tr>
         {map(columns, (column, index) => {
           const { title, sortable, width } = column;
-          return (
-            // <Resizable
-            //   width={width}
-            //   onResize={(e, { size }) =>
-            //     handleResize(index, size, columns, setColumns)
-            //   }
-            // >
+
+          const th = (
             <th
               rowSpan={columnHasChild(column) ? 1 : 2}
               colSpan={columnHasChild(column) || 1}
@@ -59,7 +54,19 @@ function Header({ columns, setColumns, handleResize, ...others }) {
                 <SortIcon column={column} {...others} />
               </Item>
             </th>
-            // </Resizable>
+          );
+
+          if (!resizeable) return th;
+
+          return (
+            <Resizable
+              width={width}
+              onResize={(e, { size }) =>
+                handleResize(index, size, columns, setColumns)
+              }
+            >
+              {th}
+            </Resizable>
           );
         })}
       </tr>

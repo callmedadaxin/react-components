@@ -34,3 +34,4 @@ require("../components/Truncate/style");
 require("../components/TimePicker/style");
 require("../components/AreaLinkage/style");
 require("../components/PageTitle/style");
+require("../components/Transfer/style");
