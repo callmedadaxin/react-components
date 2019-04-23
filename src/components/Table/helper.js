@@ -173,7 +173,7 @@ export const withExpandRow = Children => ({
         <tr className="table-body-expand-row" key={`expand-row-${index}`}>
           <td colSpan={columns.length}>
             <div className="table-body-expand-row-wrap">
-              {expandRowRender(data, index, columns)}
+              {expandRowRender(data, index, columns, showExpand)}
             </div>
           </td>
         </tr>

@@ -178,26 +178,37 @@ export default function Wrap() {
     sortKey: "times",
     sortFlag: "asc"
   });
+  const [list, setList] = useState(tableData);
   return (
-    <Table
-      scrollHeight={200}
-      data={tableData}
-      hasChild
-      pageLimit={4}
-      columns={columns}
-      select
-      expandRowRender={(data, index) => `第${index}的展开内容`}
-      defaultRenderExpand
-      expandOnly
-      clickable
-      handleRowClick={console.log}
-      {...sort}
-      handleSortChange={(sortKey, sortFlag) => {
-        setSort({
-          sortKey,
-          sortFlag
-        });
-      }}
-    />
+    <div style={{ marginTop: 800 }}>
+      <Table
+        // scrollHeight={200}
+        data={list}
+        hasChild
+        // pageLimit={4}
+        columns={columns}
+        select
+        expandRowRender={(data, index, a, show) => {
+          // console.log(show);
+          // if (true) {
+          // setList([...tableData]);
+          // }
+          return `第${index}的展开内容`;
+        }}
+        defaultRenderExpand
+        expandOnly
+        clickable
+        style={{ marginTop: 500 }}
+        handleRowClick={console.log}
+        {...sort}
+        handleSortChange={(sortKey, sortFlag) => {
+          setList([...tableData]);
+          setSort({
+            sortKey,
+            sortFlag
+          });
+        }}
+      />
+    </div>
   );
 }

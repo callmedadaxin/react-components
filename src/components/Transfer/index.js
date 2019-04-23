@@ -5,6 +5,7 @@ import { map, includes, filter } from "lodash";
 import Item from "../Item";
 import Input from "../Input";
 import Checkbox from "../Checkbox";
+import Button from "../Button";
 import Box from "../Box";
 import { nfn } from "../../common";
 
@@ -36,9 +37,11 @@ function TransferList({ withSearch, listItems, selected, render, onSelect }) {
         {listItems.length}项
       </div>
       <Item show={withSearch}>
-        <Input isSearch onChange={setFilter} />
+        <div className="transfer-search-wrap">
+          <Input isSearch onChange={setFilter} />
+        </div>
       </Item>
-      <Box data={listItems}>
+      <Box data={listItems} className="transfer-items-wrap">
         <CheckboxGroup defaultValue={selected} onChange={onSelect}>
           {map(
             filterItem === ""
@@ -49,6 +52,7 @@ function TransferList({ withSearch, listItems, selected, render, onSelect }) {
                 disabled={item.disabled}
                 key={`${item.label}-${index}`}
                 label={render(item)}
+                className="text-overflow"
                 value={item.value}
               />
             )
@@ -66,6 +70,7 @@ function Transfer({
   dataSource,
   withSearch,
   onChange,
+  operations,
   render
 }) {
   const cls = cx("transfer", className);
@@ -115,8 +120,14 @@ function Transfer({
         />
       </div>
       <div className="transfer-controll-center">
-        <button onClick={toLeft}>left</button>
-        <button onClick={toRight}>right</button>
+        <Button type="secondary" width="50" onClick={toRight}>
+          {operations[0]}
+          <i className="icon-arrow" />
+        </Button>
+        <Button width="50" onClick={toLeft}>
+          {operations[1]}
+          <i className="icon-arrow left" />
+        </Button>
       </div>
       <div className="transfer-list-wrap transter-right">
         <TransferList
@@ -143,14 +154,17 @@ Transfer.propTypes = {
   /** 禁用状态 */
   disabled: PropTypes.disabled,
   /** 是否可筛选 */
-  withSearch: PropTypes.bool
+  withSearch: PropTypes.bool,
+  /** 中间操作框的文案 */
+  operations: PropTypes.array
 };
 
 Transfer.defaultProps = {
   render: n => n.label,
   defaultValue: [],
   onChange: nfn,
-  disabled: false
+  disabled: false,
+  operations: ["添加", "移除"]
 };
 
 export default Transfer;

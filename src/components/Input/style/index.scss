@@ -101,3 +101,14 @@
     @include errorStyle();
   }
 }
+
+.input-wrapper {
+  position: relative;
+
+  .search-icon {
+    position: absolute;
+    right: 10px;
+    top: 7px;
+    fill: #2e3b4b;
+  }
+}
