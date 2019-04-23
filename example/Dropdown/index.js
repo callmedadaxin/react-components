@@ -42,7 +42,12 @@ export default function Wrap() {
         <button>hover</button>
       </Dropdown>
       <Controled />
-      <DropdownList changeValue listItems={listItems} onChange={console.log}>
+      <DropdownList
+        disabled
+        changeValue
+        listItems={listItems}
+        onChange={console.log}
+      >
         点我选择
       </DropdownList>
       <CheckboxSelect

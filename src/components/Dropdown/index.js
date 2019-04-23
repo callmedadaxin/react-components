@@ -52,7 +52,7 @@ function Dropdown(props) {
     >
       {cloneElement(children, {
         onClick:
-          trigger === "click"
+          trigger === "click" && !disabled
             ? e => {
                 e.stopPropagation();
                 changeVisible(!show);
