@@ -139,11 +139,11 @@
 .multi-input-tip {
   display: none;
   width: 100%;
-  position: absolute;
+  position: fixed;
   margin-top: -1px;
   background-color: $subBgColor;
   color: $font-color-normal;
-  z-index: 10;
+  z-index: 100;
   border: 1px solid $basic-border-color;
   border-radius: 2px;
   max-height: 150px;

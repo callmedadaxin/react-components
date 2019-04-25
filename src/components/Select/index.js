@@ -2,9 +2,9 @@
  * @Author: wangweixin
  * @Date: 2018-01-18 17:52:04
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-04-25 15:01:10
+ * @Last Modified time: 2019-04-25 17:43:39
  */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import classNames from "classnames";
 import includes from "lodash/includes";
 import filter from "lodash/filter";
@@ -72,7 +72,8 @@ export default function Select({
   const [focusItem, setFocusItem] = useState(undefined);
   // 是否正在操控select
   const [isFocus, setFocus] = useState(false);
-  const [position, ref] = useDropdownPosition();
+  const ref = useRef();
+  const [position] = useDropdownPosition(ref);
 
   const onWindowClick = () => {
     setShow(false);

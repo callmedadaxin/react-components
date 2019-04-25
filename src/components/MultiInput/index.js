@@ -2,9 +2,9 @@
  * @Author: wangweixin
  * @Date: 2018-01-18 17:52:04
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-04-25 15:08:27
+ * @Last Modified time: 2019-04-25 17:43:18
  */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
@@ -46,7 +46,8 @@ export default function MultiInput({
   const [filterItem, setFilter] = useState("");
   // 是否正在操控select
   const [isFocus, setFocus] = useState(false);
-  const [position, ref] = useDropdownPosition();
+  const ref = useRef();
+  const [position] = useDropdownPosition(ref);
 
   const onWindowClick = () => {
     setShowTip(false);

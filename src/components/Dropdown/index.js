@@ -1,4 +1,4 @@
-import React, { cloneElement, useState, useEffect } from "react";
+import React, { cloneElement, useRef, useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
@@ -40,7 +40,8 @@ function Dropdown(props) {
     setShow(visible);
   }, [visible]);
 
-  const [position, ref] = useDropdownPosition();
+  const ref = useRef();
+  const [position] = useDropdownPosition(ref);
 
   const classes = classNames("dropdown", className, {
     open: show,
@@ -70,7 +71,14 @@ function Dropdown(props) {
             : null
       })}
       {createPortal(
-        <div className={overlayCls} style={pick(position, ["left", "top"])}>
+        <div
+          className={overlayCls}
+          style={{
+            left: position.left,
+            top: position.top,
+            minWidth: position.width
+          }}
+        >
           {overlay}
         </div>,
         document.body

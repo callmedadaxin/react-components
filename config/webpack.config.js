@@ -223,19 +223,13 @@ module.exports = function(webpackEnv) {
         }),
         // This is only used in production mode
         new OptimizeCSSAssetsPlugin({
+          cssProcessor: require("cssnano"),
           cssProcessorOptions: {
-            parser: safePostCssParser,
-            map: shouldUseSourceMap
-              ? {
-                  // `inline: false` forces the sourcemap to be output into a
-                  // separate file
-                  inline: false,
-                  // `annotation: true` appends the sourceMappingURL to the end of
-                  // the css file, helping the browser find the sourcemap
-                  annotation: true
-                }
-              : false
-          }
+            discardComments: { removeAll: true },
+            // 避免 cssnano 重新计算 z-index
+            safe: true
+          },
+          canPrint: false
         })
       ],
       // Automatically split vendor and commons
@@ -361,10 +355,20 @@ module.exports = function(webpackEnv) {
                       libraryName: "antd",
                       libraryDirectory: "es",
                       style: "css" // `style: true` 会加载 less 文件
-                    }
+                    },
+                    "ant"
                   ],
                   [
-                    require.resolve("babel-plugin-named-asset-import"),
+                    "import",
+                    {
+                      libraryName: "lodash",
+                      libraryDirectory: "",
+                      camel2DashComponentName: false // default: true
+                    },
+                    "lodash"
+                  ],
+                  [
+                    "babel-plugin-named-asset-import",
                     {
                       loaderMap: {
                         svg: {

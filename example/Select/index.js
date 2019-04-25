@@ -1,5 +1,5 @@
-import React from "react";
-import { Select, MultiInput } from "@";
+import React, { useState } from "react";
+import { Select, MultiInput, Button } from "@";
 
 const options = [
   // {
@@ -47,8 +47,13 @@ const options = [
 ];
 
 export default function Wrap() {
+  const [list, setList] = useState([]);
   return (
     <div>
+      <Button onClick={() => setList([...list, 1])}>111</Button>
+      {list.map(item => (
+        <p>{item}</p>
+      ))}
       <Select
         className="mgb10"
         defaultValue={8}

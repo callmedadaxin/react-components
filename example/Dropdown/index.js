@@ -43,7 +43,7 @@ export default function Wrap() {
       </Dropdown>
       <Controled />
       <DropdownList
-        disabled
+        // disabled
         changeValue
         listItems={listItems}
         onChange={console.log}
