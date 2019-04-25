@@ -1,7 +1,10 @@
 import React, { cloneElement, useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { pick } from "lodash";
 import { nfn } from "../../common";
+import { useDropdownPosition } from "../../common/hooks";
 
 /**
  * 基本的Dropdown组件，可在其上针对业务逻辑进行封装
@@ -37,9 +40,15 @@ function Dropdown(props) {
     setShow(visible);
   }, [visible]);
 
+  const [position, ref] = useDropdownPosition();
+
   const classes = classNames("dropdown", className, {
     open: show,
     disabled
+  });
+
+  const overlayCls = classNames("dropdown-overlay", {
+    open: show
   });
 
   return (
@@ -48,6 +57,7 @@ function Dropdown(props) {
       style={style}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      ref={ref}
       onClick={e => e.stopPropagation()}
     >
       {cloneElement(children, {
@@ -59,7 +69,12 @@ function Dropdown(props) {
               }
             : null
       })}
-      <div className="dropdown-overlay">{overlay}</div>
+      {createPortal(
+        <div className={overlayCls} style={pick(position, ["left", "top"])}>
+          {overlay}
+        </div>,
+        document.body
+      )}
     </div>
   );
 }

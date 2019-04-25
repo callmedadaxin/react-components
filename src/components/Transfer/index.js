@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { map, includes, filter } from "lodash";
+import { map, includes, filter, lowerCase } from "lodash";
 import Item from "../Item";
 import Input from "../Input";
 import Checkbox from "../Checkbox";
@@ -46,7 +46,9 @@ function TransferList({ withSearch, listItems, selected, render, onSelect }) {
           {map(
             filterItem === ""
               ? listItems
-              : filter(listItems, item => includes(item.label, filterItem)),
+              : filter(listItems, item =>
+                  includes(lowerCase(item.label), filterItem)
+                ),
             (item, index) => (
               <Checkbox
                 disabled={item.disabled}

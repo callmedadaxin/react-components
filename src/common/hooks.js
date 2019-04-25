@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 /**
  * 将普通的输入内容，转换为包含defaultValue, onChange的组件
@@ -50,4 +50,25 @@ export const useDefault = defaultValue => {
   }, [defaultValue]);
 
   return [value, setValue];
+};
+
+export const useClientRect = () => {
+  const [rect, setRect] = useState({});
+  const ref = useCallback(node => {
+    if (node !== null) {
+      setRect(node.getBoundingClientRect());
+    }
+  }, []);
+  return [rect, ref];
+};
+
+// 获取对应元素的dropdown位置
+export const useDropdownPosition = () => {
+  const [rect, ref] = useClientRect();
+  const position = {
+    width: rect.width,
+    left: rect.left || 0,
+    top: isNaN(rect.top + rect.height) ? 0 : rect.top + rect.height
+  };
+  return [position, ref];
 };

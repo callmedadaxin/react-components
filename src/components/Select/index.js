@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2018-01-18 17:52:04
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-04-04 14:35:50
+ * @Last Modified time: 2019-04-25 15:01:10
  */
 import React, { useState, useEffect } from "react";
 import classNames from "classnames";
@@ -12,11 +12,16 @@ import get from "lodash/get";
 import isEmpty from "lodash/isEmpty";
 import isEqual from "lodash/isEqual";
 import last from "lodash/last";
+import lowerCase from "lodash/lowerCase";
 
 import Input from "./Input";
 import Options from "./Options";
 import PropTypes from "prop-types";
-import { useControlledInputs, useDefault } from "../../common/hooks";
+import {
+  useControlledInputs,
+  useDefault,
+  useDropdownPosition
+} from "../../common/hooks";
 import { nfn } from "../../common";
 
 // 设置默认显示的defaultValue
@@ -67,6 +72,7 @@ export default function Select({
   const [focusItem, setFocusItem] = useState(undefined);
   // 是否正在操控select
   const [isFocus, setFocus] = useState(false);
+  const [position, ref] = useDropdownPosition();
 
   const onWindowClick = () => {
     setShow(false);
@@ -96,7 +102,8 @@ export default function Select({
     return filter(
       resultOptions,
       item =>
-        includes(item.label, filterItem) || includes(item.value, filterItem)
+        includes(lowerCase(item.label), filterItem) ||
+        includes(lowerCase(item.value), filterItem)
     );
   };
 
@@ -187,7 +194,7 @@ export default function Select({
   });
 
   return (
-    <div className={classes} style={style}>
+    <div className={classes} style={style} ref={ref}>
       <Input
         disabled={disabled}
         multi={multi}
@@ -206,6 +213,7 @@ export default function Select({
       />
       <Options
         single
+        position={position}
         value={value}
         options={resultOptions}
         show={showOption}

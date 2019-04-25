@@ -67,63 +67,8 @@
     width: 25px;
     padding-top: 4px;
   }
-  .select-option-wrap,
-  .multi-input-tip {
-    width: 100%;
-    position: absolute;
-    margin-top: -1px;
-    background-color: $subBgColor;
-    color: $font-color-normal;
-    z-index: 10;
-    border: 1px solid $basic-border-color;
-    border-radius: 2px;
-    max-height: 150px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
-  .multi-input-tip {
-    line-height: 30px;
-    padding-left: 10px;
-    background-color: $subBlueColor;
-    color: #fff;
-  }
-  .select-option-content {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .select-option-item {
-    display: flex;
-    align-items: center;
-    height: 30px;
-    line-height: 30px;
-    padding-left: 10px;
-    cursor: pointer;
-
-    &.active {
-      color: $subBlueColor;
-    }
-    &.focus {
-      background-color: $subBlueColor;
-      color: #fff;
-
-      &.disabled {
-        @include disabledStyle();
-        background-color: transparent;
-      }
-    }
-    &.disabled {
-      @include disabledStyle();
-      background-color: #f9f9f9;
-    }
-  }
   .select-single-value {
     position: absolute;
-  }
-  .select-no-result {
-    color: $font-color-normal;
-    line-height: 30px;
-    padding-left: 10px;
   }
   .drop-down-icon {
     border-top-color: #2e3b4b;
@@ -183,6 +128,67 @@
     .Select-control {
       @include errorStyle();
     }
+  }
+}
+.select-no-result {
+  color: $font-color-normal;
+  line-height: 30px;
+  padding-left: 10px;
+}
+.select-option-wrap,
+.multi-input-tip {
+  display: none;
+  width: 100%;
+  position: absolute;
+  margin-top: -1px;
+  background-color: $subBgColor;
+  color: $font-color-normal;
+  z-index: 10;
+  border: 1px solid $basic-border-color;
+  border-radius: 2px;
+  max-height: 150px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  &.show {
+    display: block;
+  }
+}
+.multi-input-tip {
+  display: block;
+  line-height: 30px;
+  padding-left: 10px;
+  background-color: $subBlueColor;
+  color: #fff;
+}
+.select-option-content {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.select-option-item {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+  cursor: pointer;
+
+  &.active {
+    color: $subBlueColor;
+  }
+  &.focus {
+    background-color: $subBlueColor;
+    color: #fff;
+
+    &.disabled {
+      @include disabledStyle();
+      background-color: transparent;
+    }
+  }
+  &.disabled {
+    @include disabledStyle();
+    background-color: #f9f9f9;
   }
 }
 

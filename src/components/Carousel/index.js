@@ -3,16 +3,7 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 // import debounce from "lodash/debounce";
 import { nfn } from "../../common";
-
-const useClientRect = () => {
-  const [rect, setRect] = useState({});
-  const ref = useCallback(node => {
-    if (node !== null) {
-      setRect(node.getBoundingClientRect());
-    }
-  }, []);
-  return [rect, ref];
-};
+import { useClientRect } from "../../common/hooks";
 
 function Carousel({ children, padding, className, onChange, afterChange }) {
   const [rect, ref] = useClientRect();

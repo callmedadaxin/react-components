@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2017-11-28 15:30:27
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-01-18 17:45:15
+ * @Last Modified time: 2019-04-24 17:07:02
  */
 import React from "react";
 import ReactDom from "react-dom";
@@ -33,7 +33,8 @@ const baseModalStyle = {
     outline: "none",
     padding: "0px",
     width: "700px",
-    zIndex: 10
+    zIndex: 10,
+    maxHeight: window.innerHeight - 100
   }
 };
 
@@ -56,6 +57,7 @@ function ModalContent(props) {
   if (!isOpen) {
     return null;
   }
+  console.log(styles);
   const styles = merge({}, baseModalStyle, style);
 
   return (

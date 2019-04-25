@@ -22,13 +22,17 @@
 
 .dropdown-overlay {
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
   display: none;
   z-index: 1000;
   border: 1px solid #e0e2e1;
   background-color: #fff;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+
+  &.open {
+    display: block;
+  }
 }
 
 .dropdown-tirgger-item {

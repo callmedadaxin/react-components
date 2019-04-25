@@ -2,9 +2,10 @@
  * @Author: wangweixin
  * @Date: 2018-01-18 17:52:04
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-04-03 16:29:18
+ * @Last Modified time: 2019-04-25 15:08:27
  */
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import includes from "lodash/includes";
@@ -17,7 +18,7 @@ import last from "lodash/last";
 import toString from "lodash/toString";
 
 import Input from "../Select/Input";
-import { useControlledInputs } from "../../common/hooks";
+import { useControlledInputs, useDropdownPosition } from "../../common/hooks";
 import { nfn } from "../../common";
 import Item from "../Item";
 
@@ -45,6 +46,7 @@ export default function MultiInput({
   const [filterItem, setFilter] = useState("");
   // 是否正在操控select
   const [isFocus, setFocus] = useState(false);
+  const [position, ref] = useDropdownPosition();
 
   const onWindowClick = () => {
     setShowTip(false);
@@ -119,7 +121,7 @@ export default function MultiInput({
   });
 
   return (
-    <div className={classes} style={style}>
+    <div className={classes} style={style} ref={ref}>
       <Input
         multi
         disabled={disabled}
@@ -137,9 +139,14 @@ export default function MultiInput({
         onPressBack={onPressBack}
         isFocus={isFocus}
       />
-      <Item show={showTip}>
-        <div className="multi-input-tip">{filterItem} 逗号或回车结束</div>
-      </Item>
+      {createPortal(
+        <Item show={showTip}>
+          <div style={position} className="multi-input-tip">
+            {filterItem} 逗号或回车结束
+          </div>
+        </Item>,
+        document.body
+      )}
     </div>
   );
 }
