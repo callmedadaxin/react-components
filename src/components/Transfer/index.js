@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
-import { map, includes, filter, lowerCase } from "lodash";
+import { map, includes, filter, lowerCase, uniq, every } from "lodash";
 import Item from "../Item";
 import Input from "../Input";
 import Checkbox from "../Checkbox";
@@ -26,11 +26,31 @@ function TransferList({ withSearch, listItems, selected, render, onSelect }) {
   const handleAllSelectChange = checked =>
     checked ? onSelect(mapSourceToValue(listItems)) : onSelect([]);
 
+  // 搜索后的内容
+  const filterdItems = filter(listItems, item =>
+    includes(lowerCase(item.label), filterItem)
+  );
+
+  // 选中全部搜索后的内容
+  const handleFilterSelectChange = checked =>
+    checked
+      ? onSelect(uniq([...selected, ...mapSourceToValue(filterdItems)]))
+      : onSelect(
+          filter(selected, item =>
+            includes(filterdItems, d => d.value !== item)
+          )
+        );
+
+  const allFilterSelected = every(filterdItems, item =>
+    includes(selected, item.value)
+  );
+
   return (
     <div className="transfer-list">
       <div className="transfer-list-title">
         <Checkbox
           defaultChecked={allSelected}
+          indeterminate={selected.length && !allSelected}
           onChange={handleAllSelectChange}
         />
         <Item show={selected.length}>{selected.length}/</Item>
@@ -42,23 +62,23 @@ function TransferList({ withSearch, listItems, selected, render, onSelect }) {
         </div>
       </Item>
       <Box data={listItems} className="transfer-items-wrap">
+        <Item show={filterItem && filterdItems.length}>
+          <Checkbox
+            defaultChecked={allFilterSelected}
+            onChange={handleFilterSelectChange}
+            label="选中全部筛选内容"
+          />
+        </Item>
         <CheckboxGroup defaultValue={selected} onChange={onSelect}>
-          {map(
-            filterItem === ""
-              ? listItems
-              : filter(listItems, item =>
-                  includes(lowerCase(item.label), filterItem)
-                ),
-            (item, index) => (
-              <Checkbox
-                disabled={item.disabled}
-                key={`${item.label}-${index}`}
-                label={render(item)}
-                className="text-overflow"
-                value={item.value}
-              />
-            )
-          )}
+          {map(filterItem === "" ? listItems : filterdItems, (item, index) => (
+            <Checkbox
+              disabled={item.disabled}
+              key={`${item.label}-${index}`}
+              label={render(item)}
+              className="text-overflow"
+              value={item.value}
+            />
+          ))}
         </CheckboxGroup>
       </Box>
       <ul />

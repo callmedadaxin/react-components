@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2017-12-15 11:02:00
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-04-01 17:10:05
+ * @Last Modified time: 2019-05-15 14:32:06
  */
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
@@ -86,6 +86,8 @@ Checkbox.defaultProps = {
 Checkbox.propTypes = {
   /** checkbox标签描述 */
   label: PropTypes.string,
+  /** 是否半选 */
+  indeterminate: PropTypes.bool,
   /** 是否默认选中 */
   defaultChecked: PropTypes.bool,
   /** 该选项对应的值，会在onChange时传入回调 */
