@@ -25,7 +25,9 @@ export default function Input({
   clearable,
   options,
   onPressEnter,
-  onPressBack
+  onPressBack,
+  setShow,
+  setFocus
 }) {
   const inputRef = useRef(null);
   const [input, setInput] = useState(false);
@@ -46,6 +48,16 @@ export default function Input({
     e.stopPropagation();
     inputRef.current.focus();
     onFocus();
+  };
+
+  // 点击箭头
+  const handleArrowClick = e => {
+    if (showOption) {
+      setShow(false);
+      setFocus(false);
+    } else {
+      triggerFocus(e);
+    }
   };
 
   // filter改变的时候
@@ -119,7 +131,7 @@ export default function Input({
           <Icon onClick={clearValue} className="del-icon" link={delIcon} />
         </span>
       </Item>
-      <span className="Select-arrow-zone">
+      <span className="Select-arrow-zone" onClick={handleArrowClick}>
         <span className="bottomTriangle drop-down-icon " />
       </span>
     </div>

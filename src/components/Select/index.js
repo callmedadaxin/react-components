@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2018-01-18 17:52:04
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-04-25 17:43:39
+ * @Last Modified time: 2019-05-17 16:36:46
  */
 import React, { useState, useEffect, useRef } from "react";
 import classNames from "classnames";
@@ -211,6 +211,8 @@ export default function Select({
         onPressBack={onPressBack}
         placeholder={placeholder}
         isFocus={isFocus}
+        setShow={setShow}
+        setFocus={setFocus}
       />
       <Options
         single
