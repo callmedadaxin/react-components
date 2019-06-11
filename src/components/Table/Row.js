@@ -52,7 +52,8 @@ function Row({
   lineHeight,
   striped,
   onClick,
-  checked
+  checked,
+  ...others
 }) {
   const cls = cx("table-body-row", className, {
     active,
@@ -66,7 +67,12 @@ function Row({
     open
   };
   return (
-    <tr className={cls} onClick={onRowClick} style={{ height: lineHeight }}>
+    <tr
+      className={cls}
+      onClick={onRowClick}
+      style={{ height: lineHeight }}
+      {...others}
+    >
       {columns.map((column, i) => (
         <Column
           key={`table-row-item-${index}-${i}`}

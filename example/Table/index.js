@@ -3,7 +3,7 @@ import { Table } from "@";
 
 const tableData = [
   {
-    ip: "87.101.12.12",
+    ip: "87.101.12.1",
     labels: [
       {
         type: "error",
@@ -18,7 +18,7 @@ const tableData = [
     times: "3234234232342342次32342342次32342342次次"
   },
   {
-    ip: "87.101.12.12",
+    ip: "87.101.12.2",
     labels: [
       {
         type: "error",
@@ -33,7 +33,7 @@ const tableData = [
     times: "32342342次"
   },
   {
-    ip: "87.101.12.12",
+    ip: "87.101.12.3",
     labels: [
       {
         type: "error",
@@ -48,7 +48,7 @@ const tableData = [
     times: "32342342次"
   },
   {
-    ip: "87.101.12.12",
+    ip: "87.101.12.4",
     labels: [
       {
         type: "error",
@@ -63,7 +63,7 @@ const tableData = [
     times: "32342342次"
   },
   {
-    ip: "87.101.12.12",
+    ip: "87.101.12.5",
     labels: [
       {
         type: "error",
@@ -78,7 +78,7 @@ const tableData = [
     times: "32342342次"
   },
   {
-    ip: "87.101.12.12",
+    ip: "87.101.12.6",
     labels: [
       {
         type: "error",
@@ -93,7 +93,7 @@ const tableData = [
     times: "32342342次"
   },
   {
-    ip: "87.101.12.12",
+    ip: "87.101.12.7",
     labels: [
       {
         type: "error",
@@ -180,12 +180,12 @@ export default function Wrap() {
   });
   const [list, setList] = useState(tableData);
   return (
-    <div style={{ marginTop: 800 }}>
+    <div>
       <Table
         // scrollHeight={200}
         data={list}
-        hasChild
-        // pageLimit={4}
+        // hasChild
+        pageLimit={4}
         columns={columns}
         select
         expandRowRender={(data, index, a, show) => {
@@ -198,6 +198,7 @@ export default function Wrap() {
         defaultRenderExpand
         expandOnly
         clickable
+        draggable
         style={{ marginTop: 500 }}
         handleRowClick={console.log}
         {...sort}

@@ -9,6 +9,8 @@ import Header from "./Header";
 import Body from "./Body";
 import { withLimit, withExpand, withClick, withSelect } from "./helper";
 import Item from "../Item";
+import { useDefault } from "../../common/hooks";
+import { nfn } from "../../common";
 
 const handleResize = debounce((columnIndex, size, columns, setColumns) => {
   const nextColumns = [...columns];
@@ -67,9 +69,12 @@ function Table({
   activeIndex,
   onClick,
   selected,
-  resizeable
+  resizeable,
+  draggable,
+  handleDragChange
 }) {
   const [innerColumns, setColumns] = useState(columns);
+  const [resultData, setData] = useDefault(data);
   const cls = cx("table", className, {
     border,
     hover,
@@ -91,7 +96,8 @@ function Table({
 
   const bodyProps = {
     columns: flatColumns,
-    data,
+    data: resultData,
+    setData,
     scrollHeight,
     lineHeight,
     hasMore,
@@ -101,7 +107,9 @@ function Table({
     activeIndex,
     onClick,
     handleExpandChange,
-    selected
+    selected,
+    draggable,
+    handleDragChange
   };
 
   return (
@@ -139,7 +147,8 @@ Table.defaultProps = {
   showHeader: true,
   lineHeight: 50,
   defaultRenderExpand: false,
-  expandOnly: false
+  expandOnly: false,
+  handleDragChange: nfn
 };
 
 Table.propTypes = {
@@ -190,7 +199,11 @@ Table.propTypes = {
   /** 当前排序的顺序 */
   sortFlag: PropTypes.oneOf(["asc", "desc"]),
   /** 是否可改变宽度 */
-  resizeable: PropTypes.bool
+  resizeable: PropTypes.bool,
+  /** 是否可拖拽 */
+  draggable: PropTypes.bool,
+  /** 拖拽回调 */
+  handleDragChange: PropTypes.func
 };
 
 export default compose(

@@ -1,13 +1,18 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import map from "lodash/map";
 import includes from "lodash/includes";
+import compose from "lodash/fp/compose";
 
 import BaseRow from "./Row";
 import Item from "../Item";
 
-import { withScrollHeight, withExpandRow } from "./helper";
+import { withScrollHeight, withExpandRow, withDragRow } from "./helper";
 
-const Row = memo(withExpandRow(BaseRow));
+const Row = compose(
+  withExpandRow,
+  withDragRow,
+  memo
+)(BaseRow);
 
 function Body({
   columns,
@@ -27,6 +32,7 @@ function Body({
           columns={columns}
           index={index}
           data={row}
+          totalData={data}
           lineHeight={lineHeight}
           checked={includes(selected, row)}
           active={activeIndex === index}

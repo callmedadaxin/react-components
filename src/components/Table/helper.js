@@ -7,6 +7,7 @@ import React, {
   useMemo
 } from "react";
 import cx from "classnames";
+import update from "immutability-helper";
 import ColGroup from "./ColGroup";
 import Checkbox from "../Checkbox";
 
@@ -283,6 +284,79 @@ export const withSelect = Children => ({
       selected={selected}
       columns={withSelectColumns}
       data={data}
+      {...others}
+    />
+  );
+};
+
+const transfer = {
+  data: new Map(),
+  set(key, data) {
+    this.data.set(key, data);
+  },
+  get(key) {
+    return this.data.get(key);
+  },
+  clear() {
+    this.data.clear();
+  }
+};
+
+// 带拖拽的行
+export const withDragRow = Row => ({
+  draggable,
+  index,
+  data,
+  totalData,
+  setData,
+  handleDragChange,
+  ...others
+}) => {
+  if (!draggable)
+    return <Row index={index} data={data} totalData={totalData} {...others} />;
+
+  const onDragStart = useCallback(
+    e => {
+      e.dataTransfer.effectAllowed = "move";
+      transfer.set("data", data);
+      transfer.set("index", index);
+    },
+    [data, index]
+  );
+
+  const onDragEnd = useCallback(e => {
+    transfer.clear();
+  }, []);
+
+  const onDragOver = useCallback(e => {
+    e.preventDefault();
+  }, []);
+
+  const onDrop = useCallback(
+    e => {
+      const from = transfer.get("data");
+      const fromIndex = transfer.get("index");
+
+      if (from && fromIndex !== index) {
+        const resultData = update(totalData, {
+          $splice: [[fromIndex, 1], [index, 0, from]]
+        });
+        setData(resultData);
+        handleDragChange(resultData, fromIndex, index);
+      }
+    },
+    [handleDragChange, index, setData, totalData]
+  );
+
+  return (
+    <Row
+      draggable="true"
+      data={data}
+      index={index}
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+      onDragOver={onDragOver}
+      onDrop={onDrop}
       {...others}
     />
   );
