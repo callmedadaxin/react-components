@@ -4,7 +4,7 @@ require("../components/Box/style");
 require("../components/Button/style");
 require("../components/Carousel/style");
 require("../components/Checkbox/style");
-require("../components/CheckboxSelect/style");
+require("../components/CheckBoxSelect/style");
 require("../components/Code/style");
 require("../components/Dropdown/style");
 require("../components/DropdownInput/style");
