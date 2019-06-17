@@ -195,7 +195,8 @@ export default function Wrap() {
           // }
           return `第${index}的展开内容`;
         }}
-        defaultRenderExpand
+        // defaultRenderExpand
+        defaultRenderExpandIndex={2}
         expandOnly
         clickable
         draggable

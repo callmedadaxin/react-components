@@ -14,7 +14,7 @@ import Checkbox from "../Checkbox";
 import slice from "lodash/slice";
 import filter from "lodash/filter";
 import includes from "lodash/includes";
-import first from "lodash/first";
+import { first, nth } from "lodash";
 
 import Item from "../Item";
 import { nfn } from "../../common";
@@ -80,6 +80,7 @@ export const withExpand = Children => ({
   expandRowRender,
   defaultRenderExpand,
   expandOnly,
+  defaultRenderExpandIndex,
   ...others
 }) => {
   if (!expandRowRender) return <Children data={data} {...others} />;
@@ -87,6 +88,13 @@ export const withExpand = Children => ({
   const getDefaultExpand = () => {
     if (defaultRenderExpand) {
       return [first(data)];
+    }
+    if (
+      defaultRenderExpandIndex &&
+      !defaultRenderExpand &&
+      (defaultRenderExpandIndex >= 0 && defaultRenderExpandIndex < data.length)
+    ) {
+      return [nth(data, defaultRenderExpandIndex)];
     }
     return [];
   };
