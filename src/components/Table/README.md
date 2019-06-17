@@ -708,6 +708,7 @@ const columns = [
 - 带有展开的行会带有 has-expand class
 - 在 column 的 render 会回传当前 row 是否展开，用于自定义操作状态
 - defaultRenderExpand 设置是否默认展开第一行
+- defaultRenderExpandIndex 设置是默认展开表格中的某一行, 取值范围大于等于0,小于等于数组长度。(如果设置了该值，需要设置defaultRenderExpand为false)
 - expandOnly 用于控制是否只同时展开一行
 
 ```js
