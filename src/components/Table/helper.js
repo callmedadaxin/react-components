@@ -90,7 +90,6 @@ export const withExpand = Children => ({
       return [first(data)];
     }
     if (
-      defaultRenderExpandIndex &&
       !defaultRenderExpand &&
       (defaultRenderExpandIndex >= 0 && defaultRenderExpandIndex < data.length)
     ) {
