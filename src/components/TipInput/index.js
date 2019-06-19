@@ -2,7 +2,7 @@
  * @Author: wangweixin
  * @Date: 2018-01-18 17:52:04
  * @Last Modified by: wangweixin
- * @Last Modified time: 2019-06-19 16:04:29
+ * @Last Modified time: 2019-06-19 16:11:19
  */
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import PropTypes from "prop-types";
@@ -83,7 +83,6 @@ export default function TipInput({
    * 敲击回车时，认定选中当前focus的值
    */
   const onPressEnter = e => {
-    e.stopPropagation();
     if (focusItem) {
       handleChange(get(focusItem, "label"));
     }
