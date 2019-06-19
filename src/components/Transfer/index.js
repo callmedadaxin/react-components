@@ -174,7 +174,7 @@ Transfer.propTypes = {
   /** 用于列表展示的丰富 */
   render: PropTypes.func,
   /** 禁用状态 */
-  disabled: PropTypes.disabled,
+  disabled: PropTypes.bool,
   /** 是否可筛选 */
   withSearch: PropTypes.bool,
   /** 中间操作框的文案 */
