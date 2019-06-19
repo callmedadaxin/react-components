@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Select, MultiInput, Button } from "@";
+import { Select, MultiInput, Button, TipInput } from "@";
 
 const options = [
   // {
@@ -54,6 +54,12 @@ export default function Wrap() {
       {list.map(item => (
         <p>{item}</p>
       ))}
+      <TipInput
+        className="mgb10"
+        defaultValue={8}
+        options={options}
+        onChange={console.log}
+      />
       <Select
         className="mgb10"
         defaultValue={8}

@@ -36,5 +36,6 @@ export { default as TimePicker } from "./components/TimePicker";
 export { default as AreaLinkage } from "./components/AreaLinkage";
 export { default as PageTitle } from "./components/PageTitle";
 export { default as Transfer } from "./components/Transfer";
+export { default as TipInput } from "./components/TipInput";
 
 require("./styles/index");
