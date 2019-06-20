@@ -1,2 +1,2 @@
 import "../../../styles/index.scss";
-import "../../CheckBoxSelect/style";
+import "../../CheckboxSelect/style";
