@@ -12,7 +12,7 @@ export function Column({
   checked,
   config = {}
 }) {
-  const { key, render, align, limit, width } = config;
+  const { key, render, align, limit, width, colSpanFn } = config;
   const cls = cx("table-row-item", {
     pdl10: align === "left",
     pdr10: align === "right",
@@ -27,10 +27,19 @@ export function Column({
         checked
       })
     : columnData;
+  let colSpan = 1
+  if (colSpanFn) {
+	colSpan = colSpanFn(columnData, data)
+  }
+  if (content === null) {
+	return ""
+  }
+
 
   return (
     <td
       className={cls}
+	  colSpan={colSpan}
       style={{
         height: lineHeight,
         textAlign: align || "center",
