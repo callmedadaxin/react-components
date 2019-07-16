@@ -1,3 +1,6 @@
+### 2019-07-16
+- 修复DropDownInput onDelete回调不触发的问题
+
 ### 2019-04-15
 
 - Transfer 新增组件

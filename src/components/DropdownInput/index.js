@@ -61,6 +61,9 @@ export default function DropdownInput(props) {
 
   const handleClear = () => {
     setValue("");
+	if (onDelete) {
+	  onDelete();
+	}
   };
 
   const handleClose = useCallback(() => {
