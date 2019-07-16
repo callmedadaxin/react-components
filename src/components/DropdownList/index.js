@@ -102,7 +102,7 @@ function DropdownList(props) {
         />
       }
     >
-      <div className="dropdown-tirgger-item text-overflow">{label}</div>
+      <div className="dropdown-trigger-item text-overflow">{label}</div>
     </DropDown>
   );
 }

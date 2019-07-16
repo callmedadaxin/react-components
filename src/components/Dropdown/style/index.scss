@@ -10,13 +10,13 @@
     }
   }
   &.disabled {
-    .dropdown-tirgger-item {
+    .dropdown-trigger-item {
       cursor: not-allowed;
     }
   }
 }
 
-.dropdown-tirgger-item {
+.dropdown-trigger-item {
   cursor: pointer;
 }
 
@@ -35,7 +35,7 @@
   }
 }
 
-.dropdown-tirgger-item {
+.dropdown-trigger-item {
   padding: 0 20px;
   padding-right: 40px;
   background-color: #fff;
