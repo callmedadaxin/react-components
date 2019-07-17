@@ -320,7 +320,7 @@ export const withDragRow = Row => ({
   ...others
 }) => {
   if (!draggable || (draggable && index === totalData.length - 1))
-    return <Row index={index} data={data} totalData={totalData} {...others} />;
+    return <Row index={index} data={data} {...others} />;
 
   const onDragStart = useCallback(
     e => {
