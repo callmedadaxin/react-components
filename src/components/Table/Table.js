@@ -71,6 +71,7 @@ function Table({
   selected,
   resizeable,
   draggable,
+  setRowClassFn,
   handleDragChange
 }) {
   const [innerColumns, setColumns] = useState(columns);
@@ -108,6 +109,7 @@ function Table({
     onClick,
     handleExpandChange,
     selected,
+	setRowClassFn,
     draggable,
     handleDragChange
   };
@@ -203,7 +205,9 @@ Table.propTypes = {
   /** 是否可拖拽 */
   draggable: PropTypes.bool,
   /** 拖拽回调 */
-  handleDragChange: PropTypes.func
+  handleDragChange: PropTypes.func,
+  /** 自定义行类名 */
+  setRowClassFn: PropTypes.func
 };
 
 export default compose(
