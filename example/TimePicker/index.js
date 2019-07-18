@@ -11,7 +11,13 @@ export default function Wrap() {
     <div>
       <DatePicker defaultValue={value} onChange={console.log} />
       <Button onClick={() => setValue(+new Date())}>reset</Button>
-      <RangePicker defaultValue={range} onChange={console.log} />
+      <RangePicker
+        defaultValue={range}
+        // onChange={console.log}
+        onOk={() => {
+          console.log(111);
+        }}
+      />
       <Button onClick={() => setRange("thirty_days")}>reset</Button>
     </div>
   );
