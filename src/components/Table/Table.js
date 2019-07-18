@@ -126,7 +126,6 @@ function Table({
           resizeable={resizeable}
           scrollHeight={scrollHeight}
           columns={innerColumns}
-          flatColumns={flatColumns}
           sortFlag={sortFlag}
           sortKey={sortKey}
           handleSortChange={handleSortChange}

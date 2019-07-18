@@ -83,7 +83,6 @@ function Row({
       className={cls}
       onClick={onRowClick}
       style={{ height: lineHeight }}
-      {...others}
     >
       {columns.map((column, i) => (
         <Column
