@@ -153,7 +153,7 @@ export const withExpandRow = Children => ({
   const handleRowClick = useCallback(
     (rowData, index) => {
       expandRowRender && handleExpandChange(rowData, !showExpand);
-      onClick && onClick(rowData, index);
+      onClick && onClick(rowData, index, showExpand);
     },
     [showExpand, onClick, handleExpandChange]
   );
