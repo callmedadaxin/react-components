@@ -14,12 +14,14 @@ export default function Options({
   filterItem,
   handleItemClick,
   focusItem,
-  setFocusItem
+  setFocusItem,
+  getContainer
 }) {
   const noFilterResult = filterItem !== "" && isEmpty(options);
   const cls = cx("select-option-wrap", {
     show
   });
+  const container = getContainer && getContainer() || document.body;
   return createPortal(
     <div className={cls} style={position}>
       {noFilterResult ? (
@@ -55,6 +57,6 @@ export default function Options({
         </ul>
       )}
     </div>,
-    document.body
+    container
   );
 }

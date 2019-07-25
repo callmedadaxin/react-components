@@ -38,7 +38,8 @@ export default function DropdownInput(props) {
     disabled,
     trigger,
     className,
-    style
+    style,
+    getContainer
   } = props;
 
   const [value, setValue] = useState(defaultValue);
@@ -86,6 +87,7 @@ export default function DropdownInput(props) {
       className={classes}
       disabled={disabled}
       style={style}
+      getContainer={getContainer}
       overlay={
         <Overlay
           title={title}

@@ -63,18 +63,22 @@ export const useClientRect = () => {
 };
 
 // 获取对应元素的dropdown位置
-export const useDropdownPosition = ref => {
+export const useDropdownPosition = (ref, getContainer) => {
+  const container = getContainer && getContainer(ref.current) || document.body
   const rect =
     ref.current && ref.current.getBoundingClientRect
       ? ref.current.getBoundingClientRect()
       : {};
+  const containerRect = container && container.getBoundingClientRect() || {};
+  const scrollTop = container && container.scrollTop || 0;
+  const scrollLeft = container && container.scrollLeft || 0;
   const position = useMemo(
     () => ({
       width: rect.width,
-      left: rect.left || 0,
-      top: isNaN(rect.top + rect.height) ? 0 : rect.top + rect.height
+      left: (rect.left - containerRect.left + scrollLeft) || 0,
+      top: (rect.top + rect.height - containerRect.top + scrollTop) || 0
     }),
-    [rect.width, rect.left, rect.top, rect.height]
+    [rect.width, rect.left, rect.top, rect.height, containerRect.left, containerRect.top, scrollLeft, scrollTop]
   );
   return [position, ref];
 };

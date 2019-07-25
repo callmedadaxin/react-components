@@ -5,6 +5,7 @@ import classNames from "classnames";
 import { pick } from "lodash";
 import { nfn } from "../../common";
 import { useDropdownPosition } from "../../common/hooks";
+import { getDefaultPortalSelector } from "../../common/portalHelpers";
 
 /**
  * 基本的Dropdown组件，可在其上针对业务逻辑进行封装
@@ -19,7 +20,8 @@ function Dropdown(props) {
     style,
     overlay,
     visible,
-    onVisibleChange
+    onVisibleChange,
+    getContainer: customGetContainer
   } = props;
   const [show, setShow] = useState(defaultOpen);
   const changeVisible = show => {
@@ -40,8 +42,9 @@ function Dropdown(props) {
     setShow(visible);
   }, [visible]);
 
+  const getContainer = customGetContainer || getDefaultPortalSelector()
   const ref = useRef();
-  const [position] = useDropdownPosition(ref);
+  const [position] = useDropdownPosition(ref, getContainer);
 
   const classes = classNames("dropdown", className, {
     open: show,
@@ -51,7 +54,7 @@ function Dropdown(props) {
   const overlayCls = classNames("dropdown-overlay", {
     open: show
   });
-
+  const container = getContainer(ref.currrent) || document.body
   return (
     <div
       className={classes}
@@ -81,7 +84,7 @@ function Dropdown(props) {
         >
           {overlay}
         </div>,
-        document.body
+        container
       )}
     </div>
   );

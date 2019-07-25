@@ -53,7 +53,8 @@ function DropdownList(props) {
     listItems,
     style,
     className,
-    children
+    children,
+    getContainer
   } = props;
 
   if (afterChange) {
@@ -93,6 +94,7 @@ function DropdownList(props) {
       className={classes}
       disabled={disabled}
       style={style}
+      getContainer={getContainer}
       overlay={
         <Overlay
           listItems={listItems}

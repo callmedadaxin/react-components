@@ -139,7 +139,6 @@
 .multi-input-tip {
   display: none;
   width: 100%;
-  position: fixed;
   margin-top: -1px;
   background-color: $subBgColor;
   color: $font-color-normal;
@@ -153,6 +152,12 @@
   &.show {
     display: block;
   }
+}
+.multi-input-tip {
+  position: fixed;
+}
+.select-option-wrap {
+  position: absolute;
 }
 .multi-input-tip {
   display: block;

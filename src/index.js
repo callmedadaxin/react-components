@@ -37,5 +37,6 @@ export { default as AreaLinkage } from "./components/AreaLinkage";
 export { default as PageTitle } from "./components/PageTitle";
 export { default as Transfer } from "./components/Transfer";
 export { default as TipInput } from "./components/TipInput";
+export { default as setConfig } from "./common/config";
 
 require("./styles/index");

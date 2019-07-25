@@ -80,7 +80,8 @@ export default function CheckboxSelect({
   options,
   onDelete,
   className,
-  style
+  style,
+  getContainer
 }) {
   const [value, setValue] = useDefault(defaultValue);
   const [searchTxt, setSearchTxt] = useState("");
@@ -124,6 +125,7 @@ export default function CheckboxSelect({
           />
         }
         defaultOpen={defaultOpen}
+        getContainer={getContainer}
       >
         <div className="checkbox-select-result">
           <span className="checkbox-select-result-label">{title}</span>

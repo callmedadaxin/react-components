@@ -4,7 +4,7 @@
  * @Last Modified by: wangweixin
  * @Last Modified time: 2019-05-17 16:36:46
  */
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import classNames from "classnames";
 import includes from "lodash/includes";
 import filter from "lodash/filter";
@@ -23,6 +23,7 @@ import {
   useDropdownPosition
 } from "../../common/hooks";
 import { nfn } from "../../common";
+import { getDefaultPortalSelector } from '../../common/portalHelpers';
 
 // 设置默认显示的defaultValue
 const mapDefaultToValue = (value, props) => {
@@ -50,7 +51,8 @@ export default function Select({
   disabled,
   clearable,
   className,
-  style
+  style,
+  getContainer: customGetContainer
 }) {
   const { value, handleChange } = useControlledInputs({
     defaultValue,
@@ -72,8 +74,11 @@ export default function Select({
   const [focusItem, setFocusItem] = useState(undefined);
   // 是否正在操控select
   const [isFocus, setFocus] = useState(false);
+
+  const getContainer = customGetContainer || getDefaultPortalSelector()
+
   const ref = useRef();
-  const [position] = useDropdownPosition(ref);
+  const [position] = useDropdownPosition(ref, getContainer);
 
   const onWindowClick = () => {
     setShow(false);
@@ -194,6 +199,10 @@ export default function Select({
     "has-value": get(value, "length") || get(value, "value") !== undefined
   });
 
+  const getContainerWithRef = useCallback(() => {
+    return getContainer && getContainer(ref.current) || document.body
+  }, [getContainer]);
+
   return (
     <div className={classes} style={style} ref={ref}>
       <Input
@@ -224,6 +233,7 @@ export default function Select({
         filterItem={filterItem}
         focusItem={focusItem}
         setFocusItem={setFocusItem}
+        getContainer={getContainerWithRef}
       />
     </div>
   );

@@ -6,6 +6,7 @@ import { ranges, getStartAndEndTime } from "./constant";
 import zhCN from "antd/es/locale-provider/zh_CN";
 import { nfn } from "../../common";
 import { useControlledInputs } from "../../common/hooks";
+import { getDefaultPortalSelector } from "../../common/portalHelpers";
 import isString from "lodash/isString";
 
 const { RangePicker: BaseRangePicker } = BaseDatePicker;
@@ -63,6 +64,7 @@ function RangePicker(props) {
         format="YYYY-MM-DD HH:mm"
         onOk={handleOk}
         onChange={handleChange}
+        getCalendarContainer={getDefaultPortalSelector()}
         {...others}
       />
     </LocaleProvider>
