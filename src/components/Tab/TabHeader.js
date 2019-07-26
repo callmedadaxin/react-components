@@ -8,6 +8,7 @@ export default function TabHeader(props) {
   return (
     <div className="tab-header">
       {map(childPanels, child => {
+        if (!child) return null;
         const childProps = get(child, "props") || {};
         const { keys, header, disabled } = childProps;
         const active = keys === activeKey;
