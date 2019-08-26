@@ -333,10 +333,6 @@ export const withDragRow = Row => ({
     },
     [data, index]
   );
-  // const onDrag = useCallback(e => {
-  //   e.target.style.opacity = 1;
-  //   e.target.style.background = "#fff";
-  // });
   const onDragEnd = useCallback(e => {
     e.target.style.opacity = 1;
     e.target.style.background = "#fff";
@@ -394,7 +390,6 @@ export const withDragRow = Row => ({
       index={index}
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
-      // onDrag={onDrag}
       onDragOver={onDragOver}
       onDragLeave={onDragLeave}
       onDrop={onDrop}
