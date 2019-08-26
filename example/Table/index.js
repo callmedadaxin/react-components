@@ -179,13 +179,16 @@ export default function Wrap() {
     sortFlag: "asc"
   });
   const [list, setList] = useState(tableData);
+  // const hanldeSortChange = arr => {
+  //   setList(arr);
+  // };
   return (
     <div>
       <Table
         // scrollHeight={200}
         data={list}
         // hasChild
-        pageLimit={4}
+        // pageLimit={4}
         columns={columns}
         select
         expandRowRender={(data, index, a, show) => {
@@ -195,6 +198,7 @@ export default function Wrap() {
           // }
           return `第${index}的展开内容`;
         }}
+        draggable={true}
         // defaultRenderExpand
         defaultRenderExpandIndex={2}
         expandOnly

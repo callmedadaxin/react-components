@@ -322,6 +322,7 @@ export const withDragRow = Row => ({
   if (!draggable || (draggable && index === totalData.length - 1))
     return <Row index={index} data={data} totalData={totalData} {...others} />;
 
+  const [rowOver, setRowOver] = useState({});
   const onDragStart = useCallback(
     e => {
       e.dataTransfer.effectAllowed = "move";
@@ -335,14 +336,35 @@ export const withDragRow = Row => ({
     transfer.clear();
   }, []);
 
-  const onDragOver = useCallback(e => {
-    e.preventDefault();
-  }, []);
+  const onDragOver = useCallback(
+    e => {
+      e.preventDefault();
+    },
+    [index]
+  );
+  const onDragEnter = useCallback(
+    e => {
+      e.preventDefault();
+      setRowOver({
+        borderBottom: "3px solid #3c8ff7"
+      });
+    },
+    [index]
+  );
 
+  const onDragLeave = useCallback(
+    e => {
+      e.preventDefault();
+      console.log(index);
+      setRowOver();
+    },
+    [index]
+  );
   const onDrop = useCallback(
     e => {
       const from = transfer.get("data");
       const fromIndex = transfer.get("index");
+      setRowOver();
 
       if (from && fromIndex !== index) {
         const resultData = update(totalData, {
@@ -363,7 +385,10 @@ export const withDragRow = Row => ({
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
       onDragOver={onDragOver}
+      onDragEnter={onDragEnter}
+      onDragLeave={onDragLeave}
       onDrop={onDrop}
+      style={rowOver}
       {...others}
     />
   );
