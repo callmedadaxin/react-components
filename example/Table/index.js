@@ -140,38 +140,6 @@ const tableData = [
     ]
   }
 ];
-const columns = [
-  {
-    key: "labels",
-    title: "1",
-    width: 200,
-    render(items) {
-      return items.map(item => {
-        return (
-          <label key={item.desc} className="label label-info mgr10">
-            {item.desc}
-          </label>
-        );
-      });
-    }
-  },
-  {
-    key: "ip",
-    title: "2",
-    width: 180,
-    sortable: true,
-    render(item) {
-      return <span className="color-error">{item}</span>;
-    }
-  },
-  {
-    title: "操作",
-    width: 200,
-    render(item, row) {
-      return <span>现在还没有操作</span>;
-    }
-  }
-];
 
 export default function Wrap() {
   const [sort, setSort] = useState({
@@ -182,6 +150,51 @@ export default function Wrap() {
   // const hanldeSortChange = arr => {
   //   setList(arr);
   // };
+  const [draggable, setDraggable] = useState(false);
+  const handleDragChange = (arr = []) => {
+    const elems = document.querySelectorAll(".table-body-row");
+    let index = 0;
+    const length = elems.length;
+    for (; index < length; index++) {
+      elems[index].style.opacity = 1;
+    }
+    setDraggable(false);
+  };
+  const columns = [
+    {
+      key: "labels",
+      title: "1ddd",
+      width: 200,
+      render(items) {
+        return (
+          <div
+            // key={item.desc}
+            className="mgr10"
+            onMouseDown={() => setDraggable(true)}
+          >
+            {1223}
+          </div>
+        );
+      }
+    },
+    {
+      key: "ip",
+      title: "2",
+      width: 180,
+      sortable: true,
+      render(item) {
+        return <span className="color-error">{item}</span>;
+      }
+    },
+    {
+      title: "操作",
+      width: 200,
+      render(item, row) {
+        return <span>现在还没有操作</span>;
+      }
+    }
+  ];
+
   return (
     <div>
       <Table
@@ -198,12 +211,12 @@ export default function Wrap() {
           // }
           return `第${index}的展开内容`;
         }}
-        draggable={true}
+        draggable={draggable}
+        handleDragChange={handleDragChange}
         // defaultRenderExpand
         defaultRenderExpandIndex={2}
         expandOnly
         clickable
-        draggable
         style={{ marginTop: 500 }}
         handleRowClick={console.log}
         {...sort}

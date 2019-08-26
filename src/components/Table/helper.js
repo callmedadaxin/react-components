@@ -328,17 +328,27 @@ export const withDragRow = Row => ({
       e.dataTransfer.effectAllowed = "move";
       transfer.set("data", data);
       transfer.set("index", index);
+      e.target.style.opacity = 0.4;
+      e.target.style.background = "#fff";
     },
     [data, index]
   );
-
+  // const onDrag = useCallback(e => {
+  //   e.target.style.opacity = 1;
+  //   e.target.style.background = "#fff";
+  // });
   const onDragEnd = useCallback(e => {
+    e.target.style.opacity = 1;
+    e.target.style.background = "#fff";
     transfer.clear();
   }, []);
 
   const onDragOver = useCallback(
     e => {
       e.preventDefault();
+      setRowOver({
+        borderBottom: "3px solid #3c8ff7"
+      });
     },
     [index]
   );
@@ -355,7 +365,6 @@ export const withDragRow = Row => ({
   const onDragLeave = useCallback(
     e => {
       e.preventDefault();
-      console.log(index);
       setRowOver();
     },
     [index]
@@ -373,6 +382,7 @@ export const withDragRow = Row => ({
         setData(resultData);
         handleDragChange(resultData, fromIndex, index);
       }
+      transfer.clear();
     },
     [handleDragChange, index, setData, totalData]
   );
@@ -384,8 +394,8 @@ export const withDragRow = Row => ({
       index={index}
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
+      // onDrag={onDrag}
       onDragOver={onDragOver}
-      onDragEnter={onDragEnter}
       onDragLeave={onDragLeave}
       onDrop={onDrop}
       style={rowOver}
