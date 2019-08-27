@@ -12,7 +12,7 @@ export function Column({
   checked,
   config = {}
 }) {
-  const { key, render, align, limit, width, colSpanFn,} = config;
+  const { key, render, align, limit, width, colSpanFn } = config;
   const cls = cx("table-row-item", {
     pdl10: align === "left",
     pdr10: align === "right",
@@ -31,7 +31,6 @@ export function Column({
   if (colSpanFn) {
     colSpan = colSpanFn(columnData, data);
   }
-
 
   if (content === null) {
     return "";
@@ -66,10 +65,15 @@ function Row({
   setRowClassFn,
   ...others
 }) {
-  const cls = cx("table-body-row", className, {
-    active,
-    striped
-  }, setRowClassFn ? setRowClassFn(data) : false);
+  const cls = cx(
+    "table-body-row",
+    className,
+    {
+      active,
+      striped
+    },
+    setRowClassFn ? setRowClassFn(data) : false
+  );
   const onRowClick = () => onClick(data, index);
   const columnProps = {
     data,
@@ -78,11 +82,7 @@ function Row({
     open
   };
   return (
-    <tr
-      className={cls}
-      onClick={onRowClick}
-      style={{ height: lineHeight }}
-    >
+    <tr className={cls} onClick={onRowClick} style={{ height: lineHeight }}>
       {columns.map((column, i) => (
         <Column
           key={`table-row-item-${index}-${i}`}
