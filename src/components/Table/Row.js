@@ -27,21 +27,20 @@ export function Column({
         checked
       })
     : columnData;
-  let colSpan = 1
+  let colSpan = 1;
   if (colSpanFn) {
-	colSpan = colSpanFn(columnData, data)
+    colSpan = colSpanFn(columnData, data);
   }
 
 
   if (content === null) {
-	return ""
+    return "";
   }
-
 
   return (
     <td
       className={cls}
-	  colSpan={colSpan}
+      colSpan={colSpan}
       style={{
         height: lineHeight,
         textAlign: align || "center",
