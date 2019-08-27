@@ -31,7 +31,6 @@ export function Column({
   if (colSpanFn) {
     colSpan = colSpanFn(columnData, data);
   }
-
   if (content === null) {
     return "";
   }
@@ -62,18 +61,12 @@ function Row({
   striped,
   onClick,
   checked,
-  setRowClassFn,
   ...others
 }) {
-  const cls = cx(
-    "table-body-row",
-    className,
-    {
-      active,
-      striped
-    },
-    setRowClassFn ? setRowClassFn(data) : false
-  );
+  const cls = cx("table-body-row", className, {
+    active,
+    striped
+  });
   const onRowClick = () => onClick(data, index);
   const columnProps = {
     data,
@@ -82,7 +75,12 @@ function Row({
     open
   };
   return (
-    <tr className={cls} onClick={onRowClick} style={{ height: lineHeight }}>
+    <tr
+      className={cls}
+      onClick={onRowClick}
+      style={{ height: lineHeight }}
+      {...others}
+    >
       {columns.map((column, i) => (
         <Column
           key={`table-row-item-${index}-${i}`}
