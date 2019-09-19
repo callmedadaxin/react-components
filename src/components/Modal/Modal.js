@@ -1,8 +1,8 @@
 /*
  * @Author: wangweixin
  * @Date: 2017-11-28 15:30:27
- * @Last Modified by: wangweixin
- * @Last Modified time: 2019-04-24 17:07:02
+ * @Last Modified by: zsj
+ * @Last Modified time: 2019-09-16 19:32:42
  */
 import React from "react";
 import ReactDom from "react-dom";
@@ -57,7 +57,6 @@ function ModalContent(props) {
   if (!isOpen) {
     return null;
   }
-  console.log(styles);
   const styles = merge({}, baseModalStyle, style);
 
   return (
