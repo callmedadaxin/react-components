@@ -68,7 +68,7 @@ const formComponents = {
   setter: join("Setter/index.js")
 };
 module.exports = {
-  serverPort: 8080,
+  serverPort: 8078,
   require: [
     resolve("./src/styles/index.js"),
     resolve("./doc-contents/index.css")
