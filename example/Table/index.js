@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Table } from "@";
 
 const tableData = [
@@ -151,6 +151,10 @@ export default function Wrap() {
   //   setList(arr);
   // };
   const [draggable, setDraggable] = useState(false);
+  useEffect(() => {
+    console.log(1111);
+    fetch("www.baidu.com");
+  });
   const handleDragChange = (arr = []) => {
     const elems = document.querySelectorAll(".table-body-row");
     let index = 0;
@@ -198,35 +202,11 @@ export default function Wrap() {
   return (
     <div>
       <Table
-        // scrollHeight={200}
-        data={list}
-        // hasChild
-        // pageLimit={4}
         columns={columns}
         select
-        expandRowRender={(data, index, a, show) => {
-          // console.log(show);
-          // if (true) {
-          // setList([...tableData]);
-          // }
-          return `第${index}的展开内容`;
-        }}
-        draggable={draggable}
-        handleDragChange={handleDragChange}
-        // defaultRenderExpand
-        defaultRenderExpandIndex={2}
-        expandOnly
-        clickable
-        style={{ marginTop: 500 }}
-        handleRowClick={console.log}
-        {...sort}
-        handleSortChange={(sortKey, sortFlag) => {
-          setList([...tableData]);
-          setSort({
-            sortKey,
-            sortFlag
-          });
-        }}
+        striped
+        handleSelectChanged={console.log}
+        data={tableData}
       />
     </div>
   );
