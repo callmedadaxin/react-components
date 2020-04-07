@@ -1,8 +1,8 @@
 /*
  * @Author: wangweixin
  * @Date: 2018-01-18 17:52:04
- * @Last Modified by: wangweixin
- * @Last Modified time: 2019-04-25 17:43:18
+ * @Last Modified by: zsj
+ * @Last Modified time: 2020-04-07 18:36:36
  */
 import React, { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
@@ -24,7 +24,7 @@ import Item from "../Item";
 
 // 设置默认显示的defaultValue
 const mapDefaultToValue = (defaultValue = []) => defaultValue.map(toString);
-const mapValuetoValue = value => value;
+const mapValuetoValue = (value) => value;
 
 export default function MultiInput({
   defaultValue,
@@ -32,13 +32,14 @@ export default function MultiInput({
   hasError: error,
   disabled,
   className,
-  style
+  style,
+  placeholder,
 }) {
   const { value, handleChange } = useControlledInputs({
     defaultValue,
     onChange,
     mapDefaultToValue,
-    mapValuetoValue
+    mapValuetoValue,
   });
   // 展示提示
   const [showTip, setShowTip] = useState(false);
@@ -64,7 +65,7 @@ export default function MultiInput({
   /**
    * fitler改变的回调
    */
-  const handleFilterChange = filterItem => {
+  const handleFilterChange = (filterItem) => {
     setFilter(filterItem);
     if (isEmpty(filterItem)) {
       return setShowTip(false);
@@ -85,7 +86,7 @@ export default function MultiInput({
       resultVal = [];
     } else if (remove) {
       // 移除元素
-      resultVal = filter(value, item => !isEqual(val, item));
+      resultVal = filter(value, (item) => !isEqual(val, item));
     } else {
       resultVal = [...value, val];
     }
@@ -118,7 +119,7 @@ export default function MultiInput({
     error,
     disabled,
     "is-open": isFocus,
-    "has-value": get(value, "length")
+    "has-value": get(value, "length"),
   });
 
   return (
@@ -127,10 +128,11 @@ export default function MultiInput({
         multi
         disabled={disabled}
         clearable={true}
-        currentValue={map(value, item => ({
+        currentValue={map(value, (item) => ({
           label: item,
-          value: item
+          value: item,
         }))}
+        placeholder={placeholder}
         filter={filterItem}
         onChange={onValueChange}
         onInputChange={handleFilterChange}
@@ -152,7 +154,7 @@ export default function MultiInput({
   );
 }
 MultiInput.defaultProps = {
-  onChange: nfn
+  onChange: nfn,
 };
 MultiInput.propTypes = {
   /** 错误状态 */
@@ -162,5 +164,5 @@ MultiInput.propTypes = {
   /** 默认值，必须是options中的value的值 */
   defaultValue: PropTypes.any,
   /** change回调 */
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };

@@ -1,10 +1,10 @@
 import React, { Component, lazy, Suspense } from "react";
 import { Route, Switch, Link } from "react-router-dom";
 
-const getComponent = name => {
+const getComponent = (name) => {
   const Comp = lazy(() => import(`./${name}`));
 
-  return props => <Comp {...props} />;
+  return (props) => <Comp {...props} />;
 };
 
 function Home() {
@@ -33,6 +33,7 @@ function Home() {
       <Link to="/timeline">Timeline</Link>
       <Link to="/transfer">Transfer</Link>
       <Link to="/treeselect">TreeSelect</Link>
+      <Link to="/input">Input</Link>
     </div>
   );
 }
@@ -43,6 +44,7 @@ class App extends Component {
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path="/input" component={getComponent("Input")} />
           <Route path="/alert" component={getComponent("Alert")} />
           <Route path="/box" component={getComponent("Box")} />
           <Route path="/loading" component={getComponent("Loading")} />
