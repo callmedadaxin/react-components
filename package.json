@@ -1,6 +1,6 @@
 {
   "name": "anzi-ui",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "main": "./build/static/js",
   "sideEffects": false,
   "dependencies": {
