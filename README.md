@@ -26,3 +26,9 @@ In the project directory, you can run:
 ### `npm run analyze`
 
 分析 bundle 包
+
+修改后重新发布npm包
+
+1 npm run build
+2 npm run compile
+3 npm publish
