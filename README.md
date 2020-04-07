@@ -27,7 +27,7 @@ In the project directory, you can run:
 
 ### `npm run analyze`
 
-修改后重新发布 npm 包
+修改后重新发布 npm 包<br>
 
 1 npm run build<br>
 2 npm run compile<br>
