@@ -1,21 +1,21 @@
 const path = require("path");
 const fs = require("fs");
-const join = p => path.join("./src/components/", p);
-const resolve = p => path.resolve(__dirname, p);
+const join = (p) => path.join("./src/components/", p);
+const resolve = (p) => path.resolve(__dirname, p);
 const configFactory = require("./config/webpack.config");
 
-const componentMap = component => {
-  return Object.keys(component).map(key => {
+const componentMap = (component) => {
+  return Object.keys(component).map((key) => {
     return component[key];
   });
 };
 const getCommonSetions = () => {
   const dir = fs.readdirSync(resolve("./doc-contents/common"));
-  return dir.map(item => {
+  return dir.map((item) => {
     const p = resolve(`./doc-contents/common/${item}`);
     return {
       name: item.split(".")[0],
-      content: p
+      content: p,
     };
   });
 };
@@ -26,15 +26,17 @@ const baseComponents = {
   Loading: join("Loading/index.js"),
   Message: join("Message/index.js"),
   Modal: join("Modal/Modal.js"),
-  switch: join("Switch/index.js")
+  switch: join("Switch/index.js"),
 };
 const dataComponents = {
   alert: join("Alert/index.js"),
+  areaLinkage: join("AreaLinkage/index.js"),
   truncate: join("Truncate/index.js"),
   popover: join("Popover/index.js"),
   tooltip: join("Tooltip/index.js"),
   carousel: join("Carousel/index.js"),
   // slider: join("Slider/index.js"),
+  transfer: join("Transfer/index.js"),
   box: join("Box/index.js"),
   table: join("Table/index.js"),
   tab: join("Tab/Tab.js"),
@@ -45,7 +47,7 @@ const dataComponents = {
   dropdownList: join("DropdownList/index.js"),
   dropdownInput: join("DropdownInput/index.js"),
   timeline: join("Timeline/index.js"),
-  noResult: join("NoResult/index.js")
+  noResult: join("NoResult/index.js"),
 };
 const formComponents = {
   input: join("Input/index.js"),
@@ -65,22 +67,22 @@ const formComponents = {
   formItem: join("Form/FormItem.js"),
   form: join("Form/Form.js"),
   smartForm: join("Form/SmartForm.js"),
-  setter: join("Setter/index.js")
+  setter: join("Setter/index.js"),
 };
 module.exports = {
   serverPort: 8078,
   require: [
     resolve("./src/styles/index.js"),
-    resolve("./doc-contents/index.css")
+    resolve("./doc-contents/index.css"),
   ],
   sections: [
     {
       name: "Startup",
-      content: resolve("./doc-contents/base.md")
+      content: resolve("./doc-contents/base.md"),
     },
     {
       name: "ChangeLog",
-      content: resolve("./doc-contents/changeLog.md")
+      content: resolve("./doc-contents/changeLog.md"),
     },
     // {
     //   name: "IconList",
@@ -94,21 +96,21 @@ module.exports = {
     {
       name: "General",
       components: () => componentMap(baseComponents),
-      description: "基本通用组件"
+      description: "基本通用组件",
     },
     {
       name: "DataDisplay",
       components: () => componentMap(dataComponents),
-      description: "数据展示通用组件"
+      description: "数据展示通用组件",
     },
     {
       name: "FormInput",
       components: () => componentMap(formComponents),
-      description: "表单通用组件"
-    }
+      description: "表单通用组件",
+    },
   ],
   showUsage: true,
-  webpackConfig: configFactory("development")
+  webpackConfig: configFactory("development"),
   // styleguideComponents: {
   //   Wrapper: resolve("./doc-contents/changeLog.md")
   // }
