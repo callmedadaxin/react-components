@@ -11,25 +11,26 @@ const mapDefaultToValue = (defaultValue, props) => {
   const item = find(listItems, { value: defaultValue });
   return item ? item.value : "";
 };
-const mapValuetoValue = value => value;
+const mapValuetoValue = (value) => value;
 
 function Overlay(props) {
   const { listItems, changeValue, value, handleChange } = props;
   return (
     <ul className="dropdown-list-content">
       {listItems
-        .filter(item => !changeValue || item.value !== value)
+        .filter((item) => !changeValue || item.value !== value)
         .map((item, index) => {
           const classes = classNames({
             "text-overflow": true,
             "dropdown-list-item": true,
-            "dropdown-list-item-active": item.value === value
+            "dropdown-list-item-active": item.value === value,
+            disabled: item.disabled
           });
           return (
             <li
               className={classes}
               key={`label-${index}`}
-              onClick={() => handleChange(item.value)}
+              onClick={() => (item.disabled ? nfn : handleChange(item.value))}
             >
               {item.label}
             </li>
@@ -70,7 +71,7 @@ function DropdownList(props) {
     props
   });
 
-  const item = find(listItems, item => item.value === value);
+  const item = find(listItems, (item) => item.value === value);
   const label = changeValue ? (item ? item.label : children) : children;
   const classes = classNames(
     {
@@ -80,7 +81,7 @@ function DropdownList(props) {
     className
   );
   const handleItemClick = useCallback(
-    value => {
+    (value) => {
       handleChange(value);
       setVisible(false);
     },
